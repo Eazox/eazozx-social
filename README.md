@@ -35,3 +35,9 @@ Both the `auth0ClientId` and `auth0Domain` needs to match your Auth0 app setting
 
 - [Expo AuthSession docs](https://docs.expo.io/versions/latest/sdk/auth-session/)
 - [Auth0 React/SPA quickstart guide](https://auth0.com/docs/quickstart/spa/react)
+
+## The auth docs we will use
+### https://dzone.com/articles/a-complete-guide-for-integrating-aws-amplify-to-re
+
+## Sample of templates
+# https://github.com/expo/examples
