@@ -5,7 +5,7 @@
 1. Git clone the repo `https://github.com/Eazox/eazozx-social.git`
 2. Run yarn install  `yarn install`
 3. Install Expo in your mobile phone. Download from google play store
-4. After successful yarn intall, run `yarn start`
+4. After successful yarn install, run `yarn start`
 
 ## 📝 Notes
 
