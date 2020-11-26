@@ -1,6 +1,8 @@
-import React from 'react';
-import { SafeAreaView, Text, View,  StyleSheet} from 'react-native';
-import tailwind from 'tailwind-rn';
+import React from 'react'
+import { SafeAreaView, Text, View } from 'react-native'
+import tailwind from 'tailwind-rn'
+import Sample from './src/Sample'
+
 
 const App = () => {
   return (
@@ -9,8 +11,12 @@ const App = () => {
       <Text style={tailwind('text-white font-semibold text-lg')}>
         Hello  collins welcome to react native 👋 
       </Text>  
-
-        <Text style={Styles.textColor}>hello wellcome to react native</Text>
+        
+      <Sample />
+      <View style={tailwind('bg-blue-500 px-5 py-3 rounded-full')}>
+        <Text style={tailwind('text-white font-semibold text-lg')}> Here you go 👋</Text>
+      </View>
+      
     </View>
   </SafeAreaView>
   );
@@ -27,4 +33,6 @@ const Styles = StyleSheet.create({
 })
 
 
-export default App;
+
+export default App
+
