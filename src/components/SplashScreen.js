@@ -1,13 +1,35 @@
 // import liraries
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Animated, Easing } from 'react-native'
 
 // create a component
 class SplashScreen extends Component {
+  loadAnim = new Animated.Value(-250)
+
+  componentDidMount() {
+    Animated.timing(this.loadAnim, {
+      toValue: 0,
+      duration: 1500,
+      easing: Easing.linear,
+      useNativeDriver: true
+    }).start()
+  }
+
   render() {
     return (
       <View style={styles.loadingContainer}>
-        <View style={styles.loadingContent} />
+        <Animated.View
+          style={[
+            styles.loadingContent,
+            {
+              transform: [
+                {
+                  translateX: this.loadAnim
+                }
+              ]
+            }
+          ]}
+        />
       </View>
     )
   }
@@ -22,7 +44,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     overflow: 'hidden',
     marginBottom: 30,
-    width: '80%',
+    width: 250,
     position: 'absolute',
     bottom: 0,
     borderWidth: 1,
@@ -32,9 +54,7 @@ const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: '#578dde',
     position: 'absolute',
-    right: '99%',
-    width: '100%',
-    zIndex: 2
+    width: '100%'
   }
 })
 
