@@ -39,12 +39,6 @@ When working on a feature make sure to commit and push your changes to the remot
 * This assures that your commits are small and manageable.
 * Additionally, in the event of system failure or any random that affects your local code, you will have a fairly recent backup of your code in the remote branch.
 
-#### Before Pull Requests
-Before you create a pull request, run the following commands locally:
-1. `npm run lint`: to check your code for linting errors. There should be zero.
-2. `npm run test`: if there are tests, they should all be passing.
-3. `npm run build`: to make sure that your code will successfully build in production.
-
 #### Pull Requests (PR)
 After you have finished working on your feature or bug fix, you should [create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) from your feature branch to the master branch.
 * This PR allows you to see the difference between the current master code and the feature code that you want to merge into the master.
