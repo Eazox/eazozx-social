@@ -1,6 +1,7 @@
 // import liraries
 import React, { Component } from 'react'
-import { View, StyleSheet, Animated, Easing } from 'react-native'
+import { View, StyleSheet, Animated, Easing, Image } from 'react-native'
+import Logo from '../images/Eazox-logo.png'
 
 // create a component
 class SplashScreen extends Component {
@@ -17,20 +18,23 @@ class SplashScreen extends Component {
 
   render() {
     return (
-      <View style={styles.loadingContainer}>
-        <Animated.View
-          style={[
-            styles.loadingContent,
-            {
-              transform: [
-                {
-                  translateX: this.loadAnim
-                }
-              ]
-            }
-          ]}
-        />
-      </View>
+      <>
+        <Image source={Logo} />
+        <View style={styles.loadingContainer}>
+          <Animated.View
+            style={[
+              styles.loadingContent,
+              {
+                transform: [
+                  {
+                    translateX: this.loadAnim
+                  }
+                ]
+              }
+            ]}
+          />
+        </View>
+      </>
     )
   }
 }
