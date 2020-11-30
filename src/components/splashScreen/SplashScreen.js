@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { View, Image, StyleSheet, Dimensions } from 'react-native'
-
 import * as Progress from 'react-native-progress'
+
 import Logo from '../../images/logo.png'
 
 const { height, width } = Dimensions.get('window')
@@ -37,11 +37,10 @@ const SplashScreen = () => {
     </View>
   )
 }
-console.log(Dimensions.get('window').height - 300)
+
 const styles = StyleSheet.create({
   container: {
     height,
-    // backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center'
   }
