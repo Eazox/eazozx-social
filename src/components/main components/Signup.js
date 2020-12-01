@@ -69,7 +69,6 @@ const Signup = () => {
                 iosHeader='Gender'
                 headerBackButtonText='Go back'
                 iosIcon={<Icon name='arrow-down' />}
-                style={{ width: undefined }}
                 selectedValue={gender}
                 onValueChange={onGenderChange}
                 style={[{ left: -15 }, styles.fontS14, styles.fontw4]}
