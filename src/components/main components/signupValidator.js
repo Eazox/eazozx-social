@@ -6,7 +6,7 @@ const useFormValidation = () => {
 const [ data, setData ] = useState({
     data: {
         fullname: {
-            isValid: false,
+            isValid: {valid: false, error: 'Name cannot be empty'},
             value: '',
             validator: (val) => {
                 if ( val.length !== 0 ){
@@ -18,7 +18,7 @@ const [ data, setData ] = useState({
             }
         },
         username: {
-            isValid: false,
+            isValid: {valid: false, error: 'Username cannot be empty'},
             value: '',
             validator: (val) => {
                 if ( val.length !== 0 ){
@@ -30,21 +30,21 @@ const [ data, setData ] = useState({
             }
         },
         email: {
-            isValid: false,
+            isValid: {valid: false, error: 'email cannot be empty'},
             value: '',
             validator: (val) => {
                 if (emailValidationRegex.test(val)) {
-                    if (val.length > 5) {
+                    if (val.length > 2) {
                         return { valid: true, error: '' };
                     } else {
-                        return { valid: false, error: 'at least 6 characters for email address' };
+                        return { valid: false, error: 'at least 3 characters for email address' };
                     }
                 }
                 return { valid: false, error: 'Input is not an email address' };
             },
         },
         password: {
-            isValid: false,
+            isValid: {valid: false, error: 'Password cannot be empty'},
             value: '',
             validator: (val) => {
                 if (val.length > 5) {
@@ -55,7 +55,7 @@ const [ data, setData ] = useState({
             },
         },
         number: {
-            isValid: false,
+            isValid: {valid: false, error: 'Number cannot be empty'},
             value: '',
             validator: (val) => {
                 if ( val.length >= 10 ){
@@ -67,25 +67,25 @@ const [ data, setData ] = useState({
             }
         },
         gender: {
-            isValid: true,
+            isValid: {valid: true, error: ''},
             value: 'key0',
             validator: (val) => {
                 return { valid: true, error: ''}
             }
         },
         numberHeader: {
-            isValid: true,
+            isValid: {valid: true, error: ''},
             value: 'key0',
             validator: (val) => {
                 return { valid: true, error: ''}
             }
         },
         agreedCheckbox: {
-            isValid: false,
+            isValid: {valid: false, error: 'Must be checked first'},
             value: false,
             validator: (val) => {
-                if ( val !== true) {
-                    return { valid: false, error: 'Must be checked before'}
+                if ( val !== true ) {
+                    return { valid: false, error: 'Must be checked first'}
                 }
                 else
                 return { valid: true, error: ''}

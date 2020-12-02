@@ -1,5 +1,6 @@
 // import liraries
 import React, { useState } from 'react';
+import { TouchableOpacity } from 'react-native'
 import { View, StyleSheet } from 'react-native';
 import {
 	Container,
@@ -16,19 +17,61 @@ import {
 	Title,
 	CheckBox,
 } from 'native-base';
-import { CustomPassword, CustomLabel, CustomInput, CustomText } from '../sub-components/CustomFontComponents';
-import useFormValidation from './signupValidator'
+import {
+	CustomPassword,
+	CustomLabel,
+	CustomInput,
+	CustomText,
+	CustomError,
+} from '../sub-components/CustomFontComponents';
+import useFormValidation from './signupValidator';
 
 // create a component
 const Signup = () => {
-	const [ showErrors, setShowErrors ] = useState(false)
+	const [showErrors, setShowErrors] = useState(false);
 	// enable 'create account' button when all is not empty
 	// showErrors when button clicked
 	//remember to handle the default value of signupvalidator to
 	// accomodate isValid
 	//comment your functions
 
-	const { data, setHandler } = useFormValidation()
+	const { data, setHandler } = useFormValidation();
+
+	const updateInput = (key, input) => {
+		setHandler(key, input)
+		setShowErrors(false)
+	}
+
+	const createAccountHandler = () =>{
+		if (data.data.fullname.isValid.valid) {
+			if (data.data.username.isValid.valid) {
+				if (data.data.email.isValid.valid) {
+					if (data.data.number.isValid.valid) {
+						if (data.data.password.isValid.valid) {
+							if (data.data.agreedCheckbox.isValid.valid) {
+								alert('success')
+							}
+							else {
+								setShowErrors(true)
+							}}
+							else {
+								setShowErrors(true)
+							}}
+							else {
+								setShowErrors(true)
+							}}
+							else {
+								setShowErrors(true)
+							}}
+							else {
+								setShowErrors(true)
+							}}
+							else {
+								setShowErrors(true)
+							}
+							
+
+	}
 
 	return (
 		<Container style={styles.container}>
@@ -46,11 +89,23 @@ const Signup = () => {
 				<Form style={styles.form}>
 					<Item stackedLabel style={styles.noBorder}>
 						<CustomLabel style={styles.mb8}>Full Name</CustomLabel>
-						<CustomInput onChangeText={(e) => setHandler('fullname', e)} style={styles.grayCover} />
+						<CustomInput
+							onChangeText={(e) => updateInput('fullname', e)}
+							style={styles.grayCover}
+						/>
+						{showErrors && !data.data.fullname.isValid.valid && (
+							<CustomError>{data.data.fullname.isValid.error}</CustomError>
+						)}
 					</Item>
 					<Item stackedLabel style={styles.noBorder}>
 						<CustomLabel style={styles.mb8}>Username</CustomLabel>
-						<CustomInput onChangeText={(e) => setHandler('username', e)} style={styles.grayCover} />
+						<CustomInput
+							onChangeText={(e) => updateInput('username', e)}
+							style={styles.grayCover}
+						/>
+						{showErrors && !data.data.username.isValid.valid && (
+							<CustomError>{data.data.username.isValid.error}</CustomError>
+						)}
 					</Item>
 					<Item picker style={[styles.noBorder, styles.genderItem]}>
 						<CustomLabel style={[styles.mb8, styles.ml15, styles.mt10]}>Gender</CustomLabel>
@@ -62,7 +117,7 @@ const Signup = () => {
 								headerBackButtonText="Go back"
 								iosIcon={<Icon name="arrow-down" />}
 								selectedValue={data.data.gender.value}
-								onValueChange={(e) => setHandler('gender', e)}
+								onValueChange={(e) => updateInput('gender', e)}
 								style={[styles.genderPicker, styles.fontS14, styles.fontw4]}
 							>
 								<Picker.Item label="Female" value="key0" />
@@ -73,21 +128,26 @@ const Signup = () => {
 
 					<Item stackedLabel style={styles.noBorder}>
 						<CustomLabel style={styles.mb8}>Email Address</CustomLabel>
-						<CustomInput onChangeText={(e) => setHandler('email', e)} style={styles.grayCover} keyboardType="email-address" />
+						<CustomInput
+							onChangeText={(e) => updateInput('email', e)}
+							style={styles.grayCover}
+							keyboardType="email-address"
+						/>
+						{showErrors && !data.data.email.isValid.valid && (
+							<CustomError>{data.data.email.isValid.error}</CustomError>
+						)}
 					</Item>
 					<Item stackedLabel style={styles.noBorder}>
 						<CustomLabel style={styles.mb8}>Phone Number</CustomLabel>
 						<View style={styles.inline}>
-							<View
-								style={styles.numberContainer}
-							>
+							<View style={styles.numberContainer}>
 								<Picker
 									mode="dropdown"
 									iosHeader="Number Header"
 									headerBackButtonText="Go back"
 									iosIcon={<Icon name="arrow-down" />}
 									selectedValue={data.data.numberHeader.value}
-									onValueChange={(e) => setHandler('numberHeader', e)}
+									onValueChange={(e) => updateInput('numberHeader', e)}
 								>
 									<Picker.Item label="+234" value="key0" />
 									<Picker.Item label="+01" value="key1" />
@@ -96,17 +156,28 @@ const Signup = () => {
 							<CustomInput
 								keyboardType="phone-pad"
 								style={[styles.grayCover, styles.noBorder]}
-								onChangeText={(e) => setHandler('number', e)}
+								onChangeText={(e) => updateInput('number', e)}
 							/>
 						</View>
+						{showErrors && !data.data.number.isValid.valid && (
+							<CustomError>{data.data.number.isValid.error}</CustomError>
+						)}
 					</Item>
 					<Item stackedLabel style={[styles.noBorder]}>
 						<CustomLabel style={styles.mb8}>Password</CustomLabel>
-						<CustomPassword style={styles.grayCover} onChangeText={(e) => setHandler('password', e)}/>
-						{/* <Icon active name="md-eye" style={{ position: 'absolute', right: 0}}></Icon> */}
+						<CustomPassword
+							style={styles.grayCover}
+							onChangeText={(e) => updateInput('password', e)}
+						/>
+						{showErrors && !data.data.password.isValid.valid && (
+							<CustomError>{data.data.password.isValid.error}</CustomError>
+						)}
 					</Item>
-					<ListItem style={styles.noBorder}>
-						<CheckBox checked={data.data.agreedCheckbox.value} onPress={() => setHandler('agreedCheckbox', !data.data.agreedCheckbox.value)}/>
+					<ListItem
+						style={styles.noBorder}
+						onPress={() => updateInput('agreedCheckbox', !data.data.agreedCheckbox.value)}
+					>
+						<CheckBox checked={data.data.agreedCheckbox.value} />
 						<Body>
 							<CustomText style={[styles.fontw5, styles.fontS14]}>
 								I agree to the{' '}
@@ -116,7 +187,22 @@ const Signup = () => {
 							</CustomText>
 						</Body>
 					</ListItem>
-					<Button block disabled style={[styles.ml15, styles.mt15]}>
+					{showErrors && !data.data.agreedCheckbox.isValid.valid && (
+						<CustomError>{data.data.agreedCheckbox.isValid.error}</CustomError>
+					)}
+					<Button
+					onPress={createAccountHandler}
+						block
+						disabled={
+							data.data.fullname.value === '' ||
+							data.data.username.value === '' ||
+							data.data.email.value === '' ||
+							data.data.password.value === '' ||
+							data.data.number.value === '' ||
+							data.data.agreedCheckbox.value === false
+						}
+						style={[styles.ml15, styles.mt15]}
+					>
 						<CustomText style={[styles.fontS18, styles.fontw5]}>Create Account</CustomText>
 					</Button>
 					<CustomText style={[styles.mt15, styles.textCentered]}>
@@ -167,7 +253,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	genderPicker: {
-		left: -15
+		left: -15,
 	},
 	numberContainer: {
 		width: 99,
@@ -181,6 +267,9 @@ const styles = StyleSheet.create({
 	},
 	mb8: {
 		marginBottom: 8,
+	},
+	mtm8: {
+		marginTop: -8,
 	},
 	blueColor: {
 		color: '#578DDE',
@@ -207,14 +296,14 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 	},
 	mt15: {
-		marginTop: 15
+		marginTop: 15,
 	},
 	textCentered: {
-		textAlign: 'center'
+		textAlign: 'center',
 	},
 	alignCenter: {
-		alignItems: 'center'
-	}	
+		alignItems: 'center',
+	},
 });
 
 // make this component available to the app
