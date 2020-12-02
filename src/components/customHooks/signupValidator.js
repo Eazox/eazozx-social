@@ -3,6 +3,7 @@ import { useState } from 'react'
 const emailValidationRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const useFormValidation = () => {
+    // initial state for form
 const [ data, setData ] = useState({
     data: {
         fullname: {
@@ -94,6 +95,7 @@ const [ data, setData ] = useState({
     }
 })
 
+// update form handler
 const setHandler = (key, input) => {
     setData((prevData) => {
         return {

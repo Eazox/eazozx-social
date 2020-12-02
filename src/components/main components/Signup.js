@@ -1,6 +1,5 @@
 // import liraries
 import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
 import { View, StyleSheet } from 'react-native';
 import {
 	Container,
@@ -24,19 +23,18 @@ import {
 	CustomText,
 	CustomError,
 } from '../sub-components/CustomFontComponents';
-import useFormValidation from './signupValidator';
+import useFormValidation from '../customHooks/signupValidator'
+import { GLOBALSTYLES } from '../../Constants'
 
 // create a component
 const Signup = () => {
+	//state to display errors in form
 	const [showErrors, setShowErrors] = useState(false);
-	// enable 'create account' button when all is not empty
-	// showErrors when button clicked
-	//remember to handle the default value of signupvalidator to
-	// accomodate isValid
-	//comment your functions
 
+	//hook for form validation
 	const { data, setHandler } = useFormValidation();
 
+	// update form state handler
 	const updateInput = (key, input) => {
 		setHandler(key, input);
 		setShowErrors(false);
@@ -71,20 +69,20 @@ const Signup = () => {
 	};
 
 	return (
-		<Container style={styles.container}>
-			<Header style={styles.header}>
-				<Left style={styles.headerLeft}>
+		<Container style={GLOBALSTYLES.container}>
+			<Header style={GLOBALSTYLES.header}>
+				<Left style={GLOBALSTYLES.headerLeft}>
 					<Button transparent>
 						<Icon name="arrow-back" style={styles.blackColor} />
 					</Button>
 				</Left>
-				<Body style={styles.alignCenter}>
-					<Title style={[styles.fontS24, styles.blueColor]}>Create an Account</Title>
+				<Body style={GLOBALSTYLES.alignCenter}>
+					<Title style={GLOBALSTYLES.headerText}>Create an Account</Title>
 				</Body>
 			</Header>
 			<Content>
 				<Form style={styles.form}>
-					<Item stackedLabel style={styles.noBorder}>
+					<Item stackedLabel style={GLOBALSTYLES.noBorder}>
 						<CustomLabel style={styles.mb8}>Full Name</CustomLabel>
 						<CustomInput
 							onChangeText={(e) => updateInput('fullname', e)}
@@ -99,7 +97,7 @@ const Signup = () => {
 							<CustomError>{data.data.fullname.isValid.error}</CustomError>
 						)}
 					</Item>
-					<Item stackedLabel style={styles.noBorder}>
+					<Item stackedLabel style={GLOBALSTYLES.noBorder}>
 						<CustomLabel style={styles.mb8}>Username</CustomLabel>
 						<CustomInput
 							onChangeText={(e) => updateInput('username', e)}
@@ -114,8 +112,8 @@ const Signup = () => {
 							<CustomError>{data.data.username.isValid.error}</CustomError>
 						)}
 					</Item>
-					<Item picker style={[styles.noBorder, styles.genderItem]}>
-						<CustomLabel style={[styles.mb8, styles.ml15, styles.mt10]}>Gender</CustomLabel>
+					<Item picker style={[GLOBALSTYLES.noBorder, styles.genderItem]}>
+						<CustomLabel style={[styles.mb8, GLOBALSTYLES.ml15, GLOBALSTYLES.mt10]}>Gender</CustomLabel>
 						<View style={[styles.grayCover, styles.genderContainer]}>
 							<Picker
 								mode="dropdown"
@@ -125,7 +123,7 @@ const Signup = () => {
 								iosIcon={<Icon name="arrow-down" />}
 								selectedValue={data.data.gender.value}
 								onValueChange={(e) => updateInput('gender', e)}
-								style={[styles.genderPicker, styles.fontS14, styles.fontw4]}
+								style={[styles.genderPicker, GLOBALSTYLES.fontS14, GLOBALSTYLES.fontw4]}
 							>
 								<Picker.Item label="Female" value="key0" />
 								<Picker.Item label="Male" value="key1" />
@@ -133,7 +131,7 @@ const Signup = () => {
 						</View>
 					</Item>
 
-					<Item stackedLabel style={styles.noBorder}>
+					<Item stackedLabel style={GLOBALSTYLES.noBorder}>
 						<CustomLabel style={styles.mb8}>Email Address</CustomLabel>
 						<CustomInput
 							onChangeText={(e) => updateInput('email', e)}
@@ -149,7 +147,7 @@ const Signup = () => {
 							<CustomError>{data.data.email.isValid.error}</CustomError>
 						)}
 					</Item>
-					<Item stackedLabel style={styles.noBorder}>
+					<Item stackedLabel style={GLOBALSTYLES.noBorder}>
 						<CustomLabel style={styles.mb8}>Phone Number</CustomLabel>
 						<View style={styles.inline}>
 							<View style={styles.numberContainer}>
@@ -168,7 +166,7 @@ const Signup = () => {
 							<CustomInput
 								keyboardType="phone-pad"
 								style={[
-									styles.noBorder,
+									GLOBALSTYLES.noBorder,
 									showErrors && !data.data.number.isValid.valid
 										? styles.redBorder
 										: styles.removeBorder,
@@ -181,7 +179,7 @@ const Signup = () => {
 							<CustomError>{data.data.number.isValid.error}</CustomError>
 						)}
 					</Item>
-					<Item stackedLabel style={[styles.noBorder]}>
+					<Item stackedLabel style={[GLOBALSTYLES.noBorder]}>
 						<CustomLabel style={styles.mb8}>Password</CustomLabel>
 						<CustomPassword
 							style={[
@@ -196,7 +194,7 @@ const Signup = () => {
 							<CustomError>{data.data.password.isValid.error}</CustomError>
 						)}
 					</Item>
-					<ListItem style={styles.noBorder}>
+					<ListItem style={GLOBALSTYLES.noBorder}>
 						<CheckBox
 							checked={data.data.agreedCheckbox.value}
 							style={[
@@ -207,9 +205,9 @@ const Signup = () => {
 							onPress={() => updateInput('agreedCheckbox', !data.data.agreedCheckbox.value)}
 						/>
 						<Body>
-							<CustomText style={[styles.fontw5, styles.fontS14]}>
+							<CustomText style={[GLOBALSTYLES.fontw5, GLOBALSTYLES.fontS14]}>
 								I agree to the{' '}
-								<CustomText style={[styles.blueColor, styles.fontw5, styles.fontS14]}>
+								<CustomText style={[GLOBALSTYLES.blueColor, GLOBALSTYLES.fontw5, GLOBALSTYLES.fontS14]}>
 									terms and conditions
 								</CustomText>
 							</CustomText>
@@ -230,12 +228,12 @@ const Signup = () => {
 							data.data.number.value === '' ||
 							data.data.agreedCheckbox.value === false
 						}
-						style={[styles.ml15, styles.mt15]}
+						style={[GLOBALSTYLES.ml15, GLOBALSTYLES.mt15]}
 					>
-						<CustomText style={[styles.fontS18, styles.fontw5]}>Create Account</CustomText>
+						<CustomText style={[GLOBALSTYLES.fontS18, GLOBALSTYLES.fontw5]}>Create Account</CustomText>
 					</Button>
-					<CustomText style={[styles.mt15, styles.textCentered]}>
-						Already have an account? <CustomText style={styles.blueColor}>Log in</CustomText>
+					<CustomText style={[GLOBALSTYLES.mt15, GLOBALSTYLES.textCentered]}>
+						Already have an account? <CustomText style={GLOBALSTYLES.blueColor}>Log in</CustomText>
 					</CustomText>
 				</Form>
 			</Content>
@@ -276,6 +274,10 @@ const styles = StyleSheet.create({
 		height: 40,
 		paddingLeft: 15,
 	},
+	headerText: {
+		fontFamily: 'Gilroy',
+		fontWeight: '600'
+	},
 	form: {
 		padding: 10,
 		paddingLeft: 0,
@@ -299,45 +301,14 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		backgroundColor: '#fafafa',
 	},
-	noBorder: {
-		borderBottomWidth: 0,
-	},
+	
 	mb8: {
 		marginBottom: 8,
 	},
 	mtm8: {
 		marginTop: -8,
 	},
-	blueColor: {
-		color: '#578DDE',
-	},
-	fontw4: {
-		fontWeight: '400',
-	},
-	fontw5: {
-		fontWeight: '500',
-	},
-	fontS14: {
-		fontSize: 14,
-	},
-	fontS18: {
-		fontSize: 18,
-	},
-	fontS24: {
-		fontSize: 24,
-	},
-	ml15: {
-		marginLeft: 15,
-	},
-	mt10: {
-		marginTop: 10,
-	},
-	mt15: {
-		marginTop: 15,
-	},
-	textCentered: {
-		textAlign: 'center',
-	},
+	
 	alignCenter: {
 		alignItems: 'center',
 	},

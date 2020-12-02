@@ -1,7 +1,8 @@
 // import liraries
 import React, { useState } from 'react';
-import { StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { Label, Input, Text, Icon } from 'native-base';
+import { GLOBALSTYLES } from '../../Constants';
 
 // create a component
 export const CustomLabel = (props) => {
@@ -37,14 +38,47 @@ export const CustomInput = (props) => {
 };
 
 export const CustomPassword = (props) => {
-  const [ hide, setHide ] = useState(true)
+	const [hide, setHide] = useState(true);
 	return (
 		<>
 			<Input {...props} style={[styles.font, props.style]} secureTextEntry={hide} />
 			<TouchableWithoutFeedback onPress={() => setHide(!hide)}>
-				{hide ? <Icon active name="md-eye" style={{ position: 'absolute', right: 5, top: 5 }}/> : <Icon active name="md-eye-off" style={{ position: 'absolute', right: 5, top: 5 }}/>}
+				{hide ? (
+					<Icon active name="md-eye" style={{ position: 'absolute', right: 5, top: 5 }} />
+				) : (
+					<Icon active name="md-eye-off" style={{ position: 'absolute', right: 5, top: 5 }} />
+				)}
 			</TouchableWithoutFeedback>
 		</>
+	);
+};
+
+export const CustomVerifyInput = (props) => {
+	return (
+		<View style={styles.verifyInputView}>
+			<Input
+				{...props}
+				style={[
+					styles.font,
+					props.style,
+					styles.verifyInput,
+					GLOBALSTYLES.textCentered,
+					GLOBALSTYLES.fontw5,
+				]}
+				keyboardType="numeric"
+			></Input>
+		</View>
+	);
+};
+
+export const ProgressBeam = (props) => {
+	return (
+		<View
+			style={[
+				styles.loadingContainer,
+				props.incomplete ? { backgroundColor: '#fafafa' } : { backgroundColor: '#578dde' },
+			]}
+		></View>
 	);
 };
 
@@ -58,6 +92,28 @@ const styles = StyleSheet.create({
 		color: 'red',
 		width: '100%',
 		textAlign: 'left',
+	},
+	verifyInput: {
+		lineHeight: 19.41,
+		borderBottomWidth: 1,
+		borderColor: '#bdbdbd',
+		paddingTop: 10,
+	},
+	verifyInputView: {
+		height: 48,
+		width: 48,
+		paddingHorizontal: 5,
+		marginHorizontal: 10,
+		paddingBottom: 10,
+		backgroundColor: '#f4f4f4',
+	},
+	loadingContainer: {
+		height: 4,
+		borderRadius: 2,
+		marginHorizontal: 5,
+		width: '30%',
+		position: 'relative',
+		backgroundColor: '#578dde',
 	},
 });
 
