@@ -4,26 +4,26 @@ import { StyleSheet } from 'react-native'
 import { Label, Input, Text, Icon } from 'native-base'
 
 // create a component
-export const CustomLabel = ({ children, style }) => {
-  return <Label style={[styles.font, style]}>{children}</Label>
+export const CustomLabel = (props) => {
+  return <Label {...props} style={[styles.font, props.style]}>{props.children}</Label>
 }
 
-export const CustomText = ({ children, style }) => {
-  return <Text style={[styles.font, style]}>{children}</Text>
+export const CustomText = (props) => {
+  return <Text { ...props } style={[styles.font, props.style]}>{props.children}</Text>
 }
 
-export const CustomInput = ({ children, style, keyboardType }) => {
+export const CustomInput = (props) => {
   return (
-    <Input keyboardType={keyboardType} style={[styles.font, style]}>
-      {children}
+    <Input { ...props } style={[styles.font, props.style]}>
+      {props.children}
     </Input>
   )
 }
 
-export const CustomPassword = ({ children, style }) => {
+export const CustomPassword = (props) => {
   return (
     <>
-      <Input style={[styles.font, style]} secureTextEntry />
+      <Input { ...props } style={[styles.font, props.style]} secureTextEntry />
       <Icon active name='md-eye' style={{ position: 'absolute', right: 5, top: 5 }} />
     </>
   )

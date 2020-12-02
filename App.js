@@ -14,7 +14,7 @@ const App = () => {
 		Roboto: require('native-base/Fonts/Roboto.ttf'),
 		Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
 		Gilroy: require('./assets/fonts/Gilroy-Light.otf'),
-		...Ionicons.font,
+		// ...Ionicons.font,
 	});
 
 	if (!fontsLoaded) return <AppLoading />;
