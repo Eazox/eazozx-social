@@ -1,6 +1,6 @@
 // import liraries
 import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native';
 import { View, StyleSheet } from 'react-native';
 import {
 	Container,
@@ -38,40 +38,37 @@ const Signup = () => {
 	const { data, setHandler } = useFormValidation();
 
 	const updateInput = (key, input) => {
-		setHandler(key, input)
-		setShowErrors(false)
-	}
+		setHandler(key, input);
+		setShowErrors(false);
+	};
 
-	const createAccountHandler = () =>{
+	const createAccountHandler = () => {
 		if (data.data.fullname.isValid.valid) {
 			if (data.data.username.isValid.valid) {
 				if (data.data.email.isValid.valid) {
 					if (data.data.number.isValid.valid) {
 						if (data.data.password.isValid.valid) {
 							if (data.data.agreedCheckbox.isValid.valid) {
-								alert('success')
+								alert('success');
+							} else {
+								setShowErrors(true);
 							}
-							else {
-								setShowErrors(true)
-							}}
-							else {
-								setShowErrors(true)
-							}}
-							else {
-								setShowErrors(true)
-							}}
-							else {
-								setShowErrors(true)
-							}}
-							else {
-								setShowErrors(true)
-							}}
-							else {
-								setShowErrors(true)
-							}
-							
-
-	}
+						} else {
+							setShowErrors(true);
+						}
+					} else {
+						setShowErrors(true);
+					}
+				} else {
+					setShowErrors(true);
+				}
+			} else {
+				setShowErrors(true);
+			}
+		} else {
+			setShowErrors(true);
+		}
+	};
 
 	return (
 		<Container style={styles.container}>
@@ -91,7 +88,12 @@ const Signup = () => {
 						<CustomLabel style={styles.mb8}>Full Name</CustomLabel>
 						<CustomInput
 							onChangeText={(e) => updateInput('fullname', e)}
-							style={styles.grayCover}
+							style={[
+								showErrors && !data.data.fullname.isValid.valid
+									? styles.redBorder
+									: styles.removeBorder,
+								styles.grayCover,
+							]}
 						/>
 						{showErrors && !data.data.fullname.isValid.valid && (
 							<CustomError>{data.data.fullname.isValid.error}</CustomError>
@@ -101,7 +103,12 @@ const Signup = () => {
 						<CustomLabel style={styles.mb8}>Username</CustomLabel>
 						<CustomInput
 							onChangeText={(e) => updateInput('username', e)}
-							style={styles.grayCover}
+							style={[
+								showErrors && !data.data.username.isValid.valid
+									? styles.redBorder
+									: styles.removeBorder,
+								styles.grayCover,
+							]}
 						/>
 						{showErrors && !data.data.username.isValid.valid && (
 							<CustomError>{data.data.username.isValid.error}</CustomError>
@@ -130,7 +137,12 @@ const Signup = () => {
 						<CustomLabel style={styles.mb8}>Email Address</CustomLabel>
 						<CustomInput
 							onChangeText={(e) => updateInput('email', e)}
-							style={styles.grayCover}
+							style={[
+								showErrors && !data.data.email.isValid.valid
+									? styles.redBorder
+									: styles.removeBorder,
+								styles.grayCover,
+							]}
 							keyboardType="email-address"
 						/>
 						{showErrors && !data.data.email.isValid.valid && (
@@ -155,7 +167,13 @@ const Signup = () => {
 							</View>
 							<CustomInput
 								keyboardType="phone-pad"
-								style={[styles.grayCover, styles.noBorder]}
+								style={[
+									styles.noBorder,
+									showErrors && !data.data.number.isValid.valid
+										? styles.redBorder
+										: styles.removeBorder,
+									styles.grayCover,
+								]}
 								onChangeText={(e) => updateInput('number', e)}
 							/>
 						</View>
@@ -166,18 +184,28 @@ const Signup = () => {
 					<Item stackedLabel style={[styles.noBorder]}>
 						<CustomLabel style={styles.mb8}>Password</CustomLabel>
 						<CustomPassword
-							style={styles.grayCover}
+							style={[
+								showErrors && !data.data.password.isValid.valid
+									? styles.redBorder
+									: styles.removeBorder,
+								styles.grayCover,
+							]}
 							onChangeText={(e) => updateInput('password', e)}
 						/>
 						{showErrors && !data.data.password.isValid.valid && (
 							<CustomError>{data.data.password.isValid.error}</CustomError>
 						)}
 					</Item>
-					<ListItem
-						style={styles.noBorder}
-						onPress={() => updateInput('agreedCheckbox', !data.data.agreedCheckbox.value)}
-					>
-						<CheckBox checked={data.data.agreedCheckbox.value} />
+					<ListItem style={styles.noBorder}>
+						<CheckBox
+							checked={data.data.agreedCheckbox.value}
+							style={[
+								showErrors && !data.data.agreedCheckbox.isValid.valid
+									? styles.redBorder
+									: styles.removeBorder,
+							]}
+							onPress={() => updateInput('agreedCheckbox', !data.data.agreedCheckbox.value)}
+						/>
 						<Body>
 							<CustomText style={[styles.fontw5, styles.fontS14]}>
 								I agree to the{' '}
@@ -191,8 +219,9 @@ const Signup = () => {
 						<CustomError>{data.data.agreedCheckbox.isValid.error}</CustomError>
 					)}
 					<Button
-					onPress={createAccountHandler}
+						onPress={createAccountHandler}
 						block
+						info
 						disabled={
 							data.data.fullname.value === '' ||
 							data.data.username.value === '' ||
@@ -230,6 +259,14 @@ const styles = StyleSheet.create({
 	},
 	blackColor: {
 		color: 'black',
+	},
+	redBorder: {
+		borderColor: 'red',
+		borderWidth: 0.5,
+		borderBottomWidth: 0.5,
+	},
+	removeBorder: {
+		borderWidth: 0,
 	},
 	inline: {
 		flexDirection: 'row',

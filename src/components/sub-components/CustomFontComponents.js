@@ -1,6 +1,6 @@
 // import liraries
 import React, { useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { Label, Input, Text, Icon } from 'native-base';
 
 // create a component
@@ -41,9 +41,9 @@ export const CustomPassword = (props) => {
 	return (
 		<>
 			<Input {...props} style={[styles.font, props.style]} secureTextEntry={hide} />
-			<TouchableOpacity style={{ position: 'absolute', right: 5, top: 5 }} onPress={() => setHide(!hide)}>
-				{hide ? <Icon active name="md-eye"/> : <Icon active name="md-eye-off"/>}
-			</TouchableOpacity>
+			<TouchableWithoutFeedback onPress={() => setHide(!hide)}>
+				{hide ? <Icon active name="md-eye" style={{ position: 'absolute', right: 5, top: 5 }}/> : <Icon active name="md-eye-off" style={{ position: 'absolute', right: 5, top: 5 }}/>}
+			</TouchableWithoutFeedback>
 		</>
 	);
 };
