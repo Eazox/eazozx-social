@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { SafeAreaView, Text, View } from 'react-native';
 import tailwind from 'tailwind-rn';
@@ -18,20 +17,6 @@ const App = () => {
 		Gilroy: require('./assets/fonts/Gilroy-Light.otf'),
 		...Ionicons.font,
 	});
-=======
-import React from 'react'
-import { SafeAreaView } from 'react-native'
-import tailwind from 'tailwind-rn'
-import SplashScreen from './src/components/splashScreen/SplashScreen'
-
-const App = () => {
-  return (
-    <SafeAreaView style={tailwind('flex-1')}>
-      <SplashScreen />
-    </SafeAreaView>
-  )
-}
->>>>>>> master
 
 	if (!fontsLoaded) return <AppLoading />;
 	else
