@@ -14,10 +14,6 @@ const Verification = () => {
 
 	// ref to hidden textInput
 	const in_main = React.useRef(null);
-	const in_0 = React.useRef(null);
-	const in_1 = React.useRef(null);
-	const in_2 = React.useRef(null);
-	const in_3 = React.useRef(null);
 
 	//handle text input change
 	const hiddenInputHandler = (e) => {
