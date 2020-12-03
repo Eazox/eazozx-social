@@ -55,7 +55,7 @@ export const CustomPassword = (props) => {
 
 export const CustomVerifyInput = (props) => {
 	return (
-		<View style={styles.verifyInputView}>
+		<View style={[styles.verifyInputView, props.viewStyle]}>
 			<Input
 				{...props}
 				style={[
@@ -65,7 +65,7 @@ export const CustomVerifyInput = (props) => {
 					GLOBALSTYLES.textCentered,
 					GLOBALSTYLES.fontw5,
 				]}
-				keyboardType="numeric"
+				keyboardType="phone-pad"
 			></Input>
 		</View>
 	);
@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 5,
 		marginHorizontal: 10,
 		paddingBottom: 10,
+		borderRadius: 4,
 		backgroundColor: '#f4f4f4',
 	},
 	loadingContainer: {

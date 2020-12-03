@@ -1,22 +1,28 @@
 //import liraries
-import React, { useRef } from 'react';
-import { StyleSheet, Image, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Image, View, TouchableWithoutFeedback } from 'react-native';
 import { GLOBALSTYLES } from '../../Constants';
-import { Container, Header, Left, Button, Icon, Body, Title } from 'native-base';
+import { Container, Header, Left, Input, Button, Icon, Body, Content, Title } from 'native-base';
 import verification_icon from '../../images/verification-icon.png';
 import { CustomText, CustomVerifyInput, ProgressBeam } from '../sub-components/CustomFontComponents';
 
 // create a component
 const Verification = () => {
+	//state value of OTP pin
+	const [hiddenData, setHiddenData] = useState('');
+	const hiddenString = hiddenData.toString();
 
-	// const input_1 = useRef(0)
-	// const input_2 = useRef(0)
-	// const input_3 = useRef(0)
-	// const input_4 = useRef(0)
+	// ref to hidden textInput
+	const in_main = React.useRef(null);
+	const in_0 = React.useRef(null);
+	const in_1 = React.useRef(null);
+	const in_2 = React.useRef(null);
+	const in_3 = React.useRef(null);
 
-	// const inputHandler = () => {
-
-	// }
+	//handle text input change
+	const hiddenInputHandler = (e) => {
+		setHiddenData(e);
+	};
 
 	return (
 		<Container style={GLOBALSTYLES.container}>
@@ -31,51 +37,110 @@ const Verification = () => {
 				</Body>
 			</Header>
 			<View style={GLOBALSTYLES.progressBeam}>
-				<ProgressBeam/>
-				<ProgressBeam/>
-				<ProgressBeam incomplete/>
+				<ProgressBeam />
+				<ProgressBeam />
+				<ProgressBeam incomplete />
 			</View>
-			<View style={{ padding: 10 }}>
-				<View style={GLOBALSTYLES.alignCenter}>
-					<Image source={verification_icon} />
-				</View>
-				<CustomText
-					style={[styles.purpleColor, GLOBALSTYLES.fontw5, GLOBALSTYLES.fontS24, GLOBALSTYLES.mt15]}
-				>
-					Check SMS for OTP
-				</CustomText>
-				<CustomText style={GLOBALSTYLES.mt10}>
-					Please enter the verification code sent to your phone number +23490822317234
-				</CustomText>
-				<View
-					style={{
-						flexDirection: 'row',
-						justifyContent: 'center',
-						marginTop: 50,
-						marginBottom: 30,
-					}}
-				>
-					<CustomVerifyInput ref={input_1}/>
-					<CustomVerifyInput ref={input_2}/>
-					<CustomVerifyInput ref={input_3}/>
-					<CustomVerifyInput ref={input_4}/>
-				</View>
-				<Button
-					// onPress={createAccountHandler}
-					block
-					info
-					disabled={true}
-					style={[GLOBALSTYLES.mt15]}
-				>
-					<CustomText style={[GLOBALSTYLES.fontS18, GLOBALSTYLES.fontw5]}>Verify</CustomText>
-				</Button>
-				<CustomText style={[GLOBALSTYLES.mt15, GLOBALSTYLES.textCentered]}>
-					Didn't get a code?{' '}
-					<CustomText style={[GLOBALSTYLES.blueColor, { textDecorationLine: 'underline' }]}>
-						Resend code
+			<Content>
+				<View style={{ padding: 10 }}>
+					<View style={GLOBALSTYLES.alignCenter}>
+						<Image source={verification_icon} />
+					</View>
+					<CustomText
+						style={[
+							styles.purpleColor,
+							GLOBALSTYLES.fontw5,
+							GLOBALSTYLES.fontS24,
+							GLOBALSTYLES.mt15,
+						]}
+					>
+						Check SMS for OTP
 					</CustomText>
-				</CustomText>
-			</View>
+					<CustomText style={GLOBALSTYLES.mt10}>
+						Please enter the verification code sent to your phone number +23490822317234
+					</CustomText>
+					<TouchableWithoutFeedback onPress={() => in_main.current._root.focus()}>
+						<View style={styles.hiddenInputContainer}>
+							<CustomVerifyInput
+								value={hiddenData ? hiddenString.charAt(0) : null}
+								editable={false}
+								viewStyle={[
+									{
+										borderColor:
+											hiddenString.length == 0
+												? 'rgb(87, 141, 222)'
+												: 'transparent',
+									},
+									styles.bordered,
+								]}
+							/>
+							<CustomVerifyInput
+								value={hiddenData ? hiddenString.charAt(1) : null}
+								editable={false}
+								viewStyle={[
+									{
+										borderColor:
+											hiddenString.length == 1
+												? 'rgb(87, 141, 222)'
+												: 'transparent',
+									},
+									styles.bordered,
+								]}
+							/>
+							<CustomVerifyInput
+								value={hiddenData ? hiddenString.charAt(2) : null}
+								editable={false}
+								viewStyle={[
+									{
+										borderColor:
+											hiddenString.length == 2
+												? 'rgb(87, 141, 222)'
+												: 'transparent',
+									},
+									styles.bordered,
+								]}
+							/>
+							<CustomVerifyInput
+								value={hiddenData ? hiddenString.charAt(3) : null}
+								editable={false}
+								viewStyle={[
+									{
+										borderColor:
+											hiddenString.length == 3
+												? 'rgb(87, 141, 222)'
+												: 'transparent',
+									},
+									styles.bordered,
+								]}
+							/>
+						</View>
+					</TouchableWithoutFeedback>
+					<Input
+						ref={in_main}
+						caretHidden={true}
+						maxLength={4}
+						keyboardType="phone-pad"
+						style={styles.hiddenInput}
+						autoFocus={true}
+						onChangeText={hiddenInputHandler}
+					/>
+					<Button
+						block
+						info
+						disabled={hiddenData ? hiddenString.length !== 4 : true}
+						onPress={() => alert('success')}
+						style={[GLOBALSTYLES.mt15]}
+					>
+						<CustomText style={[GLOBALSTYLES.fontS18, GLOBALSTYLES.fontw5]}>Verify</CustomText>
+					</Button>
+					<CustomText style={[GLOBALSTYLES.mt15, GLOBALSTYLES.textCentered]}>
+						Didn't get a code?{' '}
+						<CustomText style={[GLOBALSTYLES.blueColor, { textDecorationLine: 'underline' }]}>
+							Resend code
+						</CustomText>
+					</CustomText>
+				</View>
+			</Content>
 		</Container>
 	);
 };
@@ -96,6 +161,20 @@ const styles = StyleSheet.create({
 	},
 	grayCover: {
 		backgroundColor: '#f4f4f4',
+	},
+	hiddenInput: {
+		height: 1,
+		borderBottomWidth: 0,
+	},
+	hiddenInputContainer: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		marginTop: 50,
+		marginBottom: 30,
+	},
+	bordered: {
+		borderWidth: 3,
+		borderRadius: 4,
 	},
 });
 
