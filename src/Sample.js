@@ -9,6 +9,6 @@ const Sample = () => {
   )
 }
 
-//Testing
+// Testing
 
 export default Sample
