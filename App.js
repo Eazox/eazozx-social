@@ -2,21 +2,23 @@ import React from 'react'
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
 import tailwind from 'tailwind-rn'
 import Sample from './src/Sample'
-import LoginScreen from './src/Screens/LoginScreen'
+import ProfileSetUp from "./src/Screens/ProfileSetupScreen"
 
 
 const App = () => {
   return (
     <SafeAreaView>
       <View>
-      <LoginScreen />
+      <ProfileSetUp />
     </View>
   </SafeAreaView>
   );
-}
+
+ }
+
 
 const Styles = StyleSheet.create({
-   
+   flex: 1
      
 })
 
