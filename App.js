@@ -1,14 +1,13 @@
 import React from 'react'
 import { SafeAreaView, Text, View } from 'react-native'
 import tailwind from 'tailwind-rn'
-import Sample from './src/Sample'
-import SplashScreen from './src/components/main components/SplashScreen'
-// import Signup from './src/components/main components/Signup'
-import Verification from './src/components/main components/Verification'
-import * as Font from 'expo-font'
 import { Ionicons } from '@expo/vector-icons'
 import { useFonts } from 'expo-font'
 import { AppLoading } from 'expo'
+
+import mainComponents from './src/components/mainComponents'
+import Navigations from './src/navigations/RootNavigation'
+import * as Font from 'expo-font'
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -23,9 +22,9 @@ const App = () => {
   } else {
     return (
       <SafeAreaView style={tailwind('flex-1 items-center justify-center')}>
-        {/* <SplashScreen /> */}
-        {/* <Signup /> */}
-        <Verification />
+        {/* <mainComponents.SplashScreen /> */}
+        <mainComponents.SignUp />
+        {/* <Navigations /> */}
       </SafeAreaView>
     )
   }
