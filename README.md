@@ -223,3 +223,8 @@ When commenting on saga you must specify the linked actionTypes (use *@link*).
 export const GET_REQUEST_DATA = 'GET_REQUEST_DATA';
 
 ```
+### React Navigation Link
+https://reactnavigation.org/docs/hello-react-navigation
+
+## Proposed Arch
+![architecture](src\images\architecture.png)
