@@ -31,11 +31,7 @@ export const CustomError = props => {
 }
 
 export const CustomInput = props => {
-  return (
-    <Input {...props} style={[styles.font, props.style]}>
-      {props.children}
-    </Input>
-  )
+  return <Input {...props} style={[styles.font, props.style]} />
 }
 
 export const CustomPassword = props => {
@@ -84,33 +80,30 @@ export const ProgressBeam = props => {
 }
 
 CustomLabel.propTypes = {
-  children: PropTypes.object,
-  style: PropTypes.object
+  children: PropTypes.string,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 }
 
 CustomText.propTypes = {
-  children: PropTypes.object,
-  style: PropTypes.object
+  children: PropTypes.any,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 }
 
 CustomError.propTypes = {
-  children: PropTypes.object,
-  style: PropTypes.object
+  children: PropTypes.string,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 }
 
 CustomInput.propTypes = {
-  children: PropTypes.object,
-  style: PropTypes.object
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 }
 
 CustomPassword.propTypes = {
-  children: PropTypes.object,
-  style: PropTypes.object
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 }
 
 CustomVerifyInput.propTypes = {
-  children: PropTypes.object,
-  style: PropTypes.object
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 }
 
 ProgressBeam.propTypes = {
