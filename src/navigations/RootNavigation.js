@@ -21,7 +21,7 @@ const Stack = createStackNavigator()
 
 function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={Theme}>
       <Stack.Navigator>
         <Stack.Screen name='Home' component={HomeScreen} />
       </Stack.Navigator>
