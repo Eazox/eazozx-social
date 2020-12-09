@@ -7,7 +7,7 @@
     "editor.formatOnSave": false
   },
   "eslint.alwaysShowStatus": true,
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "off",
   "editor.fontLigatures": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
