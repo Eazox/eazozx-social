@@ -1,11 +1,12 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native'
-import tailwind from 'tailwind-rn'
+// import { SafeAreaView } from 'react-native'
+// import tailwind from 'tailwind-rn'
 import { Ionicons } from '@expo/vector-icons'
 import { useFonts } from 'expo-font'
 import { AppLoading } from 'expo'
+import TabNavigation from './src/navigations/tabNavigation'
 
-import mainComponents from './src/components/mainComponents'
+// import mainComponents from './src/components/mainComponents'
 // import Navigations from './src/navigations/RootNavigation'
 // import * as Font from 'expo-font'
 
@@ -21,11 +22,12 @@ const App = () => {
     return <AppLoading />
   } else {
     return (
-      <SafeAreaView style={tailwind('flex-1 items-center justify-center')}>
-        {/* <mainComponents.SplashScreen /> */}
-        <mainComponents.SignUp />
-        {/* <Navigations /> */}
-      </SafeAreaView>
+      //   <SafeAreaView style={tailwind('flex-1 items-center justify-center')}>
+      //     /* <mainComponents.SplashScreen /> */
+      //     /* <mainComponents.SignUp /> */
+      //     /* <Navigations /> */
+      //   /* </SafeAreaView> */
+      <TabNavigation />
     )
   }
 }
