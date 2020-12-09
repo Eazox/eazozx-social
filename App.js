@@ -4,7 +4,10 @@ import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { useFonts } from 'expo-font'
 import { AppLoading } from 'expo'
-import TabNavigation from './src/navigations/tabNavigation'
+import { NavigationContainer } from '@react-navigation/native'
+import { Theme } from './src/Constants'
+// import TabNavigation from './src/navigations/tabNavigation'
+import DrawerNavigation from './src/navigations/DrawerNavigation'
 
 // import mainComponents from './src/components/mainComponents'
 // import Navigations from './src/navigations/RootNavigation'
@@ -22,12 +25,15 @@ const App = () => {
     return <AppLoading />
   } else {
     return (
-      //   <SafeAreaView style={tailwind('flex-1 items-center justify-center')}>
-      //     /* <mainComponents.SplashScreen /> */
-      //     /* <mainComponents.SignUp /> */
-      //     /* <Navigations /> */
-      //   /* </SafeAreaView> */
-      <TabNavigation />
+      <NavigationContainer theme={Theme}>
+        {/* <SafeAreaView style={tailwind('flex-1 items-center justify-center')}>
+          <mainComponents.SplashScreen />
+<mainComponents.SignUp />
+          <Navigations />
+        </SafeAreaView>
+         */}
+        <DrawerNavigation />
+      </NavigationContainer>
     )
   }
 }
