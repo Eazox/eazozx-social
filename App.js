@@ -1,15 +1,14 @@
 import React from 'react'
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
-import tailwind from 'tailwind-rn'
-import Sample from './src/Sample'
-import ProfileSetUp from "./src/Screens/ProfileSetupScreen"
+import PasswordScreen from './src/Screens/PasswordScreen'
+
 
 
 const App = () => {
   return (
     <SafeAreaView>
       <View>
-      <ProfileSetUp />
+      <PasswordScreen />
     </View>
   </SafeAreaView>
   );
