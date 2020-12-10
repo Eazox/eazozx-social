@@ -1,7 +1,7 @@
 import React from 'react'
 // import { SafeAreaView } from 'react-native'
 // import tailwind from 'tailwind-rn'
-import { Ionicons } from '@expo/vector-icons'
+import { Ionicons, MaterialIcons } from '@expo/vector-icons'
 import { useFonts } from 'expo-font'
 import { AppLoading } from 'expo'
 import { NavigationContainer } from '@react-navigation/native'
@@ -18,7 +18,8 @@ const App = () => {
     Roboto: require('native-base/Fonts/Roboto.ttf'),
     Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
     Gilroy: require('./assets/fonts/Gilroy-Light.otf'),
-    ...Ionicons.font
+    ...Ionicons.font,
+    ...MaterialIcons.font
   })
 
   if (!fontsLoaded) {
