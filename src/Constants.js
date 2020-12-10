@@ -25,6 +25,11 @@ export const GLOBALSTYLES = StyleSheet.create({
   blueColor: {
     color: '#578DDE'
   },
+  grayCover: {
+    backgroundColor: '#fafafa',
+    height: 40,
+    paddingLeft: 15
+  },
   fontw4: {
     fontWeight: '400'
   },
@@ -37,6 +42,12 @@ export const GLOBALSTYLES = StyleSheet.create({
   fontS14: {
     fontSize: 14
   },
+  fontS16: {
+    fontSize: 16
+  },
+  fontS12: {
+    fontSize: 12
+  },
   fontS18: {
     fontSize: 18
   },
@@ -45,6 +56,9 @@ export const GLOBALSTYLES = StyleSheet.create({
   },
   ml15: {
     marginLeft: 15
+  },
+  ml16: {
+    marginLeft: 16
   },
   mt10: {
     marginTop: 10

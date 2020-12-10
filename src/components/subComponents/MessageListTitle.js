@@ -3,10 +3,10 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 // create a component
-const Search = () => {
+const MessageListTitle = () => {
   return (
     <View style={styles.container}>
-      <Text>Search</Text>
+      <Text style={styles.text}>Messages</Text>
     </View>
   )
 }
@@ -14,12 +14,18 @@ const Search = () => {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#2c3e50'
+    height: 60,
+    width: '100%'
+  },
+  text: {
+    fontWeight: '500',
+    fontSize: 24,
+    fontFamily: 'Gilroy',
+    color: 'rgb(87, 141, 222)'
   }
 })
 
+MessageListTitle.displayName = 'MessageListTitle'
+
 // make this component available to the app
-export default Search
+export default MessageListTitle

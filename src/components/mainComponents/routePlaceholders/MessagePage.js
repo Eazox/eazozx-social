@@ -3,10 +3,10 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 // create a component
-const Search = () => {
+const MessagePage = () => {
   return (
     <View style={styles.container}>
-      <Text>Search</Text>
+      <Text>Message Page</Text>
     </View>
   )
 }
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
 })
 
 // make this component available to the app
-export default Search
+export default MessagePage

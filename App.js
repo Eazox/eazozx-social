@@ -32,6 +32,8 @@ const App = () => {
 <mainComponents.SignUp />
           <Navigations />
         </SafeAreaView>
+
+        <DrawerNavigation />
          */}
         <DrawerNavigation />
       </NavigationContainer>

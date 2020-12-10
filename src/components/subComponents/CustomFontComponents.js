@@ -50,6 +50,15 @@ export const CustomPassword = props => {
   )
 }
 
+export const CustomSearchInput = props => {
+  return (
+    <>
+      <Input {...props} style={[styles.font, props.style, styles.searchInput]} />
+      <Icon type='MaterialIcons' name='search' style={styles.searchInputIcon} />
+    </>
+  )
+}
+
 export const CustomVerifyInput = props => {
   return (
     <View style={styles.verifyInputView}>
@@ -98,6 +107,10 @@ CustomInput.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 }
 
+CustomSearchInput.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
 CustomPassword.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 }
@@ -142,6 +155,14 @@ const styles = StyleSheet.create({
     width: '30%',
     position: 'relative',
     backgroundColor: '#578dde'
+  },
+  searchInput: { paddingLeft: 56, borderRadius: 7, backgroundColor: 'rgb(250, 250, 250)' },
+  searchInputIcon: {
+    fontSize: 20,
+    color: 'rgb(189, 189, 189)',
+    position: 'absolute',
+    left: 30,
+    top: 15
   }
 })
 
