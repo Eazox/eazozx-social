@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import passArrow from '../images/keyboard.png'
-import key from '../images/logo.png'
+import key from '../images/Eazox-logo.png'
 import { Form, Item, Input, Button } from 'native-base'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 

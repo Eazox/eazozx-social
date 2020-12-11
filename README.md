@@ -37,7 +37,7 @@ Leverage [feature branches](https://www.atlassian.com/git/tutorials/comparing-wo
 #### Commit and Push
 When working on a feature make sure to commit and push your changes to the remote branch as often as possible.
 * This assures that your commits are small and manageable.
-* Additionally, in the event of system failure or any random that affects your local code, you will have a fairly recent backup of your code in the remote branch.
+* Additionally, in the event of the system failure or any random that affects your local code, you will have a fairly recent backup of your code in the remote branch.
 
 #### Pull Requests (PR)
 After you have finished working on your feature or bug fix, you should [create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) from your feature branch to the master branch.
@@ -104,43 +104,44 @@ function goFetch(url, method, body) {
 
 #### File Structure
 The file structure for our react components should look exactly as depicted below
+
 ```
-components
-└───login // component folder
-│   │   actions.js // all component redux actions
-│   │   actionTypes.js // all action actionTypes
-│   │   constants.js // all components strings and numbers
-│   │   index.js // the component exportables
-│   │   reducer.js // all the redux reducers
-│   │   sagas.js // all redux asynchronous operation
-|   |
-│   └───components // the main component and sub-components folder
-│       │   Login.js // the main component
-│       │   Button.js // a sub-component
-│       │   Modal.js // a sub-component
-│       │   ...
-│       │   styles.css // components styles
-│       │   index.js // exports the main component.
-│   
-└───productsAvailable
+        components
+        └───login // component folder
+        │   │   actions.js // all component redux actions
+        │   │   actionTypes.js // all action actionTypes
+        │   │   constants.js // all components strings and numbers
+        │   │   index.js // the component exportables
+        │   │   reducer.js // all the redux reducers
+        │   │   sagas.js // all redux asynchronous operation
+        |   |
+        │   └───components // the main component and sub-components folder
+        │       │   Login.js // the main component
+        │       │   Button.js // a sub-component
+        │       │   Modal.js // a sub-component
+        │       │   ...
+        │       │   styles.css // components styles
+        │       │   index.js // exports the main component.
+        │   
+        └───productsAvailable
     ...
 ```
 
 #### File Naming Component Files
 All react components files should be start with a capitalized letter and the rest of the name should be camel-cased.
 ```
-components
-└───login
-│   │   ...
-│   └───components
-│       │   Login.js // capitalized
-│       │   ...
-│   
-└───productsAvailable
-│   │   ...
-│   └───components
-│       │  ProductsAvailable.js // capitalized and camel-cased
-│       │   ...
+    components
+    └───login
+    │   │   ...
+    │   └───components
+    │       │   Login.js // capitalized
+    │       │   ...
+    │   
+    └───productsAvailable
+    │   │   ...
+    │   └───components
+    │       │  ProductsAvailable.js // capitalized and camel-cased
+    │       │   ...
 ```
 
 #### Constants File
@@ -148,7 +149,7 @@ Define all strings and numbers used in a component within the `constants.js` fil
 
 ```
 /**
- * Defines the url for the database.
+ * Defines the URL for the database.
  *
  * @constant
  */
@@ -223,3 +224,8 @@ When commenting on saga you must specify the linked actionTypes (use *@link*).
 export const GET_REQUEST_DATA = 'GET_REQUEST_DATA';
 
 ```
+### React Navigation Link
+https://reactnavigation.org/docs/hello-react-navigation
+
+## Proposed Arch
+![architecture](src\images\architecture.png)
