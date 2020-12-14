@@ -1,11 +1,11 @@
 import React from 'react'
-import { SafeAreaView, Text, View } from 'react-native'
+import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
 import tailwind from 'tailwind-rn'
 import { Ionicons } from '@expo/vector-icons'
 import { useFonts } from 'expo-font'
 import { AppLoading } from 'expo'
 
-import mainComponents from './src/components/mainComponents'
+import mainComponents from './src/components/mainComponents/signup'
 import Navigations from './src/navigations/RootNavigation'
 import * as Font from 'expo-font'
 
@@ -29,5 +29,4 @@ const App = () => {
     )
   }
 }
-
 export default App
