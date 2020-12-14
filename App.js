@@ -4,23 +4,13 @@ import tailwind from 'tailwind-rn'
 import Sample from './src/Sample'
 import LoginScreen from './src/Screens/LoginScreen'
 
-
 const App = () => {
   return (
     <SafeAreaView>
       <View>
-      <LoginScreen />
-    </View>
-  </SafeAreaView>
-  );
+        <LoginScreen />
+      </View>
+    </SafeAreaView>
+  )
 }
-
-const Styles = StyleSheet.create({
-   
-     
-})
-
-
-
 export default App
-
