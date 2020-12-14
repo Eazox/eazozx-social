@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { useFonts } from 'expo-font'
 import { AppLoading } from 'expo'
 
-import mainComponents from './src/components/mainComponents/signup'
+import register from './src/components/mainComponents/signup'
 import Navigations from './src/navigations/RootNavigation'
 import * as Font from 'expo-font'
 
@@ -23,7 +23,7 @@ const App = () => {
     return (
       <SafeAreaView style={tailwind('flex-1 items-center justify-center')}>
         {/* <mainComponents.SplashScreen /> */}
-        <mainComponents.SignUp />
+        <register.SignUp />
         {/* <Navigations /> */}
       </SafeAreaView>
     )
