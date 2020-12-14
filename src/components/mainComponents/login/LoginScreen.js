@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native'
-import Header from '../components/Header'
+import Icon from 'react-native-vector-icons/AntDesign'
 import Login from '../images/login.png'
 import facebook from '../images/Facebook.png'
 import googleLogo from '../images/Google.png'
-import Icon from 'react-native-vector-icons/AntDesign'
+import Header from '../../subComponents/Header'
 
 class LoginScreen extends Component {
   constructor(props) {
