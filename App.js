@@ -1,13 +1,14 @@
 import React from 'react'
-import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
+import { SafeAreaView } from 'react-native'
 import tailwind from 'tailwind-rn'
+// import Sample from './src/Sample'
+// import SplashScreen from './src/components/main components/SplashScreen'
+// import Signup from './src/components/main components/Signup'
+import verify from './src/components/mainComponents/verification'
+// import * as Font from 'expo-font'
 import { Ionicons } from '@expo/vector-icons'
 import { useFonts } from 'expo-font'
 import { AppLoading } from 'expo'
-
-import register from './src/components/mainComponents/signup'
-import Navigations from './src/navigations/RootNavigation'
-import * as Font from 'expo-font'
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -17,16 +18,15 @@ const App = () => {
     ...Ionicons.font
   })
 
-  if (!fontsLoaded) {
-    return <AppLoading />
-  } else {
-    return (
-      <SafeAreaView style={tailwind('flex-1 items-center justify-center')}>
-        {/* <mainComponents.SplashScreen /> */}
-        <register.SignUp />
-        {/* <Navigations /> */}
-      </SafeAreaView>
-    )
-  }
+  return !fontsLoaded ? (
+    <AppLoading />
+  ) : (
+    <SafeAreaView style={tailwind('flex-1 items-center justify-center')}>
+      {/* <SplashScreen /> */}
+      {/* <Signup /> */}
+      <verify.Verification />
+    </SafeAreaView>
+  )
 }
+
 export default App
