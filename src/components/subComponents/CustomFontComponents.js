@@ -164,6 +164,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     marginHorizontal: 10,
     paddingBottom: 10,
+    borderRadius: 4,
     backgroundColor: '#f4f4f4'
   },
   loadingContainer: {
@@ -184,4 +185,33 @@ const styles = StyleSheet.create({
   }
 })
 
-// make this component available to the app
+CustomLabel.propTypes = {
+  children: PropTypes.string,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomText.propTypes = {
+  children: PropTypes.any,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomError.propTypes = {
+  children: PropTypes.string,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomInput.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomPassword.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomVerifyInput.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+ProgressBeam.propTypes = {
+  incomplete: PropTypes.bool
+}
