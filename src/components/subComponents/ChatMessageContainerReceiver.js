@@ -2,7 +2,7 @@
 import React from 'react'
 import { View, StyleSheet, Image } from 'react-native'
 import { CustomText } from './CustomFontComponents'
-import messageSeen from '../../images/message_seen.png'
+import messageSeen from '../../images/messageSeen.png'
 // create a component
 const ChatMessageContainerReceiver = () => {
   return (
