@@ -1,7 +1,7 @@
 // import liraries
 import React, { useState } from 'react'
 import { StyleSheet, Image, View, TouchableWithoutFeedback } from 'react-native'
-import { GLOBALSTYLES } from '../../Constants'
+import { GLOBALSTYLES } from '../../../Constants'
 import {
   Container,
   Header,
@@ -14,8 +14,12 @@ import {
   Title,
   Toast
 } from 'native-base'
-import verificationIcon from '../../images/verification-icon.png'
-import { CustomText, CustomVerifyInput, ProgressBeam } from '../sub-components/CustomFontComponents'
+import verificationIcon from '../../../images/verification-icon.png'
+import {
+  CustomText,
+  CustomVerifyInput,
+  ProgressBeam
+} from '../../subComponents/CustomFontComponents'
 
 // create a component
 const Verification = () => {
