@@ -88,6 +88,20 @@ export const ProgressBeam = props => {
   )
 }
 
+export const LineDivider = props => {
+  return (
+    <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
+      <View style={{ backgroundColor: 'black', height: 0.5, flex: 1, alignSelf: 'center' }} />
+      <CustomText
+        style={{ alignSelf: 'center', paddingHorizontal: 5, fontSize: 16, fontWeight: '400' }}
+      >
+        {props.text}
+      </CustomText>
+      <View style={{ backgroundColor: 'black', height: 0.5, flex: 1, alignSelf: 'center' }} />
+    </View>
+  )
+}
+
 CustomLabel.propTypes = {
   children: PropTypes.string,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
@@ -121,6 +135,10 @@ CustomVerifyInput.propTypes = {
 
 ProgressBeam.propTypes = {
   incomplete: PropTypes.bool
+}
+
+LineDivider.propTypes = {
+  text: PropTypes.string
 }
 
 // define your styles

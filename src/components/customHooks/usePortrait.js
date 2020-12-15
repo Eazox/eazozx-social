@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Dimensions } from 'react-native'
 
 function usePortrait() {
-  const [portrait, setPortrait] = useState(null)
+  const [portrait, setPortrait] = useState(true)
 
   useEffect(() => {
     function updateState() {

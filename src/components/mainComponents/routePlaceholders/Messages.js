@@ -8,7 +8,7 @@ import ChatContainer from '../../subComponents/ChatContainer'
 import { CustomSearchInput, CustomText } from '../../subComponents/CustomFontComponents'
 import BellImage from '../../../images/bell.png'
 
-const list = [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 13, 16]
+const list = [0, 1, 2, 3, 4]
 
 // create a component
 const Messages = ({ navigation }) => {
