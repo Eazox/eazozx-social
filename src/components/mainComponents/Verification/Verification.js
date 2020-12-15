@@ -1,10 +1,10 @@
 // import liraries
 import React from 'react'
 import { StyleSheet, Image, View } from 'react-native'
-import { GLOBALSTYLES } from '../../Constants'
+import { GLOBALSTYLES } from '../../../Constants'
 import { Container, Header, Left, Button, Icon, Body, Title } from 'native-base'
-import verificationIcon from '../../images/verification-icon.png'
-import { CustomText, ProgressBeam } from '../sub-components/CustomFontComponents'
+import verificationIcon from '../../../images/verification-icon.png'
+import { CustomText, ProgressBeam } from '../../subComponents/CustomFontComponents'
 
 // create a component
 const Verification = () => {
@@ -26,7 +26,7 @@ const Verification = () => {
           </Button>
         </Left>
         <Body style={GLOBALSTYLES.alignCenter}>
-          <Title style={GLOBALSTYLES.headerText}>Verification</Title>
+          <Title style={[GLOBALSTYLES.headerText, { lineHeight: 29.44 }]}>Verification</Title>
         </Body>
       </Header>
       <View style={GLOBALSTYLES.progressBeam}>
@@ -39,11 +39,17 @@ const Verification = () => {
           <Image source={verificationIcon} />
         </View>
         <CustomText
-          style={[styles.purpleColor, GLOBALSTYLES.fontw5, GLOBALSTYLES.fontS24, GLOBALSTYLES.mt15]}
+          style={[
+            styles.purpleColor,
+            GLOBALSTYLES.fontw5,
+            GLOBALSTYLES.fontS24,
+            GLOBALSTYLES.mt15,
+            { lineHeight: 29.11 }
+          ]}
         >
           Check SMS for OTP
         </CustomText>
-        <CustomText style={GLOBALSTYLES.mt10}>
+        <CustomText style={[GLOBALSTYLES.mt10, { lineHeight: 22.4 }]}>
           Please enter the verification code sent to your phone number +23490822317234
         </CustomText>
         <View

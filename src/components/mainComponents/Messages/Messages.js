@@ -14,9 +14,17 @@ const list = [0, 1, 2, 3, 4]
 const Messages = ({ navigation }) => {
   return (
     <Container>
-      <Header style={[GLOBALSTYLES.header]} noShadow>
+      <Header style={[GLOBALSTYLES.header]}>
         <Left style={GLOBALSTYLES.headerLeft}>
-          <CustomText style={[GLOBALSTYLES.headerText, GLOBALSTYLES.ml16]}>Messages</CustomText>
+          <CustomText
+            style={[
+              GLOBALSTYLES.headerText,
+              GLOBALSTYLES.ml16,
+              { fontWeight: '500', lineHeight: 29.11 }
+            ]}
+          >
+            Messages
+          </CustomText>
         </Left>
         <Right>
           <View style={styles.bellContainer}>
@@ -25,7 +33,7 @@ const Messages = ({ navigation }) => {
           </View>
         </Right>
       </Header>
-      <Item style={[GLOBALSTYLES.noBorder, styles.header]}>
+      <Item style={[GLOBALSTYLES.noBorder, styles.header, { marginRight: -5 }]}>
         <CustomSearchInput style={styles.customSearchInput} placeholder='Search Messages' />
       </Item>
       <Content>
