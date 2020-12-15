@@ -1,7 +1,7 @@
 import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import MessageStack from './MessageStack'
-import Profile from '../components/mainComponents/routePlaceholders/Profile'
+import Profile from '../components/mainComponents/Profile/Profile'
 
 const { Navigator, Screen } = createDrawerNavigator()
 

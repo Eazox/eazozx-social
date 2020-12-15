@@ -1,8 +1,8 @@
 import React from 'react'
-import Messages from '../components/mainComponents/routePlaceholders/Messages'
-import NewPost from '../components/mainComponents/routePlaceholders/NewPost'
-import Profile from '../components/mainComponents/routePlaceholders/Profile'
-import Search from '../components/mainComponents/routePlaceholders/Search'
+import Messages from '../components/mainComponents/Messages/Messages'
+import NewPost from '../components/mainComponents/NewPost/NewPost'
+import Profile from '../components/mainComponents/Profile/Profile'
+import Search from '../components/mainComponents/Search/Search'
 // import RootStack from './RootNavigation'
 import TabNavigator, { Screen } from '../components/subComponents/TabNavigatorLayout'
 
