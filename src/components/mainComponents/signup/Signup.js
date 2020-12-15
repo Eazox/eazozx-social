@@ -22,9 +22,9 @@ import {
   CustomInput,
   CustomText,
   CustomError
-} from '../sub-components/CustomFontComponents'
-import useFormValidation from '../customHooks/signupValidator'
-import { GLOBALSTYLES } from '../../Constants'
+} from '../../subComponents/CustomFontComponents'
+import useFormValidation from '../../customHooks/signupValidator'
+import { GLOBALSTYLES } from '../../../Constants'
 
 // create a component
 const Signup = () => {

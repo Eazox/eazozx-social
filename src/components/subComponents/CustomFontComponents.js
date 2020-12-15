@@ -79,6 +79,42 @@ export const ProgressBeam = props => {
   )
 }
 
+// define your styles
+const styles = StyleSheet.create({
+  font: {
+    fontFamily: 'Gilroy',
+    fontSize: 16
+  },
+  error: {
+    color: 'red',
+    width: '100%',
+    textAlign: 'left'
+  },
+  verifyInput: {
+    lineHeight: 19.41,
+    borderBottomWidth: 1,
+    borderColor: '#bdbdbd',
+    paddingTop: 10
+  },
+  verifyInputView: {
+    height: 48,
+    width: 48,
+    paddingHorizontal: 5,
+    marginHorizontal: 10,
+    paddingBottom: 10,
+    borderRadius: 4,
+    backgroundColor: '#f4f4f4'
+  },
+  loadingContainer: {
+    height: 4,
+    borderRadius: 2,
+    marginHorizontal: 5,
+    width: '30%',
+    position: 'relative',
+    backgroundColor: '#578dde'
+  }
+})
+
 CustomLabel.propTypes = {
   children: PropTypes.string,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
@@ -109,40 +145,3 @@ CustomVerifyInput.propTypes = {
 ProgressBeam.propTypes = {
   incomplete: PropTypes.bool
 }
-
-// define your styles
-const styles = StyleSheet.create({
-  font: {
-    fontFamily: 'Gilroy',
-    fontSize: 16
-  },
-  error: {
-    color: 'red',
-    width: '100%',
-    textAlign: 'left'
-  },
-  verifyInput: {
-    lineHeight: 19.41,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
-    paddingTop: 10
-  },
-  verifyInputView: {
-    height: 48,
-    width: 48,
-    paddingHorizontal: 5,
-    marginHorizontal: 10,
-    paddingBottom: 10,
-    backgroundColor: '#f4f4f4'
-  },
-  loadingContainer: {
-    height: 4,
-    borderRadius: 2,
-    marginHorizontal: 5,
-    width: '30%',
-    position: 'relative',
-    backgroundColor: '#578dde'
-  }
-})
-
-// make this component available to the app
