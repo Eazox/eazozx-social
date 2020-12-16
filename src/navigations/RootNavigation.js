@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { View, Text } from 'react-native'
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 // TODOS
@@ -19,23 +18,13 @@ function HomeScreen() {
 
 const Stack = createStackNavigator()
 
-function App() {
+export default function RootNavigation() {
   return (
-    <NavigationContainer theme={Theme}>
-      <Stack.Navigator>
-        <Stack.Screen name='Home' component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name='Home' component={HomeScreen} />
+    </Stack.Navigator>
   )
 }
 
 // Docs to setup theme [https://reactnavigation.org/docs/themes]
-const Theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: 'rgb(0, 0, 0)'
-  }
-}
-
-export default App
+// App
