@@ -46,6 +46,8 @@ class LoginScreen extends Component {
           <Text style={{ height: 24, fontSize: 19.66, fontWeight: '600', fontStyle: 'normal' }}>
             EAZOX
           </Text>
+          <Text style={styles.compText}>EAZOX</Text>
+
           <Text style={styles.title}>shop easily everywhere</Text>
         </View>
         <View style={styles.container}>
@@ -270,8 +272,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 20,
     marginTop: 20,
-    flexDirection: 'row',
-    alignItems: 'center'
+    paddingTop: 15,
+    color: '#FFFFFF'
   },
   googleContainer: {
     marginTop: 32,

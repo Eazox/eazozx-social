@@ -39,11 +39,15 @@ When working on a feature make sure to commit and push your changes to the remot
 * This assures that your commits are small and manageable.
 <<<<<<< HEAD
 * Additionally, in the event of system failure or any random that affects your local code, you will have a fairly recent backup of your code in the remote branch.
+<<<<<<< HEAD
 =======
 * Additionally, in the event of the system failure or any random that affects your local code, you will have a fairly recent backup of your code in the remote branch.
 >>>>>>> master
 
+=======
+>>>>>>> master
 #### Pull Requests (PR)
+
 After you have finished working on your feature or bug fix, you should [create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) from your feature branch to the master branch.
 * This PR allows you to see the difference between the current master code and the feature code that you want to merge into the master.
 * This process is very important because it allows your teammates to review your code in order make sure that it is consistent with coding conventions and make potential suggestions to improve the code quality.
