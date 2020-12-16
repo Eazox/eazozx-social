@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign'
-import Login from '../images/login.png'
-import facebook from '../images/Facebook.png'
-import googleLogo from '../images/Google.png'
+import Login from '../../../../src/images/login.png'
+import facebook from '../../../images/Facebook.png'
+import googleLogo from '../../../images/Google.png'
 import Header from '../../subComponents/Header'
 
 class LoginScreen extends Component {
@@ -43,7 +43,9 @@ class LoginScreen extends Component {
         <Header />
         <View style={styles.logoContainer}>
           <Image source={Login} />
-          <Text style={styles.compText}>EAZOX</Text>
+          <Text style={{ height: 24, fontSize: 19.66, fontWeight: '600', fontStyle: 'normal' }}>
+            EAZOX
+          </Text>
           <Text style={styles.title}>shop easily everywhere</Text>
         </View>
         <View style={styles.container}>
@@ -101,7 +103,7 @@ class LoginScreen extends Component {
           <View style={styles.lineContainer}>
             <View
               style={{
-                flex: 1,
+                flex: 3,
                 height: 1,
                 width: 343,
                 backgroundColor: 'black'
@@ -112,7 +114,7 @@ class LoginScreen extends Component {
             </View>
             <View
               style={{
-                flex: 1,
+                flex: 3,
                 height: 1,
                 width: 343,
                 backgroundColor: 'black'
@@ -123,7 +125,9 @@ class LoginScreen extends Component {
           <View style={styles.googleContainer}>
             <TouchableOpacity style={styles.googleContent}>
               <Image source={googleLogo} style={{ marginTop: 10 }} />
-              <Text style={{ marginLeft: 10, marginTop: 10 }}>Continue with Google</Text>
+              <Text style={{ marginLeft: 10, marginTop: 10, fontSize: 18 }}>
+                Continue with Google
+              </Text>
             </TouchableOpacity>
           </View>
 
@@ -135,7 +139,8 @@ class LoginScreen extends Component {
                   marginTop: 10,
                   textAlign: 'center',
                   marginLeft: 10,
-                  color: '#FFFFFF'
+                  color: '#FFFFFF',
+                  fontSize: 18
                 }}
               >
                 Continue with Facebook
@@ -147,7 +152,6 @@ class LoginScreen extends Component {
             style={{
               textAlign: 'center',
               flexDirection: 'row',
-              // marginLeft: 80,
               marginTop: 10
             }}
           >
@@ -157,7 +161,8 @@ class LoginScreen extends Component {
                 fontStyle: 'normal',
                 fontSize: 16,
                 lineHeight: 24,
-                color: '#939090'
+                color: '#939090',
+                marginLeft: 65
               }}
             >
               Don’t have an account?
@@ -209,6 +214,7 @@ const styles = StyleSheet.create({
   formText: {
     justifyContent: 'center',
     marginTop: 140,
+    marginBottom: 8,
     fontWeight: '400',
     fontStyle: 'normal',
     fontSize: 16,
@@ -222,7 +228,7 @@ const styles = StyleSheet.create({
   input: {
     height: 48,
     width: 343,
-    paddingLeft: 20,
+    paddingLeft: 16,
     backgroundColor: '#FAFAFA',
     borderRadius: 5
   },
@@ -234,12 +240,13 @@ const styles = StyleSheet.create({
   },
   passwordOne: {
     fontSize: 16,
+    marginBottom: 2,
     fontStyle: 'normal',
     fontWeight: '400',
     lineHeight: 19.2
   },
   passwordTwo: {
-    marginRight: 25,
+    marginRight: 10,
     fontWeight: '400',
     fontStyle: 'normal',
     fontSize: 14,
@@ -255,13 +262,14 @@ const styles = StyleSheet.create({
   buttonContent: {
     textAlign: 'center',
     justifyContent: 'center',
-    paddingTop: 15,
+    paddingTop: 10,
+    fontSize: 18,
     color: '#FFFFFF'
   },
   lineContainer: {
-    marginLeft: 20,
+    marginLeft: 10,
     marginRight: 20,
-    marginTop: 25,
+    marginTop: 20,
     flexDirection: 'row',
     alignItems: 'center'
   },
@@ -281,7 +289,7 @@ const styles = StyleSheet.create({
   },
 
   facebookContainer: {
-    marginTop: 25,
+    marginTop: 18,
     borderWidth: 1,
     borderColor: '#3B5998',
     width: 343,
@@ -298,7 +306,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 343
+    marginLeft: 10
   }
 })
 
