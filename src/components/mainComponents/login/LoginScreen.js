@@ -165,7 +165,7 @@ class LoginScreen extends Component {
               <Image source={facebook} style={{ marginTop: 10, marginLeft: 50 }} />
               <Text
                 style={{
-                  marginTop: 10,
+                  marginTop: 13,
                   textAlign: 'center',
                   marginLeft: 10,
                   color: '#FFFFFF',
@@ -271,13 +271,12 @@ const styles = StyleSheet.create({
   textPassword: {
     marginTop: 10,
     marginLeft: 10,
-    marginBottom: 10,
+    marginBottom: 8,
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
   passwordOne: {
     fontSize: 16,
-    marginBottom: 2,
     color: 'rgba(21, 36, 60, 0.8)',
     fontStyle: 'normal',
     fontWeight: 'normal',
