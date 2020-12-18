@@ -30,6 +30,7 @@ function App() {
 }
 
 // Docs to setup theme [https://reactnavigation.org/docs/themes]
+
 const Theme = {
   ...DefaultTheme,
   colors: {
