@@ -6,12 +6,7 @@ import { useFonts } from 'expo-font'
 import { AppLoading } from 'expo'
 import { NavigationContainer } from '@react-navigation/native'
 import { Theme } from './src/Constants'
-// import TabNavigation from './src/navigations/tabNavigation'
-import DrawerNavigation from './src/navigations/DrawerNavigation'
-
-// import mainComponents from './src/components/mainComponents'
-// import Navigations from './src/navigations/RootNavigation'
-// import * as Font from 'expo-font'
+import CreatePassword from './src/components/mainComponents/createPassword'
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -27,15 +22,7 @@ const App = () => {
   } else {
     return (
       <NavigationContainer theme={Theme}>
-        {/* <SafeAreaView style={tailwind('flex-1 items-center justify-center')}>
-          <mainComponents.SplashScreen />
-<mainComponents.SignUp />
-          <Navigations />
-        </SafeAreaView>
-
-        <DrawerNavigation />
-         */}
-        <DrawerNavigation />
+        <CreatePassword />
       </NavigationContainer>
     )
   }
