@@ -1,7 +1,7 @@
 import React from 'react'
 // import { SafeAreaView } from 'react-native'
 // import tailwind from 'tailwind-rn'
-import { Ionicons, MaterialIcons, Entypo } from '@expo/vector-icons'
+import { Ionicons, MaterialIcons, Entypo, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useFonts } from 'expo-font'
 import { AppLoading } from 'expo'
 import { NavigationContainer } from '@react-navigation/native'
@@ -20,7 +20,8 @@ const App = () => {
     Gilroy: require('./assets/fonts/Gilroy-Light.otf'),
     ...Ionicons.font,
     ...MaterialIcons.font,
-    ...Entypo.font
+    ...Entypo.font,
+    ...MaterialCommunityIcons.font
   })
 
   if (!fontsLoaded) {

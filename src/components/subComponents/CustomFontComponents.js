@@ -4,6 +4,7 @@ import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
 import { Label, Input, Text, Icon } from 'native-base'
 import PropTypes from 'prop-types'
 import { GLOBALSTYLES } from '../../Constants'
+import { AutoGrowingTextInput as GrowInput } from 'react-native-autogrow-textinput'
 
 // create a component
 export const CustomLabel = props => {
@@ -76,6 +77,9 @@ export const CustomVerifyInput = props => {
     </View>
   )
 }
+export const CustomGrowInput = props => {
+  return <GrowInput {...props} style={[styles.font, props.style]} />
+}
 
 export const ProgressBeam = props => {
   return (
@@ -119,6 +123,11 @@ CustomError.propTypes = {
 
 CustomInput.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomGrowInput.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  _ref: PropTypes.any
 }
 
 CustomSearchInput.propTypes = {

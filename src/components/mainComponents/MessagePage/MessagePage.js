@@ -1,6 +1,6 @@
 // import liraries
 import React from 'react'
-import { StyleSheet, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import {
   Container,
   Header,
@@ -11,13 +11,13 @@ import {
   Body,
   Thumbnail,
   Button,
-  Item,
   Content
 } from 'native-base'
 import { GLOBALSTYLES, ONLINEIMAGES } from '../../../Constants'
-import { CustomText, LineDivider, CustomInput } from '../../subComponents/CustomFontComponents'
+import { CustomText, LineDivider } from '../../subComponents/CustomFontComponents'
 import ChatMessageContainerSender from '../../subComponents/ChatMessageContainerSender'
 import ChatMessageContainerReceiver from '../../subComponents/ChatMessageContainerReceiver'
+import KeyboardComponent from './KeyboardComponent'
 
 // create a component
 const MessagePage = () => {
@@ -63,62 +63,7 @@ const MessagePage = () => {
         <ChatMessageContainerSender />
         <ChatMessageContainerReceiver />
       </Content>
-      <Item
-        style={{
-          flexDirection: 'row',
-          width: '100%',
-          paddingHorizontal: 12,
-          justifyContent: 'space-between'
-        }}
-      >
-        <Item
-          style={{
-            paddingBottom: 15,
-            flex: 1,
-            marginRight: 10
-            // width: '80%'
-          }}
-        >
-          <Icon
-            active
-            name='emoticon-happy-outline'
-            type='MaterialCommunityIcons'
-            style={{ left: 12, position: 'absolute', zIndex: 2, top: 13.5 }}
-          />
-          <CustomInput
-            placeholder='Type a message'
-            style={{
-              backgroundColor: 'rgb(250, 250, 250)',
-              borderRadius: 7,
-              paddingLeft: 50
-              // flex: 1
-            }}
-          />
-          <Icon
-            active
-            name='attach-file'
-            type='MaterialIcons'
-            style={{ position: 'absolute', right: 5, top: 13.5 }}
-          />
-        </Item>
-        <TouchableOpacity
-          style={{
-            borderRadius: 20,
-            height: 40,
-            width: 40,
-            backgroundColor: '#578DDE',
-            marginTop: -17,
-            marginRight: 5
-          }}
-        >
-          <Icon
-            name='send'
-            type='MaterialIcons'
-            color='white'
-            style={{ fontSize: 24, marginLeft: 10, marginTop: 7.5, color: 'white' }}
-          />
-        </TouchableOpacity>
-      </Item>
+      <KeyboardComponent />
     </Container>
   )
 }
@@ -134,7 +79,11 @@ const styles = StyleSheet.create({
   thumbNail: { width: 48, height: 48, marginTop: -8.5 },
   username: { color: '#15243c', lineHeight: 19 },
   email: { color: 'rgba(21, 36, 60, 0.6)' },
-  listItem: { marginHorizontal: 16, borderBottomWidth: 0.5, paddingBottom: 10 },
+  listItem: {
+    marginHorizontal: 16,
+    borderBottomWidth: 0.5,
+    paddingBottom: 10
+  },
   blackColor: {
     color: 'black'
   },
