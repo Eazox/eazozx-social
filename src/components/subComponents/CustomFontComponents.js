@@ -4,6 +4,7 @@ import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
 import { Label, Input, Text, Icon } from 'native-base'
 import PropTypes from 'prop-types'
 import { GLOBALSTYLES } from '../../Constants'
+import { AutoGrowingTextInput as GrowInput } from 'react-native-autogrow-textinput'
 
 // create a component
 export const CustomLabel = props => {
@@ -76,6 +77,9 @@ export const CustomVerifyInput = props => {
     </View>
   )
 }
+export const CustomGrowInput = props => {
+  return <GrowInput {...props} style={[styles.font, props.style]} />
+}
 
 export const ProgressBeam = props => {
   return (
@@ -85,6 +89,20 @@ export const ProgressBeam = props => {
         props.incomplete ? { backgroundColor: '#fafafa' } : { backgroundColor: '#578dde' }
       ]}
     />
+  )
+}
+
+export const LineDivider = props => {
+  return (
+    <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
+      <View style={{ backgroundColor: 'black', height: 0.5, flex: 1, alignSelf: 'center' }} />
+      <CustomText
+        style={{ alignSelf: 'center', paddingHorizontal: 5, fontSize: 16, fontWeight: '400' }}
+      >
+        {props.text}
+      </CustomText>
+      <View style={{ backgroundColor: 'black', height: 0.5, flex: 1, alignSelf: 'center' }} />
+    </View>
   )
 }
 
@@ -107,6 +125,11 @@ CustomInput.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 }
 
+CustomGrowInput.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  _ref: PropTypes.any
+}
+
 CustomSearchInput.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 }
@@ -121,6 +144,10 @@ CustomVerifyInput.propTypes = {
 
 ProgressBeam.propTypes = {
   incomplete: PropTypes.bool
+}
+
+LineDivider.propTypes = {
+  text: PropTypes.string
 }
 
 // define your styles
