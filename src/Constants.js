@@ -13,6 +13,19 @@ export const GLOBALSTYLES = StyleSheet.create({
     position: 'absolute',
     left: 0
   },
+  mb8: {
+    marginBottom: 8
+  },
+  mb12: {
+    marginBottom: 12
+  },
+  mt8: {
+    marginTop: 8
+  },
+  form: {
+    padding: 15,
+    paddingLeft: 0
+  },
   headerText: {
     fontFamily: 'Gilroy',
     fontWeight: '600',

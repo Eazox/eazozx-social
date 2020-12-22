@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const useFormValidation = () => {
+const usePasswordValidator = () => {
   // initial state for form
   const [data, setData] = useState({
     data: {
@@ -17,16 +17,22 @@ const useFormValidation = () => {
             }
           }
         }
-      }
-    },
-    confirmPassword: {
-      isValid: false,
-      value: '',
-      validator: (val, confirmVal) => {
-        if (val === confirmVal) {
-          return { valid: true, error: '' }
-        } else {
-          return { valid: false, error: '"confirm Password" not the same as password' }
+      },
+      confirmPassword: {
+        isValid: { valid: false, error: 'Password cannot be empty' },
+        value: '',
+        validator: (val, confirmVal) => {
+          if (val === confirmVal) {
+            return { valid: true, error: '' }
+          } else {
+            if (val === '') return { valid: false, error: 'Field cannot be empty' }
+            else {
+              return {
+                valid: false,
+                error: 'Password does not match'
+              }
+            }
+          }
         }
       }
     }
@@ -63,4 +69,4 @@ const useFormValidation = () => {
 
   return { data, setDataHandler }
 }
-export default useFormValidation
+export default usePasswordValidator
