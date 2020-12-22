@@ -293,6 +293,7 @@ const styles = StyleSheet.create({
     height: 48,
     width: 343,
     backgroundColor: '#3B5998'
+    
   },
   inputPassword: {
     flexDirection: 'row',
