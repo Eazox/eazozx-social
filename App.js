@@ -4,14 +4,7 @@ import React from 'react'
 import { Ionicons, MaterialIcons, Entypo, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useFonts } from 'expo-font'
 import { AppLoading } from 'expo'
-import { NavigationContainer } from '@react-navigation/native'
-import { Theme } from './src/Constants'
-// import TabNavigation from './src/navigations/tabNavigation'
-import DrawerNavigation from './src/navigations/DrawerNavigation'
-
-// import mainComponents from './src/components/mainComponents'
-// import Navigations from './src/navigations/RootNavigation'
-// import * as Font from 'expo-font'
+import HomePage from './src/components/mainComponents/homePage'
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -27,19 +20,7 @@ const App = () => {
   if (!fontsLoaded) {
     return <AppLoading />
   } else {
-    return (
-      <NavigationContainer theme={Theme}>
-        {/* <SafeAreaView style={tailwind('flex-1 items-center justify-center')}>
-          <mainComponents.SplashScreen />
-<mainComponents.SignUp />
-          <Navigations />
-        </SafeAreaView>
-
-        <DrawerNavigation />
-         */}
-        <DrawerNavigation />
-      </NavigationContainer>
-    )
+    return <HomePage />
   }
 }
 
