@@ -4,6 +4,7 @@ import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
 import { Label, Input, Text, Icon } from 'native-base'
 import PropTypes from 'prop-types'
 import { GLOBALSTYLES } from '../../Constants'
+import { AutoGrowingTextInput as GrowInput } from 'react-native-autogrow-textinput'
 
 // create a component
 export const CustomLabel = props => {
@@ -50,6 +51,15 @@ export const CustomPassword = props => {
   )
 }
 
+export const CustomSearchInput = props => {
+  return (
+    <>
+      <Input {...props} style={[styles.font, props.style, styles.searchInput]} />
+      <Icon type='MaterialIcons' name='search' style={styles.searchInputIcon} />
+    </>
+  )
+}
+
 export const CustomVerifyInput = props => {
   return (
     <View style={styles.verifyInputView}>
@@ -67,6 +77,9 @@ export const CustomVerifyInput = props => {
     </View>
   )
 }
+export const CustomGrowInput = props => {
+  return <GrowInput {...props} style={[styles.font, props.style]} />
+}
 
 export const ProgressBeam = props => {
   return (
@@ -77,6 +90,64 @@ export const ProgressBeam = props => {
       ]}
     />
   )
+}
+
+export const LineDivider = props => {
+  return (
+    <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
+      <View style={{ backgroundColor: 'black', height: 0.5, flex: 1, alignSelf: 'center' }} />
+      <CustomText
+        style={{ alignSelf: 'center', paddingHorizontal: 5, fontSize: 16, fontWeight: '400' }}
+      >
+        {props.text}
+      </CustomText>
+      <View style={{ backgroundColor: 'black', height: 0.5, flex: 1, alignSelf: 'center' }} />
+    </View>
+  )
+}
+
+CustomLabel.propTypes = {
+  children: PropTypes.string,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomText.propTypes = {
+  children: PropTypes.any,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomError.propTypes = {
+  children: PropTypes.string,
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomInput.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomGrowInput.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  _ref: PropTypes.any
+}
+
+CustomSearchInput.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomPassword.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomVerifyInput.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+ProgressBeam.propTypes = {
+  incomplete: PropTypes.bool
+}
+
+LineDivider.propTypes = {
+  text: PropTypes.string
 }
 
 // define your styles
@@ -112,6 +183,14 @@ const styles = StyleSheet.create({
     width: '30%',
     position: 'relative',
     backgroundColor: '#578dde'
+  },
+  searchInput: { paddingLeft: 56, borderRadius: 7, backgroundColor: 'rgb(250, 250, 250)' },
+  searchInputIcon: {
+    fontSize: 20,
+    color: 'rgb(189, 189, 189)',
+    position: 'absolute',
+    left: 30,
+    top: 15
   }
 })
 
