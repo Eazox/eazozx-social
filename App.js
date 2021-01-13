@@ -1,29 +1,29 @@
 import React from 'react'
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
-import ResetPassword from './src/components/mainComponents/resetPassword'
 
-
+import LoginScreen from './src/components/mainComponents/login/LoginScreen'
 
 
 const App = () => {
-  return (
-    <SafeAreaView>
-      <View>
-     <ResetPassword /> 
-    </View>
-  </SafeAreaView>
-  );
 
- }
+  return (
+    <SafeAreaView >
+      <LoginScreen />
+    </SafeAreaView>
+  )
+
+}
 
 
 const Styles = StyleSheet.create({
-   flex: 1
+   textColor: {
+     color: "blue",
+     alignItems: "center",
+     justifyContent: "center",
+     marginLeft: 50
      
+   },
 })
-
-
-
 
 
 export default App
