@@ -1,7 +1,7 @@
 import React from 'react'
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
-import PasswordScreen from './src/Screens/PasswordScreen'
-import ResetPassword from './src/Screens/ResetPassword'
+import ResetPassword from './src/components/mainComponents/resetPassword'
+
 
 
 
@@ -9,7 +9,7 @@ const App = () => {
   return (
     <SafeAreaView>
       <View>
-      <ResetPassword />
+     <ResetPassword /> 
     </View>
   </SafeAreaView>
   );
@@ -25,5 +25,5 @@ const Styles = StyleSheet.create({
 
 
 
-export default App
 
+export default App
