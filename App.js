@@ -1,17 +1,18 @@
 import React from 'react'
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
-import LoginScreen from './src/components/mainComponents/login/LoginScreen'
+import Onboard from './src/components/mainComponents/onboard/Onboard'
+
 
 
 const App = () => {
 
   return (
     <SafeAreaView >
-      <LoginScreen />
+      <Onboard />
     </SafeAreaView>
   )
 
-}
+
 
 const Styles = StyleSheet.create({
    textColor: {
@@ -23,5 +24,6 @@ const Styles = StyleSheet.create({
    },
 })
 
+}
 
 export default App

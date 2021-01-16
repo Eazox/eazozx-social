@@ -81,7 +81,7 @@ const Signup = () => {
         </Body>
       </Header>
       <Content>
-        <Form style={styles.form}>
+        <Form style={GLOBALSTYLES.form}>
           <Item stackedLabel style={GLOBALSTYLES.noBorder}>
             <CustomLabel style={styles.mb8}>Full Name</CustomLabel>
             <CustomInput
@@ -283,10 +283,6 @@ const styles = StyleSheet.create({
   headerText: {
     fontFamily: 'Gilroy',
     fontWeight: '600'
-  },
-  form: {
-    padding: 10,
-    paddingLeft: 0
   },
   genderItem: {
     flexDirection: 'column',
