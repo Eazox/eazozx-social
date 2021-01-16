@@ -22,3 +22,5 @@ export default function RootNavigation() {
 
 // Docs to setup theme [https://reactnavigation.org/docs/themes]
 // App
+
+
