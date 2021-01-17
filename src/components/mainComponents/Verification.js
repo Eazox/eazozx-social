@@ -4,7 +4,7 @@ import { StyleSheet, Image, View } from 'react-native'
 import { GLOBALSTYLES } from '../../Constants'
 import { Container, Header, Left, Button, Icon, Body, Title } from 'native-base'
 import verificationIcon from '../../images/verification-icon.png'
-import { CustomText, ProgressBeam } from '../sub-components/CustomFontComponents'
+import { CustomText, ProgressBeam } from '../subComponents/CustomFontComponents'
 
 // create a component
 const Verification = () => {
