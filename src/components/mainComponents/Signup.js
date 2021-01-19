@@ -22,9 +22,9 @@ import {
   CustomInput,
   CustomText,
   CustomError
-} from '../../subComponents/CustomFontComponents'
-import useFormValidation from '../../customHooks/signupValidator'
-import { GLOBALSTYLES } from '../../../Constants'
+} from '../sub-components/CustomFontComponents'
+import useFormValidation from '../customHooks/signupValidator'
+import { GLOBALSTYLES } from '../../Constants'
 
 // create a component
 const Signup = () => {
@@ -81,7 +81,7 @@ const Signup = () => {
         </Body>
       </Header>
       <Content>
-        <Form style={GLOBALSTYLES.form}>
+        <Form style={styles.form}>
           <Item stackedLabel style={GLOBALSTYLES.noBorder}>
             <CustomLabel style={styles.mb8}>Full Name</CustomLabel>
             <CustomInput
@@ -283,6 +283,10 @@ const styles = StyleSheet.create({
   headerText: {
     fontFamily: 'Gilroy',
     fontWeight: '600'
+  },
+  form: {
+    padding: 10,
+    paddingLeft: 0
   },
   genderItem: {
     flexDirection: 'column',

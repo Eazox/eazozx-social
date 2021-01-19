@@ -14,6 +14,7 @@ const App = () => {
 
 }
 
+
 const Styles = StyleSheet.create({
    textColor: {
      color: "blue",
