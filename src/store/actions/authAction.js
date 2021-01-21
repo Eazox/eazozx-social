@@ -14,9 +14,8 @@ export const authError = cred => {
   }
 }
 
-export const authRequest = cred => {
+export const authRequest = _ => {
   return {
-    type: AUTH_REQUEST,
-    payload: cred
+    type: AUTH_REQUEST
   }
 }
