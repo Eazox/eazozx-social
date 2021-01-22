@@ -1,35 +1,33 @@
+/* eslint-disable react/display-name */
 // import liraries
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import Login from '../components/mainComponents/login'
-import NewPassword from '../components/mainComponents/resetPassword'
-// import Signup from '../components/mainComponents/signup'
-// import VerifySignup from '../components/mainComponents/Verification'
-// import Profile from '../components/mainComponents/Profile'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { setStack } from '../store/actions'
+import SplashScreen from '../components/mainComponents/splashscreen'
+import SignupStack from './SignupStack'
+import LoginStack from './LoginStack'
+import { useSelector } from 'react-redux'
 
 const { Navigator, Screen } = createStackNavigator()
 
-// const LoginStack = (
+// const LoginStack = () => (
 //   <>
 //     <Screen name='Login' component={Login} />
 //     <Screen name='New Password' component={NewPassword} />
 //   </>
 // )
 
-// const SignupStack = (
-//   <>
-//     <Screen name='Signup' component={Signup} />
-//     <Screen name='Verify Signup' component={VerifySignup} />
-//     <Screen name='profile' component={Profile} />
-//   </>
-// )
-
 // create a component
 const CurrentStack = () => {
-  // const dispatch = useDispatch()
-  // const currScreen = useSelector(state => state.setStackReducer)
+  const currScreen = useSelector(state => state.setStackReducer)
+  let CurrStack = null
+
+  if (currScreen === 'splashScreen') {
+    CurrStack = () => <SplashScreen />
+  } else if (currScreen === 'loginStack') {
+    CurrStack = LoginStack
+  } else if (currScreen === 'signupStack') {
+    CurrStack = () => <SignupStack />
+  }
 
   return (
     <Navigator
@@ -37,10 +35,7 @@ const CurrentStack = () => {
         headerShown: false
       }}
     >
-      <>
-        <Screen name='Login' component={Login} />
-        <Screen name='New Password' component={NewPassword} />
-      </>
+      <Screen name={currScreen} component={CurrStack} />
     </Navigator>
   )
 }

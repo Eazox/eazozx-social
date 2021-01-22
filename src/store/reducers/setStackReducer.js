@@ -1,6 +1,6 @@
 import { SET_STACK } from '../actions/actionTypes'
 
-export const setStackReducer = (state = 'splashscreen', action) => {
+export const setStackReducer = (state = 'splashScreen', action) => {
   switch (action.type) {
     default:
       return state
