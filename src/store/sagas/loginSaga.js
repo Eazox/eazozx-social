@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable generator-star-spacing */
 import axios from 'axios'
 import { takeLatest, call, put } from 'redux-saga/effects'

@@ -18,7 +18,7 @@ class SplashScreen extends Component {
       useNativeDriver: true
     }).start(() => {
       // move to next screen
-      setTimeout(() => this.props.setStack('loginStack', 1000))
+      setTimeout(() => this.props.setStack('signupStack', 1000))
     })
   }
 

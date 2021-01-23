@@ -25,9 +25,12 @@ import {
 } from '../../subComponents/CustomFontComponents'
 import useFormValidation from '../../customHooks/signupValidator'
 import { GLOBALSTYLES } from '../../../Constants'
+import { useDispatch } from 'react-redux'
+import { signup } from '../../../store/actions'
 
 // create a component
 const Signup = () => {
+  const dispatch = useDispatch()
   // state to display errors in form
   const [showErrors, setShowErrors] = useState(false)
 
@@ -47,7 +50,7 @@ const Signup = () => {
           if (data.data.number.isValid.valid) {
             if (data.data.password.isValid.valid) {
               if (data.data.agreedCheckbox.isValid.valid) {
-                console.log('success')
+                dispatch(signup(data.data.email.value, data.data.password.value))
               } else {
                 setShowErrors(true)
               }

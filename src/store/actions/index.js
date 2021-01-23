@@ -1,2 +1,2 @@
 export { setStack } from './setStackAction'
-export { authError, authRequest, authSuccess } from './authAction'
+export { signup, authError, authRequest, authSuccess } from './authAction'
