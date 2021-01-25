@@ -5,7 +5,6 @@ import Login from '../../../../src/images/login.png'
 import facebook from '../../../images/Facebook.png'
 import googleLogo from '../../../images/Google.png'
 import Header from '../../subComponents/Header'
-// import {CustomPassword } from '../../subComponents/CustomFontComponents'
 
 class LoginScreen extends Component {
   constructor(props) {
