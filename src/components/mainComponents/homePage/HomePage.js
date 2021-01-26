@@ -28,9 +28,7 @@ export default function HomePage() {
           </View>
         </Right>
       </Header>
-      {/* <Content style={{ padding: 8 }}> */}
       <CardList />
-      {/* </Content> */}
     </Container>
   )
 }

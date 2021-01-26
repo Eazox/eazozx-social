@@ -23,9 +23,9 @@ export default function CardList() {
           caption={item.caption}
           time={item.time}
           image={item.image}
-          likes={item.likes}
+          price={item.price}
           comments={item.comments}
-          shares={item.shares}
+          drips={item.drips}
           profilePic={item.profilePic}
         />
       )}

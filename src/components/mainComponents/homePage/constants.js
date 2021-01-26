@@ -9,9 +9,9 @@ export const cardsArray = [
     caption: "The new Fenti drip looks dope y'all",
     profilePic: ONLINEIMAGES.profileImage,
     image: ONLINEIMAGES.chinos,
-    comments: 32,
-    shares: 54,
-    likes: 16
+    price: 9900,
+    comments: 24,
+    drips: 13
   },
   {
     key: Math.floor(Math.random() * 10000000).toString(),
@@ -21,8 +21,8 @@ export const cardsArray = [
     caption: 'Lock in!!! DubNation',
     image: ONLINEIMAGES.chinos,
     profilePic: ONLINEIMAGES.profileImage,
-    comments: 2,
-    shares: 542,
-    likes: 161
+    price: 3400,
+    comments: 5,
+    drips: 17
   }
 ]

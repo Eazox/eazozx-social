@@ -29,7 +29,7 @@ export default function PostButton({ prop, name, type, onPress }) {
 }
 
 PostButton.propTypes = {
-  prop: PropTypes.number,
+  prop: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string,
   onPress: PropTypes.func

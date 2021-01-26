@@ -5,7 +5,7 @@ import { Button } from 'native-base'
 import droplets from '../../../images/droplets.png'
 import { CustomText } from '../../subComponents/CustomFontComponents'
 
-export default function PostButtonImg({ likes }) {
+export default function PostButtonImg({ likes, onLPress }) {
   const [pressed, setPressed] = useState(false)
 
   const pressHandler = () => {
@@ -14,7 +14,7 @@ export default function PostButtonImg({ likes }) {
   }
 
   return (
-    <Button transparent onPress={pressHandler}>
+    <Button onLongPress={onLPress} transparent onPress={pressHandler}>
       <Image
         source={droplets}
         style={{
@@ -31,5 +31,6 @@ export default function PostButtonImg({ likes }) {
 }
 
 PostButtonImg.propTypes = {
-  likes: PropTypes.number
+  likes: PropTypes.string,
+  onLPress: PropTypes.func
 }
