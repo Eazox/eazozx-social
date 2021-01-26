@@ -1,17 +1,19 @@
 import React from 'react'
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
-import LoginScreen from './src/components/mainComponents/login/LoginScreen'
+import SideNav from './src/components/mainComponents/sideNav/SideNav'
+
 
 
 const App = () => {
 
   return (
     <SafeAreaView >
-      <LoginScreen />
+      <SideNav />
     </SafeAreaView>
   )
 
   }
+
 
 const Styles = StyleSheet.create({
    textColor: {
