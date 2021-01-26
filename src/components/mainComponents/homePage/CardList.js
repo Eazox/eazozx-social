@@ -7,7 +7,7 @@ const getItem = (data, index) => {
   return cardsArray[index]
 }
 
-const getItemCount = data => {
+const getItemCount = _ => {
   return cardsArray.length
 }
 
