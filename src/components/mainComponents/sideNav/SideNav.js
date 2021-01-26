@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text, View, StyleSheet, StatusBar, Image, TouchableOpacity } from 'react-native'
+import React,{useState} from 'react';
+import { Text, View, StyleSheet, StatusBar, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import Icons from 'react-native-vector-icons/Feather'
 import { Data } from '../../mainComponents/sideNav/SideData'
 
@@ -42,6 +42,8 @@ const infoData = Data.map(side => (
 ))
 
 const SideNav = () => {
+
+     const [toggleIcon, setToggleIcon] = useState(false)
 
     return (
         <View style={styles.container}>
@@ -110,9 +112,14 @@ const SideNav = () => {
                 }}>Dark Mode</Text>
                 </TouchableOpacity>
 
-                <Icons name='toggle-left' size={20} color="#BDBDBD" style={{
-                   right: 20
-                }} />
+                <TouchableWithoutFeedback onPress={() =>setToggleIcon(!toggleIcon)}>
+                 {toggleIcon ? (
+                     <Icons name='toggle-left' size={20} color="#BDBDBD" style={{ right: 20, backgroundColor:'#578DDE', borderRadius: 40, width: 30}} />
+                 ):(
+                    <Icons name='toggle-left' size={20} color="#BDBDBD" style={{ right: 20, backgroundColor: 'white', borderRadius: 40, width: 30  }} />  
+                 )}
+                </TouchableWithoutFeedback>
+                 
             </View>
 
 
