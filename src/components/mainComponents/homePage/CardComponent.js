@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Image, Alert, View } from 'react-native'
 import { CustomText } from '../../subComponents/CustomFontComponents'
@@ -19,9 +19,6 @@ export default function CardComponent({
   comments,
   drips
 }) {
-  const [display, setDisplay] = useState(false)
-
-  const toggleDisplay = () => setDisplay(true)
   const commentButtonPress = () => {
     Alert.alert('commented')
   }
@@ -118,45 +115,43 @@ export default function CardComponent({
           />
         </Button>
       </CardItem>
-      {display && (
-        <CardItem
-          style={{
-            paddingBottom: 0,
-            flexDirection: 'row',
-            width: '100%',
-            alignItems: 'center',
-            justifyContent: 'space-between'
-          }}
-        >
-          <View style={{ flexDirection: 'row', marginRight: -10 }}>
-            <Thumbnail
-              source={{ uri: ONLINEIMAGES.profileImage }}
-              style={{ width: 30, height: 30, borderRadius: 15 }}
-            />
-            <Thumbnail
-              source={{ uri: ONLINEIMAGES.profileImage }}
-              style={{
-                marginLeft: -15,
-                width: 30,
-                height: 30,
-                borderRadius: 15
-              }}
-            />
-          </View>
-          <CustomText style={{ fontSize: 14 }}>{`${drips} drips`}</CustomText>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Icon
-              type='SimpleLineIcons'
-              name='present'
-              style={{ fontSize: 20, color: '#578DDE', marginRight: -5 }}
-            />
-            <CustomText style={{ fontSize: 14 }}>{`$${price}`}</CustomText>
-          </View>
-          <CustomText style={{ fontSize: 14 }}>{comments} Comments</CustomText>
-        </CardItem>
-      )}
-      <CardItem style={{ justifyContent: 'space-between', paddingTop: 5 }}>
-        <PostButtonImg likes='Drip' onLPress={toggleDisplay} />
+      <CardItem
+        style={{
+          paddingBottom: 0,
+          flexDirection: 'row',
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}
+      >
+        <View style={{ flexDirection: 'row', marginRight: -10 }}>
+          <Thumbnail
+            source={{ uri: ONLINEIMAGES.profileImage }}
+            style={{ width: 30, height: 30, borderRadius: 15 }}
+          />
+          <Thumbnail
+            source={{ uri: ONLINEIMAGES.profileImage }}
+            style={{
+              marginLeft: -15,
+              width: 30,
+              height: 30,
+              borderRadius: 15
+            }}
+          />
+        </View>
+        <CustomText style={{ fontSize: 14 }}>{`${drips} drips`}</CustomText>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Icon
+            type='SimpleLineIcons'
+            name='present'
+            style={{ fontSize: 20, color: '#578DDE', marginRight: -5 }}
+          />
+          <CustomText style={{ fontSize: 14 }}>{`$${price}`}</CustomText>
+        </View>
+        <CustomText style={{ fontSize: 14 }}>{comments} Comments</CustomText>
+      </CardItem>
+      <CardItem style={{ justifyContent: 'space-between', paddingTop: 5, position: 'relative' }}>
+        <PostButtonImg likes='Drip' />
         <PostButton
           prop='Comment'
           name='message'
