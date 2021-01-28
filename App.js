@@ -4,7 +4,7 @@ import React from 'react'
 import { Ionicons, MaterialIcons, Entypo, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useFonts } from 'expo-font'
 import { AppLoading } from 'expo'
-import HomePage from './src/components/mainComponents/homePage'
+import Profile from './src/components/mainComponents/Profile'
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -27,7 +27,7 @@ const App = () => {
   if (!fontsLoaded) {
     return <AppLoading />
   } else {
-    return <HomePage />
+    return <Profile />
   }
 }
 

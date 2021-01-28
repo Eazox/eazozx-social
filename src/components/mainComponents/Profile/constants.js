@@ -12,8 +12,7 @@ export const cardsArray = [
     price: 9900,
     comments: 24,
     drips: 13,
-    activityPage: true,
-    sharedPage: true
+    activityPage: true
   },
   {
     key: Math.floor(Math.random() * 10000000).toString(),
@@ -26,7 +25,6 @@ export const cardsArray = [
     price: 3400,
     comments: 5,
     drips: 17,
-    activityPage: true,
-    sharedPage: true
+    activityPage: true
   }
 ]

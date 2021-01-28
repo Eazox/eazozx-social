@@ -17,7 +17,9 @@ export default function CardComponent({
   profilePic,
   price,
   comments,
-  drips
+  drips,
+  viewImage,
+  activityPage
 }) {
   const commentButtonPress = () => {
     Alert.alert('commented')
@@ -55,33 +57,37 @@ export default function CardComponent({
                 note
                 style={{
                   width: '100%',
-                  marginBottom: 3,
                   textAlign: 'right',
                   fontSize: 12
                 }}
               >
                 {time}
               </CustomText>
-              <Button
-                small
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  paddingVertical: 5,
-                  borderRadius: 30,
-                  backgroundColor: '#cff7e5',
-                  elevation: 0,
-                  marginLeft: 17
-                  // width: 125,
-                }}
-              >
-                <CustomText style={{ color: '#06a45b', fontSize: 12 }}>Verified Seller</CustomText>
-                <Icon
-                  type='AntDesign'
-                  name='checkcircleo'
-                  style={{ color: '#06a45b', fontSize: 18, marginLeft: -8 }}
-                />
-              </Button>
+              {activityPage && (
+                <Button
+                  small
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    paddingVertical: 5,
+                    marginTop: 3,
+                    borderRadius: 30,
+                    backgroundColor: '#cff7e5',
+                    elevation: 0,
+                    marginLeft: 17
+                    // width: 125,
+                  }}
+                >
+                  <CustomText style={{ color: '#06a45b', fontSize: 12 }}>
+                    Verified Seller
+                  </CustomText>
+                  <Icon
+                    type='AntDesign'
+                    name='checkcircleo'
+                    style={{ color: '#06a45b', fontSize: 18, marginLeft: -8 }}
+                  />
+                </Button>
+              )}
             </View>
           </Body>
         </Right>
@@ -89,32 +95,36 @@ export default function CardComponent({
       <CardItem style={{ paddingBottom: 5 }}>
         <Body>
           <CustomText style={{ marginBottom: 15 }}>{caption}</CustomText>
-          <Image
-            source={{ uri: image }}
-            style={{ resizeMode: 'cover', width: '100%', height: 250 }}
-          />
+          {viewImage && (
+            <Image
+              source={{ uri: image }}
+              style={{ resizeMode: 'cover', width: '100%', height: 250 }}
+            />
+          )}
         </Body>
       </CardItem>
-      <CardItem style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <CustomText style={{ fontSize: 20 }}>$410</CustomText>
-        <Button
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            borderRadius: 25,
-            elevation: 0,
-            paddingHorizontal: 10,
-            backgroundColor: '#578dde'
-          }}
-        >
-          <CustomText>Buy Now</CustomText>
-          <Icon
-            type='FontAwesome'
-            name='shopping-bag'
-            style={{ fontSize: 18, color: 'white', marginLeft: 10 }}
-          />
-        </Button>
-      </CardItem>
+      {activityPage && (
+        <CardItem style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <CustomText style={{ fontSize: 20 }}>$410</CustomText>
+          <Button
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              borderRadius: 25,
+              elevation: 0,
+              paddingHorizontal: 10,
+              backgroundColor: '#578dde'
+            }}
+          >
+            <CustomText>Buy Now</CustomText>
+            <Icon
+              type='FontAwesome'
+              name='shopping-bag'
+              style={{ fontSize: 18, color: 'white', marginLeft: 10 }}
+            />
+          </Button>
+        </CardItem>
+      )}
       <CardItem
         style={{
           paddingBottom: 0,
@@ -124,10 +134,16 @@ export default function CardComponent({
           justifyContent: 'space-between'
         }}
       >
-        <View style={{ flexDirection: 'row', marginRight: -10 }}>
+        <View style={{ flexDirection: 'row', marginRight: -20 }}>
           <Thumbnail
             source={{ uri: ONLINEIMAGES.profileImage }}
-            style={{ width: 30, height: 30, borderRadius: 15 }}
+            style={{
+              width: 30,
+              height: 30,
+              borderRadius: 15,
+              borderWidth: 1,
+              borderColor: 'white'
+            }}
           />
           <Thumbnail
             source={{ uri: ONLINEIMAGES.profileImage }}
@@ -135,7 +151,22 @@ export default function CardComponent({
               marginLeft: -15,
               width: 30,
               height: 30,
-              borderRadius: 15
+              borderRadius: 15,
+              borderWidth: 1,
+
+              borderColor: 'white'
+            }}
+          />
+          <Thumbnail
+            source={{ uri: ONLINEIMAGES.profileImage }}
+            style={{
+              marginLeft: -15,
+              width: 30,
+              height: 30,
+              borderRadius: 15,
+              borderWidth: 1,
+
+              borderColor: 'white'
             }}
           />
         </View>
@@ -154,11 +185,11 @@ export default function CardComponent({
         <PostButtonImg likes='Drip' />
         <PostButton
           prop='Comment'
-          name='message'
-          type='MaterialIcons'
+          name='message-circle'
+          type='Feather'
           onPress={commentButtonPress}
         />
-        <PostButton prop='Share' name='send' type='Feather' onPress={shareButtonPress} />
+        <PostButton prop='Share' name='share' type='Entypo' onPress={shareButtonPress} />
       </CardItem>
     </Card>
   )
@@ -173,5 +204,7 @@ CardComponent.propTypes = {
   profilePic: PropTypes.string,
   price: PropTypes.number,
   comments: PropTypes.number,
-  drips: PropTypes.number
+  drips: PropTypes.number,
+  viewImage: PropTypes.bool,
+  activityPage: PropTypes.bool
 }

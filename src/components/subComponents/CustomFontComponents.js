@@ -1,7 +1,7 @@
 // import liraries
 import React, { useState } from 'react'
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
-import { Label, Input, Text, Icon } from 'native-base'
+import { Label, Input, Text, Icon, Button } from 'native-base'
 import PropTypes from 'prop-types'
 import { GLOBALSTYLES } from '../../Constants'
 import { AutoGrowingTextInput as GrowInput } from 'react-native-autogrow-textinput'
@@ -33,6 +33,34 @@ export const CustomError = props => {
 
 export const CustomInput = props => {
   return <Input {...props} style={[styles.font, props.style]} />
+}
+
+export const VerifiedSeller = ({ style }) => {
+  return (
+    <Button
+      small
+      style={[
+        {
+          flexDirection: 'row',
+          justifyContent: 'center',
+          paddingVertical: 5,
+          borderRadius: 30,
+          backgroundColor: '#cff7e5',
+          elevation: 0,
+          marginLeft: 17
+          // width: 125,
+        },
+        { ...style }
+      ]}
+    >
+      <CustomText style={{ color: '#06a45b', fontSize: 12 }}>Verified Seller</CustomText>
+      <Icon
+        type='AntDesign'
+        name='checkcircleo'
+        style={{ color: '#06a45b', fontSize: 18, marginLeft: -8 }}
+      />
+    </Button>
+  )
 }
 
 export const CustomPassword = props => {
@@ -131,6 +159,10 @@ CustomGrowInput.propTypes = {
 }
 
 CustomSearchInput.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+VerifiedSeller.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 }
 
