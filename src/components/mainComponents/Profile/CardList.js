@@ -1,7 +1,8 @@
 import React from 'react'
 import { VirtualizedList } from 'react-native'
-import CardComponent from './CardComponent'
+import CardComponent from '../homePage/CardComponent'
 import { cardsArray } from './constants'
+import PropTypes from 'prop-types'
 
 const getItem = (data, index) => {
   return cardsArray[index]
@@ -11,17 +12,18 @@ const getItemCount = _ => {
   return cardsArray.length
 }
 
-export default function CardList() {
+export default function CardList({ viewImage }) {
   return (
     <VirtualizedList
       data={cardsArray}
-      initialNumToRender={4}
+      initialNumToRender={2}
       renderItem={({ item }) => (
         <CardComponent
           username={item.username}
           email={item.email}
           caption={item.caption}
           time={item.time}
+          viewImage={viewImage}
           image={item.image}
           price={item.price}
           comments={item.comments}
@@ -34,4 +36,8 @@ export default function CardList() {
       getItem={getItem}
     />
   )
+}
+
+CardList.propTypes = {
+  viewImage: PropTypes.bool
 }
