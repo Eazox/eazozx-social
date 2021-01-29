@@ -1,10 +1,12 @@
 import React from 'react'
-// import { SafeAreaView } from 'react-native'
-// import tailwind from 'tailwind-rn'
+import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
+import ForgotPassword from './src/components/mainComponents/forgotPassword/ForgotPassword'
+import StoryHome from './src/components/mainComponents/home/StoryHome'
+import LoginScreen from './src/components/mainComponents/login/LoginScreen'
 import { Ionicons, MaterialIcons, Entypo, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useFonts } from 'expo-font'
 import { AppLoading } from 'expo'
-import Profile from './src/components/mainComponents/Profile'
+
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -24,11 +26,26 @@ const App = () => {
     ...MaterialCommunityIcons.font
   })
 
-  if (!fontsLoaded) {
-    return <AppLoading />
-  } else {
-    return <Profile />
-  }
-}
+  return (
+    <SafeAreaView >
+        <StoryHome />
+    </SafeAreaView>
+  )
+
+
+
+
+const Styles = StyleSheet.create({
+   textColor: {
+     color: "blue",
+     alignItems: "center",
+     justifyContent: "center",
+     marginLeft: 50
+     
+   },
+})
+
+
+
 
 export default App
