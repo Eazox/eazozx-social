@@ -13,9 +13,19 @@ class LoginScreen extends Component {
       email: '',
       emailError: '',
       passwordError: '',
-      password: ''
+      password: '',
+      showIconEye: true
     }
   }
+
+  // Show icon toggle
+   showIcon =() => {
+    this.setState({
+      showIconEye : !this.state.showIconEye
+    })
+  }
+  
+
 
   emailValidator() {
     if (this.state.email === '') {
@@ -93,8 +103,8 @@ class LoginScreen extends Component {
               onChangeText={password => {
                 this.setState({ password: password })
               }}
-            />
-            <Icon name='eye' size={20} style={{ right: 35 }} color='#BDBDBD' />
+            /> 
+             <Icon name='eye' size={20} style={{ right: 35 }} color='#BDBDBD' /> 
           </View>
           <Text style={{ color: 'red', marginLeft: 20, fontSize: 10 }}>
             {this.state.passwordError}

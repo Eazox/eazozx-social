@@ -12,7 +12,7 @@ const App = () => {
     </SafeAreaView>
   )
 
-}
+  }
 
 
 const Styles = StyleSheet.create({
