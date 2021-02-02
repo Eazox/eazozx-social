@@ -37,7 +37,17 @@ Leverage [feature branches](https://www.atlassian.com/git/tutorials/comparing-wo
 #### Commit and Push
 When working on a feature make sure to commit and push your changes to the remote branch as often as possible.
 * This assures that your commits are small and manageable.
+
 * Additionally, in the event of the system failure or any random that affects your local code, you will have a fairly recent backup of your code in the remote branch.
+
+
+* Additionally, in the event of system failure or any random that affects your local code, you will have a fairly recent backup of your code in the remote branch.
+
+
+
+* Additionally, in the event of system failure or any random that affects your local code, you will have a fairly recent backup of your code in the remote branch.
+
+
 
 
 
@@ -231,4 +241,6 @@ export const GET_REQUEST_DATA = 'GET_REQUEST_DATA';
 https://reactnavigation.org/docs/hello-react-navigation
 
 ## Proposed Arch
+
+![architecture](src\images\architecture.png)
 

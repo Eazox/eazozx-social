@@ -13,8 +13,16 @@ class LoginScreen extends Component {
       email: '',
       emailError: '',
       passwordError: '',
-      password: ''
+      password: '',
+      showIconEye: true
     }
+  }
+
+  // Show icon toggle
+  showIcon = () => {
+    this.setState({
+      showIconEye: !this.state.showIconEye
+    })
   }
 
   emailValidator() {
