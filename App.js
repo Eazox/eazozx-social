@@ -27,4 +27,18 @@ const Styles = StyleSheet.create({
 
 
 
+
+const Styles = StyleSheet.create({
+   textColor: {
+     color: "blue",
+     alignItems: "center",
+     justifyContent: "center",
+     marginLeft: 50
+     
+   },
+})
+
+
+
+
 export default App

@@ -37,15 +37,20 @@ Leverage [feature branches](https://www.atlassian.com/git/tutorials/comparing-wo
 #### Commit and Push
 When working on a feature make sure to commit and push your changes to the remote branch as often as possible.
 * This assures that your commits are small and manageable.
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 6a71176cc3af3804208ad4a8548989a3a02b9f54
+
 * Additionally, in the event of the system failure or any random that affects your local code, you will have a fairly recent backup of your code in the remote branch.
 
-=======
+
 * Additionally, in the event of system failure or any random that affects your local code, you will have a fairly recent backup of your code in the remote branch.
->>>>>>> master
+
+
+
+* Additionally, in the event of system failure or any random that affects your local code, you will have a fairly recent backup of your code in the remote branch.
+
+
+
+
+
 #### Pull Requests (PR)
 
 After you have finished working on your feature or bug fix, you should [create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) from your feature branch to the master branch.
@@ -236,12 +241,6 @@ export const GET_REQUEST_DATA = 'GET_REQUEST_DATA';
 https://reactnavigation.org/docs/hello-react-navigation
 
 ## Proposed Arch
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 ![architecture](src\images\architecture.png)
-=======
-![architecture](src\images\architecture.png)
->>>>>>> master
-=======
-![architecture](src\images\architecture.png)
->>>>>>> 6a71176cc3af3804208ad4a8548989a3a02b9f54
+

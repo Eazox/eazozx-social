@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign'
-import Login from '../images/login.png'
-import facebook from '../images/Facebook.png'
-import googleLogo from '../images/Google.png'
+import Login from '../../../../src/images/login.png'
+import facebook from '../../../images/Facebook.png'
+import googleLogo from '../../../images/Google.png'
 import Header from '../../subComponents/Header'
 
 class LoginScreen extends Component {
@@ -13,9 +13,19 @@ class LoginScreen extends Component {
       email: '',
       emailError: '',
       passwordError: '',
-      password: ''
+      password: '',
+      showIconEye: true
     }
   }
+
+  // Show icon toggle
+   showIcon =() => {
+    this.setState({
+      showIconEye : !this.state.showIconEye
+    })
+  }
+  
+
 
   emailValidator() {
     if (this.state.email === '') {
@@ -43,7 +53,18 @@ class LoginScreen extends Component {
         <Header />
         <View style={styles.logoContainer}>
           <Image source={Login} />
-          <Text style={styles.compText}>EAZOX</Text>
+          <Text
+            style={{
+              height: 24,
+              fontSize: 19.66,
+              fontWeight: '600',
+              fontStyle: 'normal',
+              color: '#414141'
+            }}
+          >
+            EAZOX
+          </Text>
+
           <Text style={styles.title}>shop easily everywhere</Text>
         </View>
         <View style={styles.container}>
@@ -82,8 +103,8 @@ class LoginScreen extends Component {
               onChangeText={password => {
                 this.setState({ password: password })
               }}
-            />
-            <Icon name='eye' size={20} style={{ right: 50 }} color='#BDBDBD' />
+            /> 
+             <Icon name='eye' size={20} style={{ right: 35 }} color='#BDBDBD' /> 
           </View>
           <Text style={{ color: 'red', marginLeft: 20, fontSize: 10 }}>
             {this.state.passwordError}
@@ -103,19 +124,29 @@ class LoginScreen extends Component {
               style={{
                 flex: 1,
                 height: 1,
-                width: 343,
-                backgroundColor: 'black'
+                width: 137,
+                backgroundColor: 'rgba(21, 36, 60, 0.4)'
               }}
             />
             <View>
-              <Text style={{ width: 50, textAlign: 'center' }}>OR</Text>
+              <Text
+                style={{
+                  width: 50,
+                  textAlign: 'center',
+                  fontStyle: 'normal',
+                  fontWeight: '500',
+                  color: '#15243C'
+                }}
+              >
+                OR
+              </Text>
             </View>
             <View
               style={{
                 flex: 1,
                 height: 1,
-                width: 343,
-                backgroundColor: 'black'
+                width: 137,
+                backgroundColor: 'rgba(21, 36, 60, 0.4)'
               }}
             />
           </View>
@@ -123,7 +154,19 @@ class LoginScreen extends Component {
           <View style={styles.googleContainer}>
             <TouchableOpacity style={styles.googleContent}>
               <Image source={googleLogo} style={{ marginTop: 10 }} />
-              <Text style={{ marginLeft: 10, marginTop: 10 }}>Continue with Google</Text>
+              <Text
+                style={{
+                  marginLeft: 10,
+                  marginTop: 10,
+                  fontSize: 18,
+                  fontStyle: 'normal',
+                  fontWeight: 'normal',
+                  lineHeight: 22,
+                  color: '#333333'
+                }}
+              >
+                Continue with Google
+              </Text>
             </TouchableOpacity>
           </View>
 
@@ -132,10 +175,14 @@ class LoginScreen extends Component {
               <Image source={facebook} style={{ marginTop: 10, marginLeft: 50 }} />
               <Text
                 style={{
-                  marginTop: 10,
+                  marginTop: 13,
                   textAlign: 'center',
                   marginLeft: 10,
-                  color: '#FFFFFF'
+                  color: '#FFFFFF',
+                  fontWeight: 'normal',
+                  fontStyle: 'normal',
+                  fontSize: 18,
+                  lineHeight: 22
                 }}
               >
                 Continue with Facebook
@@ -147,7 +194,6 @@ class LoginScreen extends Component {
             style={{
               textAlign: 'center',
               flexDirection: 'row',
-              // marginLeft: 80,
               marginTop: 10
             }}
           >
@@ -157,7 +203,8 @@ class LoginScreen extends Component {
                 fontStyle: 'normal',
                 fontSize: 16,
                 lineHeight: 24,
-                color: '#939090'
+                color: '#939090',
+                marginLeft: 70
               }}
             >
               Don’t have an account?
@@ -168,6 +215,7 @@ class LoginScreen extends Component {
                   fontWeight: '600',
                   fontStyle: 'normal',
                   fontSize: 16,
+                  marginLeft: 5,
                   lineHeight: 24,
                   color: '#3B5998',
                   marginBottom: 30
@@ -208,11 +256,15 @@ const styles = StyleSheet.create({
   },
   formText: {
     justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 140,
-    fontWeight: '400',
+    marginLeft: 10,
+    marginBottom: 8,
+    color: 'rgba(21, 36, 60, 0.8)',
+    fontWeight: 'normal',
     fontStyle: 'normal',
     fontSize: 16,
-    lineHeight: 19.2
+    lineHeight: 19
   },
   inputContainer: {
     marginTop: 10,
@@ -222,24 +274,26 @@ const styles = StyleSheet.create({
   input: {
     height: 48,
     width: 343,
-    paddingLeft: 20,
+    paddingLeft: 16,
     backgroundColor: '#FAFAFA',
     borderRadius: 5
   },
   textPassword: {
     marginTop: 10,
-    marginBottom: 10,
+    marginLeft: 10,
+    marginBottom: 8,
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
   passwordOne: {
     fontSize: 16,
+    color: 'rgba(21, 36, 60, 0.8)',
     fontStyle: 'normal',
-    fontWeight: '400',
+    fontWeight: 'normal',
     lineHeight: 19.2
   },
   passwordTwo: {
-    marginRight: 25,
+    marginRight: 0,
     fontWeight: '400',
     fontStyle: 'normal',
     fontSize: 14,
@@ -248,6 +302,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: '#939090',
     height: 48,
+    marginLeft: 10,
     marginTop: 25,
     width: 343,
     borderRadius: 5
@@ -255,18 +310,20 @@ const styles = StyleSheet.create({
   buttonContent: {
     textAlign: 'center',
     justifyContent: 'center',
-    paddingTop: 15,
+    paddingTop: 10,
+    fontSize: 18,
     color: '#FFFFFF'
   },
   lineContainer: {
-    marginLeft: 20,
-    marginRight: 20,
-    marginTop: 25,
+    marginTop: 20,
+    marginLeft: 10,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    color: 'red'
   },
   googleContainer: {
     marginTop: 32,
+    marginLeft: 10,
     borderWidth: 1,
     borderColor: '#FAFAFA',
     width: 343
@@ -281,25 +338,32 @@ const styles = StyleSheet.create({
   },
 
   facebookContainer: {
-    marginTop: 25,
-    borderWidth: 1,
+    marginTop: 18,
+    marginLeft: 10,
     borderColor: '#3B5998',
     width: 343,
-    borderRadius: 3
+    borderRadius: 5
   },
 
   facebookContent: {
     flexDirection: 'row',
     height: 48,
     width: 343,
+    borderRadius: 3,
     backgroundColor: '#3B5998'
     
   },
+  inputText: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    marginLeft: 10
+  },
+
   inputPassword: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 343
+    marginLeft: 30
   }
 })
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import logo from '../images/keyboard.png'
+import logo from '../../images/keyboard.png'
 
 const Header = () => {
   return (
@@ -19,16 +19,19 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   Header: {
-    marginTop: 50,
+    marginTop: 30,
+    paddingTop: 10,
     flexDirection: 'row'
   },
   logo: {
     marginLeft: 30,
-    marginTop: 3
+    top: 15,
+    marginTop: 5
   },
 
   textcontainer: {
     marginLeft: 100,
+    top: 15,
     justifyContent: 'center',
     alignItems: 'center'
   },
