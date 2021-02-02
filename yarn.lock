@@ -1311,28 +1311,36 @@
   version "0.1.10"
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> 14d8fba57f745f07f497762db7c383d54b138828
+=======
+>>>>>>> 276b67b439beffcf9dde8dcdc3a7254d992d154e
 "@react-native-picker/picker@^1.9.4":
   version "1.9.4"
   resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.9.4.tgz#f4392b58eab320061c71f5c9ab6f74dc3501ec9e"
   integrity sha512-71sNPRZf/PeMKpLMuzKHLT4p4zRilWnfv61nko9HMZtjW0R0DNy2zLy6PYokTbtbUqhwCdeEIldQcjFSoNR8rg==
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 276b67b439beffcf9dde8dcdc3a7254d992d154e
 
 =======
->>>>>>> 4a3939d8ae285204b6ea661605cc936eb513e62c
 =======
 =======
 "@react-native-community/viewpager@^2.0.1":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@react-native-community/viewpager/-/viewpager-2.0.2.tgz#622b190294b1310c4825c98daeaee1c8443f7124"
   integrity sha512-CKVhIZdX/Cmb80muog8sKpi5vM8npwFp4tx4Dj1IvTBidZweuO22+VH2rDOj7E0LzdV9IYRJ4FGBwcPBD2qUrQ==
+<<<<<<< HEAD
 
 >>>>>>> 14d8fba57f745f07f497762db7c383d54b138828
+=======
+>>>>>>> 276b67b439beffcf9dde8dcdc3a7254d992d154e
 "@react-navigation/bottom-tabs@^5.11.2":
   version "5.11.2"
   resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-5.11.2.tgz#5b541612fcecdea2a5024a4028da35e4a727bde6"
@@ -1341,7 +1349,6 @@
     color "^3.1.3"
     react-native-iphone-x-helper "^1.3.0"
 
->>>>>>> master
 "@react-navigation/core@^5.14.4":
   version "5.14.4"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.14.4.tgz#f63a2cd214bddbd25e1181f9335c32dfc3b6460f"
@@ -1355,10 +1362,14 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 
 >>>>>>> 14d8fba57f745f07f497762db7c383d54b138828
+=======
+
+>>>>>>> 276b67b439beffcf9dde8dcdc3a7254d992d154e
 "@react-navigation/drawer@^5.11.4":
   version "5.11.4"
   resolved "https://registry.yarnpkg.com/@react-navigation/drawer/-/drawer-5.11.4.tgz#8cc4c6ccd2579e78ee1d84948e2eedb2aff9d891"
@@ -1368,10 +1379,16 @@
     react-native-iphone-x-helper "^1.3.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> master
 =======
 
 >>>>>>> 14d8fba57f745f07f497762db7c383d54b138828
+=======
+
+=======
+
+>>>>>>> 276b67b439beffcf9dde8dcdc3a7254d992d154e
 "@react-navigation/native@^5.8.10":
   version "5.8.10"
   resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.8.10.tgz#3fe806abff9efb085bcf595212803dd05a1347ca"
@@ -6285,6 +6302,7 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.8.1, react-is@^16.8.4:
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
 
+<<<<<<< HEAD
 react-native-app-intro-slider@^4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/react-native-app-intro-slider/-/react-native-app-intro-slider-4.0.4.tgz#fa5cda7057db62c448ac975ffd2ba0cff94cc8d8"
@@ -6292,6 +6310,8 @@ react-native-app-intro-slider@^4.0.4:
 
 
 
+=======
+>>>>>>> 276b67b439beffcf9dde8dcdc3a7254d992d154e
 react-native-datepicker@^1.7.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/react-native-datepicker/-/react-native-datepicker-1.7.2.tgz#58d0822591a0ac9b32aba082650222a0ee29669d"
@@ -6320,6 +6340,10 @@ react-native-easy-grid@0.2.2:
   dependencies:
     lodash "^4.17.15"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 276b67b439beffcf9dde8dcdc3a7254d992d154e
 react-native-emoji-board@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-native-emoji-board/-/react-native-emoji-board-1.2.1.tgz#4302c874c6e7f80b80e6698ad6d642c48e8c1aaf"
@@ -6401,12 +6425,18 @@ react-native-screens@~2.10.1:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-native-vector-icons@^7.0.0:
 =======
 react-native-vector-icons@^7.0.0, react-native-vector-icons@^7.1.0:
 >>>>>>> master
 =======
 react-native-vector-icons@^7.0.0:
+=======
+react-native-vector-icons@^7.0.0:
+react-native-vector-icons@^7.0.0, react-native-vector-icons@^7.1.0:
+
+>>>>>>> 276b67b439beffcf9dde8dcdc3a7254d992d154e
 react-native-scrollable-tab-view@^0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/react-native-scrollable-tab-view/-/react-native-scrollable-tab-view-0.8.0.tgz#5cb1fcfce07bf530a3c81ab51fc5071144edac5c"
@@ -6437,7 +6467,10 @@ react-native-swiper@^1.6.0:
 
 react-native-vector-icons@^7.0.0, react-native-vector-icons@^7.1.0:
 
+<<<<<<< HEAD
 >>>>>>> 14d8fba57f745f07f497762db7c383d54b138828
+=======
+>>>>>>> 276b67b439beffcf9dde8dcdc3a7254d992d154e
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-7.1.0.tgz#145487d617b2a81d395d2cf64e6e065fcab3a454"
   integrity sha512-V2a1zJ4i+kS8O4j183gIwX14St9AxxXabxwYpFBgRhvr2NDXyFcjHDEAgrOYYlt2W57e20aN1tBDU/I+wn9WtQ==

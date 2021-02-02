@@ -6,6 +6,7 @@ import StoryScreen from './src/components/mainComponents/story/StoryScreen'
 
 const App = () => {
   return (
+
     <SafeAreaView>
       <View>
       <StoryScreen />
@@ -16,11 +17,10 @@ const App = () => {
  }
 
 
-const Styles = StyleSheet.create({
-   flex: 1
 
 
-})
+
+
 
 
 
@@ -37,6 +37,7 @@ const Styles = StyleSheet.create({
      
    },
 })
+
 
 
 

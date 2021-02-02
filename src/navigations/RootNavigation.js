@@ -1,14 +1,12 @@
-<<<<<<< HEAD
 // import * as React from 'react'
 // import { View, Text } from 'react-native'
 // import {  DefaultTheme } from '@react-navigation/native'
 // import { createStackNavigator } from '@react-navigation/stack'
-=======
+
 import * as React from 'react'
 // import { View, Text } from 'react-native'
 import Search from '../components/mainComponents/routePlaceholders/Search'
 import { createStackNavigator } from '@react-navigation/stack'
->>>>>>> 14d8fba57f745f07f497762db7c383d54b138828
 
 // // TODOS
 // // On load, show animation screen and pass data as props {gotten from react context api via firebase}
@@ -16,7 +14,6 @@ import { createStackNavigator } from '@react-navigation/stack'
 // // Wrap navigation with context, pass user data via the context
 // // Get user data from firebase
 
-<<<<<<< HEAD
 // // function HomeScreen() {
 // //   return (
 // //     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -36,7 +33,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 // }
 
 // export default App
-=======
+
 const Stack = createStackNavigator()
 
 export default function RootNavigation() {
@@ -50,6 +47,3 @@ export default function RootNavigation() {
 
 // Docs to setup theme [https://reactnavigation.org/docs/themes]
 // App
-
-
->>>>>>> 14d8fba57f745f07f497762db7c383d54b138828
