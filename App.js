@@ -1,7 +1,8 @@
 import React from 'react'
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
-import ChatScreen from './src/components/mainComponents/chatScreen/ChatScreen'
-import SideNav from './src/components/mainComponents/sideNav/SideNav'
+import NewMessageList from './src/components/mainComponents/NewMessageList/NewMessageList'
+
+
 
 
 
@@ -9,7 +10,7 @@ const App = () => {
 
   return (
     <SafeAreaView >
-      <ChatScreen />
+        <NewMessageList />
     </SafeAreaView>
   )
 
@@ -26,6 +27,7 @@ const Styles = StyleSheet.create({
      
    },
 })
+
 
 
 export default App
