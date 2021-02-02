@@ -351,6 +351,7 @@ const styles = StyleSheet.create({
     width: 343,
     borderRadius: 3,
     backgroundColor: '#3B5998'
+    
   },
   inputText: {
     justifyContent: 'center',
