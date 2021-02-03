@@ -13,8 +13,8 @@ export const authReducer = (state = initialState, action) => {
     case AUTH_REQUEST:
       return { ...state, loading: true }
     case AUTH_SUCCESS:
-      return { ...state, user: action.user, loading: false }
+      return { ...state, user: action.payload, loading: false }
     case AUTH_ERROR:
-      return { ...state, user: null, loading: false, error: action.error }
+      return { ...state, user: null, loading: false, error: action.payload }
   }
 }

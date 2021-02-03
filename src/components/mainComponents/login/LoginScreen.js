@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native'
+import PropTypes from 'prop-types'
+import { Text, View, TouchableOpacity, StyleSheet, Image, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign'
 import Login from '../../../../src/images/login.png'
 import facebook from '../../../images/Facebook.png'
 import googleLogo from '../../../images/Google.png'
 import Header from '../../subComponents/Header'
+import { connect } from 'react-redux'
+import { setStack } from '../../../store/actions'
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -199,7 +202,10 @@ class LoginScreen extends Component {
             >
               Don’t have an account?
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              style={{ justifyContent: 'center' }}
+              onPress={() => this.props.setStack('signupStack')}
+            >
               <Text
                 style={{
                   fontWeight: '600',
@@ -355,5 +361,14 @@ const styles = StyleSheet.create({
     marginLeft: 30
   }
 })
+const mapDispatchtoProps = dispatch => {
+  return {
+    setStack: stack => dispatch(setStack(stack))
+  }
+}
 
-export default LoginScreen
+LoginScreen.propTypes = {
+  setStack: PropTypes.func
+}
+
+export default connect(null, mapDispatchtoProps)(LoginScreen)
