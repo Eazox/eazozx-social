@@ -1,6 +1,8 @@
 // import liraries
 import React, { useState } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import { useDispatch } from 'react-redux'
+import { setStack, signup } from '../../../store/actions'
 import {
   Container,
   Header,
@@ -28,6 +30,7 @@ import { GLOBALSTYLES } from '../../../Constants'
 
 // create a component
 const Signup = () => {
+  const dispatch = useDispatch()
   // state to display errors in form
   const [showErrors, setShowErrors] = useState(false)
 
@@ -47,7 +50,7 @@ const Signup = () => {
           if (data.data.number.isValid.valid) {
             if (data.data.password.isValid.valid) {
               if (data.data.agreedCheckbox.isValid.valid) {
-                console.log('success')
+                dispatch(signup(data.data.email.value, data.data.password.value))
               } else {
                 setShowErrors(true)
               }
@@ -239,7 +242,13 @@ const Signup = () => {
             </CustomText>
           </Button>
           <CustomText style={[GLOBALSTYLES.mt15, GLOBALSTYLES.textCentered]}>
-            Already have an account? <CustomText style={GLOBALSTYLES.blueColor}>Log in</CustomText>
+            Already have an account?{' '}
+            <TouchableOpacity
+              style={{ justifyContent: 'center' }}
+              onPress={() => dispatch(setStack('loginStack'))}
+            >
+              <CustomText style={GLOBALSTYLES.blueColor}>Log in</CustomText>
+            </TouchableOpacity>
           </CustomText>
         </Form>
       </Content>
