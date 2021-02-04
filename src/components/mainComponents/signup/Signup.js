@@ -50,7 +50,16 @@ const Signup = () => {
           if (data.data.number.isValid.valid) {
             if (data.data.password.isValid.valid) {
               if (data.data.agreedCheckbox.isValid.valid) {
-                dispatch(signup(data.data.email.value, data.data.password.value))
+                dispatch(
+                  signup(
+                    data.data.email.value,
+                    data.data.password.value,
+                    data.data.username.value,
+                    data.data.fullname.value,
+                    data.data.gender.value,
+                    data.data.number.value
+                  )
+                )
               } else {
                 setShowErrors(true)
               }
@@ -130,8 +139,8 @@ const Signup = () => {
                 onValueChange={e => updateInput('gender', e)}
                 style={[styles.genderPicker, GLOBALSTYLES.fontS14, GLOBALSTYLES.fontw4]}
               >
-                <Picker.Item label='Female' value='key0' />
-                <Picker.Item label='Male' value='key1' />
+                <Picker.Item label='Female' value='female' />
+                <Picker.Item label='Male' value='male' />
               </Picker>
             </View>
           </Item>
@@ -241,15 +250,18 @@ const Signup = () => {
               Create Account
             </CustomText>
           </Button>
-          <CustomText style={[GLOBALSTYLES.mt15, GLOBALSTYLES.textCentered]}>
-            Already have an account?{' '}
+          <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+            <CustomText style={[GLOBALSTYLES.mt15, GLOBALSTYLES.textCentered]}>
+              Already have an account?
+            </CustomText>
+
             <TouchableOpacity
-              style={{ justifyContent: 'center' }}
+              style={{ marginTop: 10, marginLeft: 4 }}
               onPress={() => dispatch(setStack('loginStack'))}
             >
-              <CustomText style={GLOBALSTYLES.blueColor}>Log in</CustomText>
+              <CustomText style={[GLOBALSTYLES.blueColor, { marginTop: 5 }]}>Log in</CustomText>
             </TouchableOpacity>
-          </CustomText>
+          </View>
         </Form>
       </Content>
     </Container>

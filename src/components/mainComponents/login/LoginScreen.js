@@ -7,7 +7,7 @@ import facebook from '../../../images/Facebook.png'
 import googleLogo from '../../../images/Google.png'
 import Header from '../../subComponents/Header'
 import { connect } from 'react-redux'
-import { setStack } from '../../../store/actions'
+import { setStack, login } from '../../../store/actions'
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -106,7 +106,7 @@ class LoginScreen extends Component {
           <TouchableOpacity
             style={styles.buttonContainer}
             onPress={() => {
-              this.Submit()
+              this.props.login(this.state.email, this.state.password)
             }}
           >
             <Text style={styles.buttonContent}>Log In</Text>
@@ -363,12 +363,14 @@ const styles = StyleSheet.create({
 })
 const mapDispatchtoProps = dispatch => {
   return {
-    setStack: stack => dispatch(setStack(stack))
+    setStack: stack => dispatch(setStack(stack)),
+    login: (email, password) => dispatch(login(email, password))
   }
 }
 
 LoginScreen.propTypes = {
-  setStack: PropTypes.func
+  setStack: PropTypes.func,
+  login: PropTypes.func
 }
 
 export default connect(null, mapDispatchtoProps)(LoginScreen)

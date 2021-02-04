@@ -1,25 +1,28 @@
 /* eslint-disable generator-star-spacing */
-import axios from 'axios'
 import { takeLatest, call, put } from 'redux-saga/effects'
-import { AUTH_REQUEST, SET_STACK } from '../actions/actionTypes'
+import { Auth } from '../../firebase'
+import { setStack } from '../actions/setStackAction'
+import { authRequest, authSuccess, authError } from '../actions/authAction'
+import { LOGIN } from '../actions/actionTypes'
 
 // not calling the sagas
-function* workLoginSaga() {
+function* workLoginSaga(action) {
+  yield put(authRequest())
   try {
-    const a = yield call(asyncFunc)
-    yield put({ type: SET_STACK, payload: a.data.title })
+    const loginRes = yield call(asyncLogin, action.email, action.password)
+    console.log(loginRes)
+    yield put(authSuccess(loginRes.user))
+    yield put(setStack('appStack'))
   } catch (err) {
-    // console.log(err)
-    yield put({ type: SET_STACK, payload: '2' })
+    console.log(err)
+    yield put(authError(err))
   }
 }
-function asyncFunc() {
-  return axios({
-    method: 'get',
-    url: 'https://jsonplaceholder.typicode.com/todos/2'
-  })
+
+function asyncLogin(email, password) {
+  return Auth.signInWithEmailAndPassword(email, password)
 }
 
 export function* watchLoginSaga() {
-  yield takeLatest(AUTH_REQUEST, workLoginSaga)
+  yield takeLatest(LOGIN, workLoginSaga)
 }

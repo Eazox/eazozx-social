@@ -5,3 +5,4 @@ export const AUTH_REQUEST = 'AUTH_REQUEST'
 export const AUTH_ERROR = 'AUTH_ERROR'
 
 export const SIGNUP = 'SIGNUP'
+export const LOGIN = 'LOGIN'

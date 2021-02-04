@@ -75,7 +75,7 @@ const useFormValidation = () => {
       },
       gender: {
         isValid: { valid: true, error: '' },
-        value: 'key0',
+        value: 'male',
         validator: val => {
           return { valid: true, error: '' }
         }
