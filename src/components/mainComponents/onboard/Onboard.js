@@ -224,6 +224,7 @@ export default class Onboard extends Component {
                             lineHeight: 21.82,
                             color: "#578DDE"
                         }}>A wonderful experience awaits you!!</Text>
+                        
                         <Text
                             style={{
                                 fontSize: 18,

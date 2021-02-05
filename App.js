@@ -1,6 +1,6 @@
 import React from 'react'
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
-import NewMessageList from './src/components/mainComponents/NewMessageList/NewMessageList'
+import MainScreen from './src/components/MainScreen/MainSearch'
 
 
 
@@ -10,7 +10,7 @@ const App = () => {
 
   return (
     <SafeAreaView >
-        <NewMessageList />
+        <MainScreen />
     </SafeAreaView>
   )
 
