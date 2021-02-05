@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native'
+import PropTypes from 'prop-types'
+import { Text, View, TouchableOpacity, StyleSheet, Image, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign'
 import Login from '../../../../src/images/login.png'
 import facebook from '../../../images/Facebook.png'
 import googleLogo from '../../../images/Google.png'
 import Header from '../../subComponents/Header'
+import { connect } from 'react-redux'
+import { setStack, login } from '../../../store/actions'
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -19,13 +22,11 @@ class LoginScreen extends Component {
   }
 
   // Show icon toggle
-   showIcon =() => {
+  showIcon = () => {
     this.setState({
-      showIconEye : !this.state.showIconEye
+      showIconEye: !this.state.showIconEye
     })
   }
-  
-
 
   emailValidator() {
     if (this.state.email === '') {
@@ -103,8 +104,8 @@ class LoginScreen extends Component {
               onChangeText={password => {
                 this.setState({ password: password })
               }}
-            /> 
-             <Icon name='eye' size={20} style={{ right: 35 }} color='#BDBDBD' /> 
+            />
+            <Icon name='eye' size={20} style={{ right: 35 }} color='#BDBDBD' />
           </View>
           <Text style={{ color: 'red', marginLeft: 20, fontSize: 10 }}>
             {this.state.passwordError}
@@ -113,7 +114,7 @@ class LoginScreen extends Component {
           <TouchableOpacity
             style={styles.buttonContainer}
             onPress={() => {
-              this.Submit()
+              this.props.login(this.state.email, this.state.password)
             }}
           >
             <Text style={styles.buttonContent}>Log In</Text>
@@ -209,7 +210,10 @@ class LoginScreen extends Component {
             >
               Don’t have an account?
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              style={{ justifyContent: 'center' }}
+              onPress={() => this.props.setStack('signupStack')}
+            >
               <Text
                 style={{
                   fontWeight: '600',
@@ -365,5 +369,16 @@ const styles = StyleSheet.create({
     marginLeft: 30
   }
 })
+const mapDispatchtoProps = dispatch => {
+  return {
+    setStack: stack => dispatch(setStack(stack)),
+    login: (email, password) => dispatch(login(email, password))
+  }
+}
 
-export default LoginScreen
+LoginScreen.propTypes = {
+  setStack: PropTypes.func,
+  login: PropTypes.func
+}
+
+export default connect(null, mapDispatchtoProps)(LoginScreen)

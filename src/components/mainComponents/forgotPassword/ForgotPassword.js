@@ -42,8 +42,8 @@ const ForgotPassword = () => {
                 <Text syle={{
                     fontWeight: "400",
                     fontStyle: "normal",
-                     fontSize: 16,
-                     textAlign:"center",
+                    fontSize: 16,
+                    textAlign: "center",
                     lineHeight: 22.4,
                 }}>Please enter your email address to reset password </Text>
             </View>
@@ -61,7 +61,7 @@ const ForgotPassword = () => {
                 {
                     height: Platform.OS == 'android' ? 40 : 20, width: 343, borderColor: "#FAFAFA",
                     backgroundColor: "#FAFAFA", borderRadius: 5, paddingLeft: 16
-                }]}  />
+                }]} />
             </View>
 
             <View style={styles.forgetButtonContainer}>
