@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
-import { Image, StyleSheet, Text, View, StatusBar, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
-
-
+import React, { Component } from 'react'
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+  Dimensions,
+  TouchableOpacity,
+  ScrollView
+} from 'react-native'
 import firstScreen from '../../../images/screen1.png'
 import secondScreen from '../../../images/screen2.png'
 import thirdScreen from '../../../images/screen3.png'
-import onboard from "../../../images/onboard1.jpeg"
-
+import onboard from '../../../images/onboard1.jpeg'
 
 export default class Onboard extends Component {
-
     render() {
         return (
 
@@ -298,5 +303,83 @@ export default class Onboard extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
+  container: {},
+  ContentOne: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  ContainerOne: {
+    marginTop: 50,
+    backgroundColor: '#FFCFC8',
+    alignItems: 'center',
+    right: 7,
+    justifyContent: 'center',
+    borderRadius: 20,
+    height: 590,
+    width: 343
+  },
+  ContainerTwo: {
+    marginTop: 20,
+    backgroundColor: '#AECFFF',
+    alignItems: 'center',
+    marginLeft: 34,
+    marginRight: 10,
+    justifyContent: 'center',
+    borderRadius: 20,
+    height: 590,
+    width: 343
+  },
+  ContainerThree: {
+    marginTop: 50,
+    backgroundColor: '#BFF3CE',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 30,
+    marginRight: 20,
+    borderRadius: 20,
+    height: 590,
+    width: 343
+  },
+  containeOneDot: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 500,
+    justifyContent: 'space-around'
+  },
 
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#578DDE',
+    padding: 10,
+    left: '64%',
+    marginTop: 20,
+    width: 117,
+    height: 46,
+    borderRadius: 40
+  },
+  nextOne: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  nextTwo: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+
+  containeOnethree: {
+    flex: 1,
+    top: 5,
+    flexDirection: 'row',
+    marginTop: 500,
+    justifyContent: 'space-around'
+  },
+  onboardContainer: {
+    marginLeft: 1
+  },
+  onboardScreen: {
+    width: Dimensions.get('window').width,
+    height: 500
+  }
+})
