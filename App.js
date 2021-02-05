@@ -30,4 +30,5 @@ const Styles = StyleSheet.create({
 
 
 
+// registerRootComponent(App)
 export default App
