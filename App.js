@@ -1,20 +1,16 @@
 import React from 'react'
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
-import tailwind from 'tailwind-rn'
-import Sample from './src/Sample'
-import { Ionicons } from '@expo/vector-icons'
-import { useFonts } from 'expo-font'
-import { AppLoading } from 'expo'
-import ProfileSetUp from "./src/Screens/ProfileSetupScreen"
+import ProfileSetup from "./src/components/mainComponents/profileSet/ProfileSetup"
+
+
+
 
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <View>
-      <ProfileSetUp />
-    </View>
-  </SafeAreaView>
+    <View>
+      <ProfileSetup />
+  </View>
   );
 
  }
@@ -27,4 +23,3 @@ const Styles = StyleSheet.create({
 
 
 export default App
-
