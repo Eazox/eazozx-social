@@ -27,9 +27,9 @@ const Messages = ({ navigation }) => {
           </CustomText>
         </Left>
         <Right>
-          <View style={styles.bellContainer}>
-            <Image source={BellImage} style={styles.bellImage} />
-            <View style={styles.dot} />
+          <View style={GLOBALSTYLES.bellContainer}>
+            <Image source={BellImage} style={GLOBALSTYLES.bellImage} />
+            <View style={GLOBALSTYLES.dot} />
           </View>
         </Right>
       </Header>

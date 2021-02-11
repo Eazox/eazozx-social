@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { TouchableOpacity, Keyboard, StyleSheet } from 'react-native'
 import { Item, Icon } from 'native-base'
-import EmojiBoard from 'react-native-emoji-board'
+// import EmojiBoard from 'react-native-emoji-board'
 
 import { CustomGrowInput } from '../../subComponents/CustomFontComponents'
 
@@ -52,12 +52,12 @@ const KeyboardComponent = () => {
             style={styles.iconSend}
           />
         </TouchableOpacity>
-        <EmojiBoard
+        {/* <EmojiBoard
           style={{ marginLeft: 0 }}
           showBoard={showBoard}
           onClick={e => onChangeText(text + `${e.code}`)}
           onRemove={() => setShowBoard(false)}
-        />
+        /> */}
       </Item>
       {/* issue lies with onclick here, how to handle inputs if user places cursor somewhere else and
       adds an emoji */}

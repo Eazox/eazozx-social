@@ -1,7 +1,11 @@
 // import liraries
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { View, StyleSheet, Animated, Easing, Image } from 'react-native'
-import Logo from '../../images/Eazox-logo.png'
+import Logo from '../../../images/Eazox-logo.png'
+import { setStack, authSuccess } from '../../../store/actions'
+import { connect } from 'react-redux'
+import { Auth } from '../../../firebase'
 
 // create a component
 class SplashScreen extends Component {
@@ -13,12 +17,21 @@ class SplashScreen extends Component {
       duration: 1500,
       easing: Easing.linear,
       useNativeDriver: true
-    }).start()
+    }).start(() => {
+      Auth.onAuthStateChanged(userLog => {
+        if (userLog) {
+          this.props.authSuccess(userLog)
+          this.props.setStack('appStack')
+        } else {
+          this.props.setStack('loginStack')
+        }
+      })
+    })
   }
 
   render() {
     return (
-      <>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Image source={Logo} />
         <View style={styles.loadingContainer}>
           <Animated.View
@@ -34,7 +47,7 @@ class SplashScreen extends Component {
             ]}
           />
         </View>
-      </>
+      </View>
     )
   }
 }
@@ -62,5 +75,24 @@ const styles = StyleSheet.create({
   }
 })
 
+const mapDispatchtoProps = dispatch => {
+  return {
+    setStack: stack => dispatch(setStack(stack)),
+    authSuccess: payload => dispatch(authSuccess(payload))
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    user: state.authReducer
+  }
+}
+
+SplashScreen.propTypes = {
+  setStack: PropTypes.func,
+  authSuccess: PropTypes.func
+}
+
 // make this component available to the app
-export default SplashScreen
+export default connect(mapStateToProps, mapDispatchtoProps)(SplashScreen)
+// export default SplashScreen
