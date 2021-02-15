@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Image, Alert, View } from 'react-native'
-import { CustomText } from '../../subComponents/CustomFontComponents'
+import { CustomText, CustomBuyNow } from '../../subComponents/CustomFontComponents'
 import { Card, CardItem, Left, Thumbnail, Body, Button, Right, Icon } from 'native-base'
 import PostButton from './PostButton'
 import PostButtonImg from './PostButtonImg'
@@ -106,23 +106,7 @@ export default function CardComponent({
       {activityPage && (
         <CardItem style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <CustomText style={{ fontSize: 20 }}>$410</CustomText>
-          <Button
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              borderRadius: 25,
-              elevation: 0,
-              paddingHorizontal: 10,
-              backgroundColor: '#578dde'
-            }}
-          >
-            <CustomText>Buy Now</CustomText>
-            <Icon
-              type='FontAwesome'
-              name='shopping-bag'
-              style={{ fontSize: 18, color: 'white', marginLeft: 10 }}
-            />
-          </Button>
+          <CustomBuyNow />
         </CardItem>
       )}
       <CardItem

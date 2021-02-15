@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import SplashScreen from '../components/mainComponents/splashscreen'
 import SignupStack from './SignupStack'
 import LoginStack from './LoginStack'
-import AppStack from './DrawerNavigation'
+import AppStack from './tabNavigation'
 import { useSelector } from 'react-redux'
 
 const { Navigator, Screen } = createStackNavigator()

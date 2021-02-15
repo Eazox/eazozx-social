@@ -105,6 +105,32 @@ export const CustomVerifyInput = props => {
     </View>
   )
 }
+
+export const CustomBuyNow = props => {
+  return (
+    <Button
+      style={[
+        {
+          flexDirection: 'row',
+          justifyContent: 'center',
+          borderRadius: 25,
+          elevation: 0,
+          paddingHorizontal: 10,
+          backgroundColor: '#578dde'
+        },
+        props.style
+      ]}
+    >
+      <CustomText style={props.textStyle}>Buy Now</CustomText>
+      <Icon
+        type='FontAwesome'
+        name='shopping-bag'
+        style={[{ fontSize: 18, color: 'white', marginLeft: 10 }, props.iconStyle]}
+      />
+    </Button>
+  )
+}
+
 export const CustomGrowInput = props => {
   return <GrowInput {...props} style={[styles.font, props.style]} />
 }
@@ -151,6 +177,12 @@ CustomError.propTypes = {
 
 CustomInput.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+CustomBuyNow.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  iconStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 }
 
 CustomGrowInput.propTypes = {

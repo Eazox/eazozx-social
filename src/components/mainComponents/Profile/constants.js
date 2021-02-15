@@ -28,3 +28,30 @@ export const cardsArray = [
     activityPage: true
   }
 ]
+
+export const catalogueArray = [
+  {
+    key: '0',
+    name: 'Female Leather Bag',
+    price: '$300',
+    image: ONLINEIMAGES.bag
+  },
+  {
+    key: '1',
+    name: 'Female Leather Bag',
+    price: '$300',
+    image: ONLINEIMAGES.bag
+  },
+  {
+    key: '2',
+    name: 'Female Leather Bag',
+    price: '$300',
+    image: ONLINEIMAGES.bag
+  },
+  {
+    key: '3',
+    name: 'Female Leather Bag',
+    price: '$300',
+    image: ONLINEIMAGES.bag
+  }
+]
