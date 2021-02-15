@@ -71,6 +71,61 @@ const ForgotPassword = () => {
           >
             Email Address
           </Text>
+
+          <TextInput
+            style={[
+              styles.input,
+              {
+                height: Platform.OS === 'android' ? 40 : 20,
+                width: 343,
+                borderColor: '#FAFAFA',
+                backgroundColor: '#FAFAFA',
+                borderRadius: 5,
+                paddingLeft: 16
+              }
+            ]}
+          />
+        </View>
+
+        <View style={styles.ForgotPasswordText}>
+          <Text
+            style={{
+              fontWeight: '500',
+              fontSize: 24,
+              color: '#261D80',
+              lineHeight: 29.11,
+              bottom: 5,
+              fontStyle: 'normal'
+            }}
+          >
+            Forgot Password?
+          </Text>
+          <Text
+            syle={{
+              fontWeight: '400',
+              fontStyle: 'normal',
+              fontSize: 16,
+              textAlign: 'center',
+              lineHeight: 22.4
+            }}
+          >
+            Please enter your email address to reset password{' '}
+          </Text>
+        </View>
+
+        <View style={styles.forgetInputContainer}>
+          <Text
+            style={{
+              fontWeight: '400',
+              fontStyle: 'normal',
+              fontSize: 16,
+              lineHeight: 19.2,
+              color: '#15243C',
+              bottom: 8
+            }}
+          >
+            Email Address
+          </Text>
           <TextInput
             style={[
               styles.input,
