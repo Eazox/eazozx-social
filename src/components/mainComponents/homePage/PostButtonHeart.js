@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Button, Icon } from 'native-base'
 import { CustomText } from '../../subComponents/CustomFontComponents'
 
-export default function PostButton({ prop, name, type, onPress, right }) {
+export default function PostButton({ prop, name, type, onPress }) {
   const [pressed, setPressed] = useState(false)
   const pressHandler = () => {
     onPress()
@@ -12,19 +12,16 @@ export default function PostButton({ prop, name, type, onPress, right }) {
   return (
     <Button transparent onPress={pressHandler}>
       <Icon
-        name={name}
+        name={pressed ? name : 'hearto'}
         type={type}
         style={[
           { marginRight: -8, marginLeft: 0, fontSize: 22 },
-          pressed ? { color: '#578dde' } : { color: '#9b9b9b' }
+          pressed ? { color: '#eb5757' } : { color: '#9b9b9b' }
         ]}
       />
       {prop && (
         <CustomText
-          style={[
-            pressed ? { color: '#578dde' } : { color: '#9b9b9b' },
-            right ? { marginRight: -16 } : {}
-          ]}
+          style={[pressed ? { color: '#eb5757' } : { color: '#9b9b9b' }, { fontSize: 14 }]}
         >
           {prop}
         </CustomText>
@@ -37,6 +34,5 @@ PostButton.propTypes = {
   prop: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string,
-  right: PropTypes.bool,
   onPress: PropTypes.func
 }
