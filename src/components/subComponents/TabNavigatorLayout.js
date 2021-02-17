@@ -17,7 +17,7 @@ function TabNavigator({ children }) {
         tabBarIcon: ({ color }) => {
           let iconName
 
-          if (route.name === 'HomeStack') {
+          if (route.name === 'HomePage') {
             iconName = 'home'
             return (
               <Icon

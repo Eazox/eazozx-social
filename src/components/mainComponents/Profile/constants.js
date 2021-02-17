@@ -8,7 +8,7 @@ export const cardsArray = [
     time: '2 hours ago',
     caption: "The new Fenti drip looks dope y'all",
     profilePic: ONLINEIMAGES.profileImage,
-    image: ONLINEIMAGES.chinos,
+    image: null,
     price: 9900,
     comments: 24,
     drips: 13,

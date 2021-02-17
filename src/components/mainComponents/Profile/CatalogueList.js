@@ -19,6 +19,7 @@ export default function CardList({ grid }) {
           data={catalogueArray}
           renderItem={({ item }) => <CatalogueItem grid={grid} />}
           numColumns={2}
+          initialNumToRender={4}
           keyExtractor={item => `${item.key}_#`}
         />
       ) : (
@@ -27,6 +28,7 @@ export default function CardList({ grid }) {
           data={catalogueArray}
           renderItem={({ item }) => <CatalogueItem grid={grid} />}
           numColumns={1}
+          initialNumToRender={4}
           keyExtractor={item => `${item.key}_*`}
         />
       )}

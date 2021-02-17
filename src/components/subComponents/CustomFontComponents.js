@@ -47,7 +47,9 @@ export const VerifiedSeller = ({ style }) => {
           borderRadius: 30,
           backgroundColor: '#cff7e5',
           elevation: 0,
-          marginLeft: 17
+          marginLeft: 17,
+
+          height: 25
           // width: 125,
         },
         { ...style }
@@ -59,6 +61,40 @@ export const VerifiedSeller = ({ style }) => {
         name='checkcircleo'
         style={{ color: '#06a45b', fontSize: 18, marginLeft: -8 }}
       />
+    </Button>
+  )
+}
+
+export const VerifiedSellerGold = ({ style, verified, reviews }) => {
+  return (
+    <Button
+      small
+      style={[
+        {
+          flexDirection: 'row',
+          justifyContent: 'center',
+          borderRadius: 30,
+          backgroundColor: '#fff5de',
+          elevation: 0,
+          marginLeft: 12,
+          height: 25
+          // width: 125,
+        },
+        { ...style }
+      ]}
+    >
+      <CustomText style={{ color: '#E9B121', fontSize: 12, marginLeft: -5 }}>
+        {reviews > 1
+          ? `${reviews.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} reviews`
+          : `${reviews} review`}
+      </CustomText>
+      {verified && (
+        <Icon
+          type='MaterialIcons'
+          name='stars'
+          style={{ color: '#E9B121', fontSize: 18, marginLeft: -8, marginRight: 12 }}
+        />
+      )}
     </Button>
   )
 }
@@ -196,6 +232,12 @@ CustomSearchInput.propTypes = {
 
 VerifiedSeller.propTypes = {
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+}
+
+VerifiedSellerGold.propTypes = {
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  verified: PropTypes.bool,
+  reviews: PropTypes.number
 }
 
 CustomPassword.propTypes = {

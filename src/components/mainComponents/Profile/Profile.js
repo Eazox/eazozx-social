@@ -1,5 +1,6 @@
 // import liraries
 import React from 'react'
+import PropTypes from 'prop-types'
 import { View, Image } from 'react-native'
 import {
   Container,
@@ -13,14 +14,14 @@ import {
   Tabs,
   Tab
 } from 'native-base'
-import { CustomText, VerifiedSeller } from '../../subComponents/CustomFontComponents'
+import { CustomText, VerifiedSellerGold } from '../../subComponents/CustomFontComponents'
 import { ONLINEIMAGES } from '../../../Constants'
 import coverImage from '../../../images/coverImage.png'
 import CardList from './CardList'
 import Catalogue from './Catalogue'
 
 // create a component
-const Profile = () => {
+const Profile = ({ personal }) => {
   return (
     <Container>
       <Content>
@@ -79,7 +80,6 @@ const Profile = () => {
             />
           </Body>
         </Header>
-
         <View style={{ paddingHorizontal: 12, paddingVertical: 12 }}>
           <View
             style={{
@@ -89,7 +89,11 @@ const Profile = () => {
               // height: 45
             }}
           >
-            <VerifiedSeller style={{ fontSize: 12, alignSelf: 'center' }} />
+            <VerifiedSellerGold
+              reviews={1206}
+              verified
+              style={{ fontSize: 12, alignSelf: 'center' }}
+            />
             <Button
               bordered
               style={{
@@ -100,14 +104,23 @@ const Profile = () => {
                 paddingVertical: 5,
                 borderRadius: 30,
                 elevation: 0,
-                height: 30,
+                height: 25,
                 alignSelf: 'center'
               }}
             >
-              <CustomText style={{ fontSize: 12 }}>Edit Profile</CustomText>
+              <CustomText style={{ fontSize: 12, marginLeft: -5, marginRight: -5 }}>
+                {personal ? 'Edit Profile' : 'Send Message'}
+              </CustomText>
             </Button>
           </View>
-          <CustomText>Mary Nathan</CustomText>
+          <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+            <CustomText style={{ marginTop: 8, fontSize: 14 }}>Mary Nathan</CustomText>
+            <Icon
+              name='check-circle'
+              type='MaterialIcons'
+              style={{ fontSize: 16, marginLeft: 3, color: '#578dde' }}
+            />
+          </View>
           <CustomText note style={{ fontSize: 12, marginTop: 4 }}>
             @MaryNathan
           </CustomText>
@@ -135,6 +148,7 @@ const Profile = () => {
             I dont sell quality and affordable stuff.. dont buy from me
           </CustomText>
         </View>
+
         <Tabs
           tabBarUnderlineStyle={{ height: 0 }}
           tabContainerStyle={{
@@ -153,7 +167,7 @@ const Profile = () => {
               borderTopLeftRadius: 40,
               borderBottomLeftRadius: 40
             }}
-            activeTextStyle={{ color: '#034cbc' }}
+            activeTextStyle={{ color: '#034cbc', fontFamily: 'Gilroy' }}
             tabStyle={{
               backgroundColor: 'white',
               borderWidth: 1,
@@ -161,47 +175,59 @@ const Profile = () => {
               borderTopLeftRadius: 40,
               borderBottomLeftRadius: 40
             }}
-            textStyle={{ color: '#034cbc' }}
+            textStyle={{ color: 'black', fontFamily: 'Gilroy' }}
           >
             <CardList viewImage={false} />
           </Tab>
           <Tab
             heading='Shared'
-            activeTabStyle={{ backgroundColor: '#d5e6fb' }}
-            activeTextStyle={{ color: '#034cbc' }}
-            tabStyle={{
-              backgroundColor: 'white',
-              borderWidth: 1,
-              borderColor: '#d5e6fb'
-            }}
-            textStyle={{ color: '#034cbc' }}
+            activeTabStyle={[
+              { backgroundColor: '#d5e6fb' },
+              personal && { borderTopRightRadius: 40, borderBottomRightRadius: 40 }
+            ]}
+            activeTextStyle={{ color: '#034cbc', fontFamily: 'Gilroy' }}
+            tabStyle={[
+              {
+                backgroundColor: 'white',
+                borderWidth: 1,
+                borderColor: '#d5e6fb'
+              },
+              personal && { borderTopRightRadius: 40, borderBottomRightRadius: 40 }
+            ]}
+            textStyle={{ color: 'black', fontFamily: 'Gilroy' }}
           >
             <CardList viewImage />
           </Tab>
-          <Tab
-            heading='Catalogue'
-            activeTabStyle={{
-              backgroundColor: '#d5e6fb',
+          {!personal && (
+            <Tab
+              heading='Catalogue'
+              activeTabStyle={{
+                backgroundColor: '#d5e6fb',
 
-              borderTopRightRadius: 40,
-              borderBottomRightRadius: 40
-            }}
-            activeTextStyle={{ color: '#034cbc' }}
-            tabStyle={{
-              backgroundColor: 'white',
-              borderWidth: 1,
-              borderColor: '#d5e6fb',
-              borderTopRightRadius: 40,
-              borderBottomRightRadius: 40
-            }}
-            textStyle={{ color: '#034cbc' }}
-          >
-            <Catalogue />
-          </Tab>
+                borderTopRightRadius: 40,
+                borderBottomRightRadius: 40
+              }}
+              activeTextStyle={{ color: '#034cbc', fontFamily: 'Gilroy' }}
+              tabStyle={{
+                backgroundColor: 'white',
+                borderWidth: 1,
+                borderColor: '#d5e6fb',
+                borderTopRightRadius: 40,
+                borderBottomRightRadius: 40
+              }}
+              textStyle={{ color: 'black', fontFamily: 'Gilroy' }}
+            >
+              <Catalogue />
+            </Tab>
+          )}
         </Tabs>
       </Content>
     </Container>
   )
+}
+
+Profile.propTypes = {
+  personal: PropTypes.bool
 }
 
 // make this component available to the app
