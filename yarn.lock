@@ -2388,7 +2388,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> develop
 <<<<<<< HEAD
 =======
 "@react-native-picker/picker@^1.9.4":
@@ -2398,16 +2401,22 @@
 >>>>>>> 14d8fba57f745f07f497762db7c383d54b138828
 =======
 >>>>>>> 44fa18f81a1cd97557bfa7ef0f08c107defd5f64
+<<<<<<< HEAD
+=======
 >>>>>>> origin/develop
+>>>>>>> develop
 "@react-native-community/viewpager@^2.0.1":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@react-native-community/viewpager/-/viewpager-2.0.2.tgz#622b190294b1310c4825c98daeaee1c8443f7124"
   integrity sha512-CKVhIZdX/Cmb80muog8sKpi5vM8npwFp4tx4Dj1IvTBidZweuO22+VH2rDOj7E0LzdV9IYRJ4FGBwcPBD2qUrQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
 >>>>>>> 44fa18f81a1cd97557bfa7ef0f08c107defd5f64
 =======
 <<<<<<< HEAD
+>>>>>>> develop
 "@react-native-community/viewpager@^4.2.2":
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@react-native-community/viewpager/-/viewpager-4.2.2.tgz#e05d618829c589284326896c806200af90ae0986"
@@ -2418,7 +2427,10 @@
   resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.9.4.tgz#f4392b58eab320061c71f5c9ab6f74dc3501ec9e"
   integrity sha512-71sNPRZf/PeMKpLMuzKHLT4p4zRilWnfv61nko9HMZtjW0R0DNy2zLy6PYokTbtbUqhwCdeEIldQcjFSoNR8rg==
 =======
+<<<<<<< HEAD
+=======
 >>>>>>> origin/develop
+>>>>>>> develop
 "@react-native-picker/picker@^1.9.4", "@react-native-picker/picker@^1.9.7":
   version "1.9.10"
   resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.9.10.tgz#c0d445453e91077cc85a3f0a6d0074d44d21e438"
@@ -8136,14 +8148,20 @@ react-native-screens@~2.10.1:
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> develop
 <<<<<<< HEAD
 =======
 react-native-vector-icons@^7.0.0:
 >>>>>>> 14d8fba57f745f07f497762db7c383d54b138828
 =======
 >>>>>>> 44fa18f81a1cd97557bfa7ef0f08c107defd5f64
+<<<<<<< HEAD
+=======
 >>>>>>> origin/develop
+>>>>>>> develop
 react-native-scrollable-tab-view@^0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/react-native-scrollable-tab-view/-/react-native-scrollable-tab-view-0.8.0.tgz#5cb1fcfce07bf530a3c81ab51fc5071144edac5c"

@@ -1,6 +1,6 @@
 import React from 'react'
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
-import ProfileSetup from "./src/components/mainComponents/profileSet/ProfileSetup"
+import MainScreen from './src/components/MainScreen/MainSearch'
 
 
 
@@ -8,10 +8,10 @@ import ProfileSetup from "./src/components/mainComponents/profileSet/ProfileSetu
 
 const App = () => {
   return (
-    <View>
-      <ProfileSetup />
-  </View>
-  );
+    <SafeAreaView >
+        <MainScreen />
+    </SafeAreaView>
+  )
 
  }
 
