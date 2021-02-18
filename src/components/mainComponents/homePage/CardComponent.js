@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Image, Alert, View } from 'react-native'
-import { CustomText } from '../../subComponents/CustomFontComponents'
+import { CustomText, CustomBuyNow } from '../../subComponents/CustomFontComponents'
 import { Card, CardItem, Left, Thumbnail, Body, Button, Right, Icon } from 'native-base'
 import PostButton from './PostButton'
-import PostButtonImg from './PostButtonImg'
+import PostButtonHeart from './PostButtonHeart'
 import { ONLINEIMAGES } from '../../../Constants'
 // import PostButtonBookmark from './PostButtonBookmark'
 
@@ -18,7 +18,6 @@ export default function CardComponent({
   price,
   comments,
   drips,
-  viewImage,
   activityPage
 }) {
   const commentButtonPress = () => {
@@ -42,10 +41,17 @@ export default function CardComponent({
     >
       <CardItem style={{ paddingBottom: 0 }}>
         <Left style={{ width: '75%' }}>
-          <Thumbnail source={{ uri: profilePic }} />
+          <Thumbnail
+            source={{ uri: profilePic }}
+            style={{
+              width: 35,
+              height: 35,
+              borderRadius: 17.5
+            }}
+          />
           <Body>
             <CustomText>{username}</CustomText>
-            <CustomText style={{ marginRight: 0, fontSize: 12 }} note>
+            <CustomText style={{ marginRight: 0, fontSize: 12, marginTop: 4 }} note>
               {email}
             </CustomText>
           </Body>
@@ -95,7 +101,7 @@ export default function CardComponent({
       <CardItem style={{ paddingBottom: 5 }}>
         <Body>
           <CustomText style={{ marginBottom: 15 }}>{caption}</CustomText>
-          {viewImage && (
+          {image && (
             <Image
               source={{ uri: image }}
               style={{ resizeMode: 'cover', width: '100%', height: 250 }}
@@ -106,23 +112,7 @@ export default function CardComponent({
       {activityPage && (
         <CardItem style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           <CustomText style={{ fontSize: 20 }}>$410</CustomText>
-          <Button
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              borderRadius: 25,
-              elevation: 0,
-              paddingHorizontal: 10,
-              backgroundColor: '#578dde'
-            }}
-          >
-            <CustomText>Buy Now</CustomText>
-            <Icon
-              type='FontAwesome'
-              name='shopping-bag'
-              style={{ fontSize: 18, color: 'white', marginLeft: 10 }}
-            />
-          </Button>
+          <CustomBuyNow />
         </CardItem>
       )}
       <CardItem
@@ -138,9 +128,9 @@ export default function CardComponent({
           <Thumbnail
             source={{ uri: ONLINEIMAGES.profileImage }}
             style={{
-              width: 30,
-              height: 30,
-              borderRadius: 15,
+              width: 25,
+              height: 25,
+              borderRadius: 12.5,
               borderWidth: 1,
               borderColor: 'white'
             }}
@@ -148,10 +138,10 @@ export default function CardComponent({
           <Thumbnail
             source={{ uri: ONLINEIMAGES.profileImage }}
             style={{
-              marginLeft: -15,
-              width: 30,
-              height: 30,
-              borderRadius: 15,
+              marginLeft: -10,
+              width: 25,
+              height: 25,
+              borderRadius: 12.5,
               borderWidth: 1,
 
               borderColor: 'white'
@@ -160,17 +150,17 @@ export default function CardComponent({
           <Thumbnail
             source={{ uri: ONLINEIMAGES.profileImage }}
             style={{
-              marginLeft: -15,
-              width: 30,
-              height: 30,
-              borderRadius: 15,
+              marginLeft: -10,
+              width: 25,
+              height: 25,
+              borderRadius: 12.5,
               borderWidth: 1,
 
               borderColor: 'white'
             }}
           />
         </View>
-        <CustomText style={{ fontSize: 14 }}>{`${drips} drips`}</CustomText>
+        <CustomText style={{ fontSize: 14 }}>{`${drips} Likes`}</CustomText>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Icon
             type='SimpleLineIcons'
@@ -181,15 +171,25 @@ export default function CardComponent({
         </View>
         <CustomText style={{ fontSize: 14 }}>{comments} Comments</CustomText>
       </CardItem>
-      <CardItem style={{ justifyContent: 'space-between', paddingTop: 5, position: 'relative' }}>
-        <PostButtonImg likes='Drip' />
+      <CardItem
+        style={{
+          justifyContent: 'space-between',
+          paddingTop: 0,
+          paddingBottom: 0,
+          marginTop: 5,
+          position: 'relative',
+          borderWidth: 1.5,
+          borderColor: '#fafafa'
+        }}
+      >
+        <PostButtonHeart prop='Likes' name='heart' type='AntDesign' onPress={commentButtonPress} />
         <PostButton
           prop='Comment'
           name='message-circle'
           type='Feather'
           onPress={commentButtonPress}
         />
-        <PostButton prop='Share' name='share' type='Entypo' onPress={shareButtonPress} />
+        <PostButton right prop='Share' name='share' type='Entypo' onPress={shareButtonPress} />
       </CardItem>
     </Card>
   )
@@ -205,6 +205,5 @@ CardComponent.propTypes = {
   price: PropTypes.number,
   comments: PropTypes.number,
   drips: PropTypes.number,
-  viewImage: PropTypes.bool,
   activityPage: PropTypes.bool
 }
