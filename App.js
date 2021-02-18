@@ -1,34 +1,25 @@
 import React from 'react'
 import { SafeAreaView, Text, View, StyleSheet } from 'react-native'
-import NewMessageList from './src/components/mainComponents/NewMessageList/NewMessageList'
+import ProfileSetup from "./src/components/mainComponents/profileSet/ProfileSetup"
 
 
 
 
 
 const App = () => {
-
   return (
-    <SafeAreaView >
-        <NewMessageList />
-    </SafeAreaView>
-  )
+    <View>
+      <ProfileSetup />
+  </View>
+  );
 
-  }
+ }
 
 
 const Styles = StyleSheet.create({
-   textColor: {
-     flex: 1,
-     color: "blue",
-     alignItems: "center",
-     justifyContent: "center",
-     marginLeft: 50
+   flex: 1
      
-   },
 })
 
 
-
-// registerRootComponent(App)
 export default App
