@@ -7,27 +7,19 @@ import MainScreen from './src/components/MainScreen/MainSearch'
 
 
 const App = () => {
-
   return (
     <SafeAreaView >
         <MainScreen />
     </SafeAreaView>
   )
 
-  }
+ }
 
 
 const Styles = StyleSheet.create({
-   textColor: {
-     flex: 1,
-     color: "blue",
-     alignItems: "center",
-     justifyContent: "center",
-     marginLeft: 50
+   flex: 1
      
-   },
 })
-
 
 
 export default App

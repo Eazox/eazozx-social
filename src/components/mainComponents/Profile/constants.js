@@ -8,7 +8,7 @@ export const cardsArray = [
     time: '2 hours ago',
     caption: "The new Fenti drip looks dope y'all",
     profilePic: ONLINEIMAGES.profileImage,
-    image: ONLINEIMAGES.chinos,
+    image: null,
     price: 9900,
     comments: 24,
     drips: 13,
@@ -26,5 +26,32 @@ export const cardsArray = [
     comments: 5,
     drips: 17,
     activityPage: true
+  }
+]
+
+export const catalogueArray = [
+  {
+    key: '0',
+    name: 'Female Leather Bag',
+    price: '$300',
+    image: ONLINEIMAGES.bag
+  },
+  {
+    key: '1',
+    name: 'Female Leather Bag',
+    price: '$300',
+    image: ONLINEIMAGES.bag
+  },
+  {
+    key: '2',
+    name: 'Female Leather Bag',
+    price: '$300',
+    image: ONLINEIMAGES.bag
+  },
+  {
+    key: '3',
+    name: 'Female Leather Bag',
+    price: '$300',
+    image: ONLINEIMAGES.bag
   }
 ]
