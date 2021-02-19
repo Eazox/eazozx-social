@@ -93,6 +93,4 @@ SplashScreen.propTypes = {
   authSuccess: PropTypes.func
 }
 
-// make this component available to the app
 export default connect(mapStateToProps, mapDispatchtoProps)(SplashScreen)
-// export default SplashScreen
