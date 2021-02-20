@@ -1,3 +1,3 @@
-import sideNav from './sideNav'
+import sideNav from './SideNav'
 
 export default sideNav
