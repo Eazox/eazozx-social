@@ -21,7 +21,11 @@ import CardList from './CardList'
 import Catalogue from './Catalogue'
 
 // create a component
-const Profile = ({ personal }) => {
+const Profile = ({ personal, navigation }) => {
+  const goHome = () => {
+    navigation.navigate('HomePage')
+  }
+
   return (
     <Container>
       <Content>
@@ -57,6 +61,7 @@ const Profile = ({ personal }) => {
               }}
             >
               <Icon
+                onPress={goHome}
                 name='arrowleft'
                 type='AntDesign'
                 style={{ padding: 8, fontSize: 20, color: 'white' }}
@@ -227,7 +232,8 @@ const Profile = ({ personal }) => {
 }
 
 Profile.propTypes = {
-  personal: PropTypes.bool
+  personal: PropTypes.bool,
+  navigation: PropTypes.any
 }
 
 // make this component available to the app

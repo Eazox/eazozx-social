@@ -16,7 +16,7 @@ export default function TabNavigation({ navigation }) {
       <Screen name='Search' component={Search} />
       <Screen name='New Post' component={NewPost} />
       <Screen name='MessageStack' component={Messages} options={{ title: 'Messages' }} />
-      <Screen name='Profile'>{() => <Profile personal />}</Screen>
+      <Screen name='Profile'>{props => <Profile personal {...props} />}</Screen>
     </TabNavigator>
   )
 }
