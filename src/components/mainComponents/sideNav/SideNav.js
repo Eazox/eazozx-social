@@ -8,51 +8,10 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback
 } from 'react-native'
-import Icons from 'react-native-vector-icons/Feather'
-import { Data } from '../../mainComponents/sideNav/SideData'
-const infoData = Data.map(side => (
-  <View key={side.name}>
-    <Image
-      source={side.imageUrl}
-      style={{
-        width: 80,
-        height: 80,
-        borderRadius: 100,
-        left: 50,
-        borderWidth: 2,
-        borderColor: '#FFF'
-      }}
-    />
-    <Text
-      style={{
-        fontSize: 18,
-        fontWeight: '500',
-        fontStyle: 'normal',
-        lineHeight: 22,
-        color: '#FFFFFF',
-        textAlign: 'center',
-        top: 3
-      }}
-    >
-      {side.name}
-    </Text>
-    <Text
-      style={{
-        fontStyle: 'normal',
-        fontWeight: 'normal',
-        fontSize: 16,
-        lineHeight: 18,
-        color: '#FFFFFF',
-        top: 5,
-        textAlign: 'center'
-      }}
-    >
-      {side.username}
-    </Text>
-  </View>
-))
+import Icons from '@expo/vector-icons'
+import { ONLINEIMAGES } from '../../../Constants'
 
-const SideNav = () => {
+export default function SideNav() {
   const [toggleIcon, setToggleIcon] = useState(false)
 
   return (
@@ -63,7 +22,47 @@ const SideNav = () => {
           <Icons name='arrow-left' style={{ left: 10, marginTop: 15 }} size={25} color='white' />
         </TouchableOpacity>
 
-        <View style={styles.infoContainer}>{infoData}</View>
+        <View style={styles.infoContainer}>
+          <View>
+            <Image
+              source={{ uri: ONLINEIMAGES.profileImage }}
+              style={{
+                width: 80,
+                height: 80,
+                borderRadius: 100,
+                left: 50,
+                borderWidth: 2,
+                borderColor: '#FFF'
+              }}
+            />
+            <Text
+              style={{
+                fontSize: 18,
+                fontWeight: '500',
+                fontStyle: 'normal',
+                lineHeight: 22,
+                color: '#FFFFFF',
+                textAlign: 'center',
+                top: 3
+              }}
+            >
+              Mary Nathan
+            </Text>
+            <Text
+              style={{
+                fontStyle: 'normal',
+                fontWeight: 'normal',
+                fontSize: 16,
+                lineHeight: 18,
+                color: '#FFFFFF',
+                top: 5,
+                textAlign: 'center'
+              }}
+            >
+              MaryNathanJr
+            </Text>
+          </View>
+        </View>
       </View>
       <View style={styles.AccountContainer}>
         <Icons
@@ -327,5 +326,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
-
-export default SideNav
