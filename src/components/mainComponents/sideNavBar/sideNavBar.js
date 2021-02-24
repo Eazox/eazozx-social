@@ -4,6 +4,7 @@ import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
 import { Icon, Header, Left, Body } from 'native-base'
 import { TouchableOpacity, View, Image } from 'react-native'
 import { ONLINEIMAGES } from '../../../Constants'
+import { Auth } from '../../../firebase'
 import usePortrait from '../../customHooks/usePortrait'
 import DrawerItems from './drawerItem'
 import DrawerImage from './drawerImage'
@@ -11,11 +12,20 @@ import help from '../../../images/help.png'
 import switchAcc from '../../../images/switch.png'
 import privacy from '../../../images/privacy.png'
 import refer from '../../../images/refer.png'
+import { setStack, authSuccess } from '../../../store/actions/'
+import { useDispatch } from 'react-redux'
 import { CustomText } from '../../subComponents/CustomFontComponents'
 
 export default function SideNavBar({ navigation }) {
   const portrait = usePortrait()
+  const dispatch = useDispatch()
 
+  const signOut = () => {
+    Auth.signOut().then(() => {
+      dispatch(authSuccess(null))
+      dispatch(setStack('loginStack'))
+    })
+  }
   const close = () => {
     navigation.closeDrawer()
   }
@@ -52,16 +62,18 @@ export default function SideNavBar({ navigation }) {
               />
             </Left>
             <Body style={{ width: '100%', alignItems: 'center', marginTop: 35 }}>
-              <Image
-                source={{ uri: ONLINEIMAGES.profileImage }}
-                style={{
-                  width: 85,
-                  height: 85,
-                  borderWidth: 1,
-                  borderColor: 'white',
-                  borderRadius: 42.5
-                }}
-              />
+              <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+                <Image
+                  source={{ uri: ONLINEIMAGES.profileImage }}
+                  style={{
+                    width: 85,
+                    height: 85,
+                    borderWidth: 1,
+                    borderColor: 'white',
+                    borderRadius: 42.5
+                  }}
+                />
+              </TouchableOpacity>
               <CustomText
                 style={{ marginTop: 6, fontFamily: 'Gilroy_medium', color: 'white', fontSize: 14 }}
               >
@@ -81,6 +93,7 @@ export default function SideNavBar({ navigation }) {
           </Header>
           {/* <DrawerItem {...this.props} /> */}
           <DrawerItem
+            onPress={() => navigation.navigate('Profile')}
             label={() => <DrawerItems label='Account Information' name='person' type='Ionicons' />}
           />
           <DrawerItem label={() => <DrawerImage label='Refer A Friend' image={refer} />} />
@@ -106,6 +119,7 @@ export default function SideNavBar({ navigation }) {
           }}
         >
           <TouchableOpacity
+            onPress={signOut}
             style={{
               paddingVertical: 10,
               flexDirection: 'row',

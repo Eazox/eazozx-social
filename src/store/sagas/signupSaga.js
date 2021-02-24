@@ -1,7 +1,7 @@
 /* eslint-disable generator-star-spacing */
 import { takeLatest, call, put } from 'redux-saga/effects'
 import { Auth, Db } from '../../firebase'
-import { setStack } from '../actions/setStackAction'
+// import { setStack } from '../actions/setStackAction'
 import { SIGNUP } from '../actions/actionTypes'
 import { authError, authRequest } from '../actions/authAction'
 
@@ -19,10 +19,12 @@ function* workSignupSaga(action) {
       action.phone
     )
     // yield put(authSuccess(signupRes))
-    yield put(setStack('appStack'))
   } catch (error) {
-    console.log(error)
-    yield put(authError(error))
+    if (error.code === 'auth/email-already-in-use') {
+      yield put(authError('Email is already in use, try another'))
+    } else {
+      yield put(authError('Authentication failed, check your internet connection'))
+    }
   }
 }
 
