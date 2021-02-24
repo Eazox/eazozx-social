@@ -99,7 +99,6 @@ class LoginScreen extends Component {
             <View style={styles.inputPassword}>
               <TextInput
                 style={styles.input}
-                maxLength={8}
                 onBlur={() => this.passwordValidator()}
                 placeholder='Enter your password'
                 onChangeText={password => {
