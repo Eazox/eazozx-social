@@ -4,9 +4,13 @@ import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
 import { Icon, Header, Left, Body } from 'native-base'
 import { TouchableOpacity, View, Image } from 'react-native'
 import { ONLINEIMAGES } from '../../../Constants'
-import MIcon from 'react-native-vector-icons/MaterialIcons'
 import usePortrait from '../../customHooks/usePortrait'
 import DrawerItems from './drawerItem'
+import DrawerImage from './drawerImage'
+import help from '../../../images/help.png'
+import switchAcc from '../../../images/switch.png'
+import privacy from '../../../images/privacy.png'
+import refer from '../../../images/refer.png'
 import { CustomText } from '../../subComponents/CustomFontComponents'
 
 export default function SideNavBar({ navigation }) {
@@ -30,7 +34,7 @@ export default function SideNavBar({ navigation }) {
           <Header
             style={{
               elevation: 0,
-              height: 210,
+              height: 228,
               justifyContent: 'flex-start',
               backgroundColor: '#578dde',
               paddingTop: 0,
@@ -38,7 +42,7 @@ export default function SideNavBar({ navigation }) {
             }}
           >
             <Left
-              style={{ alignItems: 'flex-start', marginLeft: 8, position: 'absolute', top: 16 }}
+              style={{ alignItems: 'flex-start', marginLeft: 16, position: 'absolute', top: 16 }}
             >
               <Icon
                 onPress={close}
@@ -58,16 +62,17 @@ export default function SideNavBar({ navigation }) {
                   borderRadius: 42.5
                 }}
               />
-              <CustomText style={{ marginTop: 6, fontFamily: 'Gilroy_medium', color: 'white' }}>
+              <CustomText
+                style={{ marginTop: 6, fontFamily: 'Gilroy_medium', color: 'white', fontSize: 14 }}
+              >
                 Mary Annabelle Nathan
               </CustomText>
               <CustomText
                 style={{
                   marginTop: 6,
                   fontSize: 14,
-                  fontFamily: 'Gilroy_medium',
-                  color: 'white',
-                  marginBottom: 8
+                  // fontFamily: 'Gilroy_medium',
+                  color: 'white'
                 }}
               >
                 @Mary_Nathan
@@ -78,29 +83,15 @@ export default function SideNavBar({ navigation }) {
           <DrawerItem
             label={() => <DrawerItems label='Account Information' name='person' type='Ionicons' />}
           />
-          <DrawerItem
-            label={() => <DrawerItems label='Refer A Friend' name='share' type='Entypo' />}
-          />
+          <DrawerItem label={() => <DrawerImage label='Refer A Friend' image={refer} />} />
           <DrawerItem
             label={() => <DrawerItems label='Settings' name='settings' type='Feather' />}
           />
           <DrawerItem
-            label={() => (
-              <DrawerItems
-                label='Switch to Business Account'
-                name='account-box-multiple'
-                type='MaterialCommunityIcons'
-              />
-            )}
+            label={() => <DrawerImage label='Switch to Business Account' image={switchAcc} />}
           />
-          <DrawerItem
-            label={() => <DrawerItems label='Help & Feedback' name='help' type='MaterialIcons' />}
-          />
-          <DrawerItem
-            label={() => (
-              <DrawerItems label='Privacy Policy' name='shield' type='MaterialCommunityIcons' />
-            )}
-          />
+          <DrawerItem label={() => <DrawerImage label='Help & Feedback' image={help} />} />
+          <DrawerItem label={() => <DrawerImage label='Privacy Policy' image={privacy} />} />
           <DrawerItem
             label={() => <DrawerItems label='About EAZOX' name='people' type='Ionicons' />}
           />
@@ -124,10 +115,7 @@ export default function SideNavBar({ navigation }) {
               backgroundColor: '#fafafa'
             }}
           >
-            <MIcon name='logout' size={16} style={{ color: '#eb5757', paddingHorizontal: 5 }} />
-            <CustomText
-              style={{ color: '#eb5757', paddingHorizontal: 5, fontFamily: 'Gilroy_medium' }}
-            >
+            <CustomText style={{ color: '#eb5757', fontFamily: 'Gilroy_medium' }}>
               Logout
             </CustomText>
           </TouchableOpacity>

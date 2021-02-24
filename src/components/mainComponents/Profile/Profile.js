@@ -56,8 +56,8 @@ const Profile = ({ personal, navigation }) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 backgroundColor: '#1E242E',
-                marginLeft: 8,
-                marginTop: 8
+                marginLeft: 16,
+                marginTop: 16
               }}
             >
               <Icon
@@ -131,25 +131,37 @@ const Profile = ({ personal, navigation }) => {
           </CustomText>
           <View style={{ flexDirection: 'row', width: '100%', marginTop: 4 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Icon name='location-pin' type='Entypo' style={{ fontSize: 12, marginRight: 2 }} />
-              <CustomText style={{ fontSize: 12 }}>Lagos</CustomText>
+              <Icon
+                name='location-pin'
+                type='Entypo'
+                style={{ fontSize: 16, marginRight: 2, color: '#bababa' }}
+              />
+              <CustomText style={{ fontSize: 14, color: '#0a1a32' }}>Lagos</CustomText>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Icon
                 name='business-center'
                 type='MaterialIcons'
-                style={{ fontSize: 12, marginRight: 2, marginLeft: 10 }}
+                style={{ fontSize: 16, marginRight: 2, marginLeft: 10, color: '#bababa' }}
               />
-              <CustomText style={{ fontSize: 12 }}>Business Account</CustomText>
+              <CustomText style={{ fontSize: 14, color: '#0a1a32' }}>Business Account</CustomText>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
-              <Icon name='link-2' type='Feather' style={{ fontSize: 12, marginRight: 2 }} />
-              <CustomText style={{ color: '#578DDE', fontSize: 12 }}>
-                https://manuelsnr.com
-              </CustomText>
+              <Icon
+                name='timer'
+                type='MaterialIcons'
+                style={{ fontSize: 16, marginRight: 2, color: '#bababa' }}
+              />
+              <CustomText style={{ fontSize: 14, color: '#0a1a32' }}>12AM-6PM</CustomText>
             </View>
           </View>
-          <CustomText style={{ fontSize: 12, marginTop: 4 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 3.5 }}>
+            <Icon name='link-2' type='Feather' style={{ fontSize: 16, marginRight: 2 }} />
+            <CustomText style={{ color: '#578DDE', fontSize: 14 }}>
+              https://manuelsnr.com
+            </CustomText>
+          </View>
+          <CustomText style={{ fontSize: 14, marginTop: 4 }}>
             I dont sell quality and affordable stuff.. dont buy from me
           </CustomText>
         </View>
