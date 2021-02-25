@@ -8,6 +8,11 @@
     },
     "android": {
       "package": "com.eazox.community"
+    },
+    "splash": {
+      "image": "./assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#eeeeee"
     }
   }
 }

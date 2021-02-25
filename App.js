@@ -9,6 +9,7 @@ import { Theme } from './src/Constants'
 // import TabNavigation from './src/navigations/tabNavigation'
 // import DrawerNavigation from './src/navigations/DrawerNavigation'
 import CurrentStack from './src/navigations/CurrentStack'
+import SplashScreen from 'react-native-splash-screen'
 
 // const store = configureStore()
 
@@ -29,6 +30,8 @@ const App = () => {
     ...Entypo.font,
     ...MaterialCommunityIcons.font
   })
+
+  SplashScreen.hide()
 
   if (!fontsLoaded) {
     return <AppLoading />
