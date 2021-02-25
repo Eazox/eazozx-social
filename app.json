@@ -10,7 +10,7 @@
       "package": "com.eazox.community"
     },
     "splash": {
-      "image": "./assets/logo.png",
+      "image": "./assets/images/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#eeeeee"
     }

@@ -78,8 +78,24 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    enableHermes: false
+    entryFile: "index.js",
+    enableHermes: true,
+    jsBundleDirRelease: "$buildDir/intermediates/assets/release",
+    // bundleCommand: "ram-bundle",
+    bundleInRelease: true,
 ]
+
+configurations.all {
+    resolutionStrategy {
+        force "com.facebook.soloader:soloader:0.8.0"
+    }
+}
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+   keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
 
 apply from: '../../node_modules/react-native-unimodules/gradle.groovy'
 apply from: "../../node_modules/react-native/react.gradle"
@@ -93,12 +109,12 @@ apply from: "../../node_modules/expo-updates/scripts/create-manifest-android.gra
  * Upload all the APKs to the Play Store and people will download
  * the correct one based on the CPU architecture of their device.
  */
-def enableSeparateBuildPerCPUArchitecture = false
+def enableSeparateBuildPerCPUArchitecture = true
 
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
  */
-def enableProguardInReleaseBuilds = false
+def enableProguardInReleaseBuilds = true
 
 /**
  * The preferred build flavor of JavaScriptCore.
@@ -125,6 +141,10 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+    dexOptions {
+       javaMaxHeapSize "3g"
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -134,7 +154,8 @@ android {
         applicationId 'com.eazox.community'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
+        multiDexEnabled true
+        versionCode 3
         versionName "1.0.0"
     }
     splits {
@@ -147,20 +168,29 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
+            storeFile file('keystore\\debug.keystore')
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+
+        release {
+            if (keystoreProperties['UPLOAD_STORE_FILE'] != null) {
+                keyAlias keystoreProperties['UPLOAD_KEY_ALIAS']
+                keyPassword keystoreProperties['UPLOAD_KEY_PASSWORD']
+                storeFile keystoreProperties['UPLOAD_STORE_FILE'] ? file(keystoreProperties['UPLOAD_STORE_FILE']) : null
+                storePassword keystoreProperties['UPLOAD_STORE_PASSWORD']
+            }
+        }
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -187,6 +217,7 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    implementation 'androidx.multidex:multidex:2.0.1'
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
     }
