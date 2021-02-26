@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@react-native-community/datetimepicker": "^3.0.9",
     "@react-native-community/masked-view": "0.1.10",
     "@react-native-picker/picker": "^1.9.4",
     "@react-navigation/bottom-tabs": "^5.11.2",
@@ -30,9 +31,9 @@
     "react-native-screens": "~2.10.1",
     "react-native-svg": "^12.1.0",
     "react-native-svg-uri": "^1.2.3",
+    "react-native-swiper": "^1.6.0",
     "react-native-tab-view": "^2.15.2",
     "react-native-vector-icons": "^7.1.0",
-    "react-native-swiper": "^1.6.0",
     "react-native-web": "0.13.13",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
