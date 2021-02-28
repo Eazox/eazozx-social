@@ -1,4 +1,5 @@
 export const SET_STACK = 'SET_STACK'
+export const SET_PAGE = 'SET_PAGE'
 
 export const AUTH_SUCCESS = 'AUTH_SUCCESS'
 export const AUTH_REQUEST = 'AUTH_REQUEST'
