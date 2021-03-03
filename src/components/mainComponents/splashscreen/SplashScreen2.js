@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { View, Image, StyleSheet, Dimensions } from 'react-native'
 import * as Progress from 'react-native-progress'
-import Logo from '../../../images/Eazox-logo.png'
-
+import Logo from '../../images/logo.png'
 const { height, width } = Dimensions.get('window')
 
 const SplashScreen = () => {
