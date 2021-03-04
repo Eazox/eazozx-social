@@ -6,6 +6,7 @@ import SplashScreen from '../components/mainComponents/splashscreen'
 import SignupStack from './SignupStack'
 import LoginStack from './LoginStack'
 import AppStack from './DrawerNavigation'
+import OnBoardStack from '../components/mainComponents/onboard'
 import { useSelector } from 'react-redux'
 
 const { Navigator, Screen } = createStackNavigator()
@@ -24,6 +25,8 @@ const CurrentStack = () => {
 
   if (currScreen === 'splashScreen') {
     CurrStack = () => <SplashScreen />
+  } else if (currScreen === 'onBoardStack') {
+    CurrStack = () => <OnBoardStack />
   } else if (currScreen === 'loginStack') {
     CurrStack = () => <LoginStack />
   } else if (currScreen === 'signupStack') {

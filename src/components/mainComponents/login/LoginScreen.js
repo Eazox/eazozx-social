@@ -1,13 +1,32 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Text, View, TouchableOpacity, StyleSheet, Image, TextInput } from 'react-native'
-import Icon from 'react-native-vector-icons/AntDesign'
+import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import Login from '../../../../src/images/login.png'
 import facebook from '../../../images/Facebook.png'
 import googleLogo from '../../../images/Google.png'
-import Header from '../../subComponents/Header'
 import ErrorModal from '../../subComponents/Modal'
 import { connect } from 'react-redux'
+import {
+  CustomLabel,
+  CustomError,
+  CustomInput,
+  CustomPassword,
+  CustomText
+} from '../../subComponents/CustomFontComponents'
+import { GLOBALSTYLES } from '../../../Constants'
+import {
+  Container,
+  Form,
+  Item,
+  Icon,
+  Content,
+  Header,
+  Button,
+  Left,
+  Body,
+  Title
+} from 'native-base'
 import { setStack, login } from '../../../store/actions'
 
 class LoginScreen extends Component {
@@ -20,6 +39,21 @@ class LoginScreen extends Component {
       password: '',
       showIconEye: true
     }
+    this.changeFirstTime = this.changeFirstTime.bind(this)
+    this.handleLogin = this.handleLogin.bind(this)
+  }
+
+  async changeFirstTime() {
+    try {
+      await AsyncStorage.setItem('@firstTime', 'entered')
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  handleLogin() {
+    this.changeFirstTime()
+    this.props.login(this.state.email, this.state.password)
   }
 
   // Show icon toggle
@@ -51,9 +85,18 @@ class LoginScreen extends Component {
 
   render() {
     return (
-      <>
-        <View>
-          <Header />
+      <Container>
+        <Header style={GLOBALSTYLES.header}>
+          <Left style={GLOBALSTYLES.headerLeft}>
+            <Button transparent>
+              <Icon name='arrow-back' style={{ color: 'black', marginLeft: 8 }} />
+            </Button>
+          </Left>
+          <Body style={GLOBALSTYLES.alignCenter}>
+            <Title style={[GLOBALSTYLES.headerText, { fontFamily: 'Gilroy_medium' }]}>Login</Title>
+          </Body>
+        </Header>
+        <Content>
           <View style={styles.logoContainer}>
             <Image source={Login} />
             <Text
@@ -70,55 +113,49 @@ class LoginScreen extends Component {
 
             <Text style={styles.title}>shop easily everywhere</Text>
           </View>
-          <View style={styles.container}>
-            <Text style={styles.formText}>Email Address/Username</Text>
-            <View style={styles.inputText}>
-              <TextInput
-                style={styles.input}
-                placeholder='Enter Email/Username'
-                autoCapitalize='none'
+          <Form style={GLOBALSTYLES.form}>
+            <Item stackedLabel style={GLOBALSTYLES.noBorder}>
+              <CustomLabel style={styles.mb8}>Email Address</CustomLabel>
+              <CustomInput
+                onChangeText={e =>
+                  this.setState(prev => {
+                    return { ...prev, email: e }
+                  })
+                }
+                style={[
+                  this.state.emailError ? styles.redBorder : styles.removeBorder,
+                  styles.grayCover
+                ]}
                 keyboardType='email-address'
-                onBlur={() => this.emailValidator()}
-                onChangeText={text => {
-                  this.setState({ email: text })
-                }}
               />
-              <Text style={{ color: 'red', marginLeft: 20, fontSize: 10 }}>
-                {this.state.emailError}
-              </Text>
-            </View>
+              {!!this.state.emailError && <CustomError>{this.state.emailError}</CustomError>}
+            </Item>
 
-            <View style={styles.textPassword}>
-              <Text style={styles.passwordOne}>Password</Text>
-
-              <TouchableOpacity>
-                <Text style={styles.passwordTwo}>Forgot password?</Text>
-              </TouchableOpacity>
-            </View>
-
-            <View style={styles.inputPassword}>
-              <TextInput
-                style={styles.input}
-                onBlur={() => this.passwordValidator()}
-                placeholder='Enter your password'
-                onChangeText={password => {
-                  this.setState({ password: password })
-                }}
+            <Item stackedLabel style={[GLOBALSTYLES.noBorder]}>
+              <CustomLabel style={styles.mb8}>Password</CustomLabel>
+              <CustomPassword
+                onChangeText={e =>
+                  this.setState(prev => {
+                    return { ...prev, password: e }
+                  })
+                }
+                style={[
+                  this.state.passwordError ? styles.redBorder : styles.removeBorder,
+                  styles.grayCover
+                ]}
               />
-              <Icon name='eye' size={20} style={{ right: 35 }} color='#BDBDBD' />
-            </View>
-            <Text style={{ color: 'red', marginLeft: 20, fontSize: 10 }}>
-              {this.state.passwordError}
-            </Text>
+              {!!this.state.passwordError && <CustomError>{this.state.passwordError}</CustomError>}
+            </Item>
 
-            <TouchableOpacity
-              style={styles.buttonContainer}
-              onPress={() => {
-                this.props.login(this.state.email, this.state.password)
-              }}
+            <Button
+              onPress={this.handleLogin}
+              block
+              info
+              disabled={this.state.email === '' || this.state.password === ''}
+              style={[{ borderRadius: 40, elevation: 0 }, GLOBALSTYLES.ml15, GLOBALSTYLES.mt15]}
             >
-              <Text style={styles.buttonContent}>Log In</Text>
-            </TouchableOpacity>
+              <CustomText style={[GLOBALSTYLES.fontS18, GLOBALSTYLES.fontw5]}>Log In</CustomText>
+            </Button>
 
             <View style={styles.lineContainer}>
               <View
@@ -153,12 +190,22 @@ class LoginScreen extends Component {
             </View>
 
             <View style={styles.googleContainer}>
-              <TouchableOpacity style={styles.googleContent}>
-                <Image source={googleLogo} style={{ marginTop: 10 }} />
-                <Text
+              <TouchableOpacity
+                style={[
+                  styles.googleContent,
+                  {
+                    borderRadius: 40,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: '#eeeeee',
+                    elecvation: 0
+                  }
+                ]}
+              >
+                <Image source={googleLogo} />
+                <CustomText
                   style={{
                     marginLeft: 10,
-                    marginTop: 10,
                     fontSize: 18,
                     fontStyle: 'normal',
                     fontWeight: 'normal',
@@ -167,27 +214,37 @@ class LoginScreen extends Component {
                   }}
                 >
                   Continue with Google
-                </Text>
+                </CustomText>
               </TouchableOpacity>
             </View>
 
             <View style={styles.facebookContainer}>
-              <TouchableOpacity style={styles.facebookContent}>
-                <Image source={facebook} style={{ marginTop: 10, marginLeft: 50 }} />
-                <Text
+              <TouchableOpacity
+                style={[
+                  styles.facebookContent,
+                  {
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    borderRadius: 40,
+                    backgroundColor: '#3b5998',
+                    elecvation: 0
+                  }
+                ]}
+              >
+                <Image source={facebook} />
+                <CustomText
                   style={{
-                    marginTop: 13,
                     textAlign: 'center',
                     marginLeft: 10,
-                    color: '#FFFFFF',
                     fontWeight: 'normal',
                     fontStyle: 'normal',
                     fontSize: 18,
-                    lineHeight: 22
+                    lineHeight: 22,
+                    color: 'white'
                   }}
                 >
                   Continue with Facebook
-                </Text>
+                </CustomText>
               </TouchableOpacity>
             </View>
 
@@ -195,10 +252,10 @@ class LoginScreen extends Component {
               style={{
                 textAlign: 'center',
                 flexDirection: 'row',
-                marginTop: 10
+                marginTop: 16
               }}
             >
-              <Text
+              <CustomText
                 style={{
                   fontWeight: '600',
                   fontStyle: 'normal',
@@ -209,12 +266,12 @@ class LoginScreen extends Component {
                 }}
               >
                 Don’t have an account?
-              </Text>
+              </CustomText>
               <TouchableOpacity
                 style={{ justifyContent: 'center' }}
                 onPress={() => this.props.setStack('signupStack')}
               >
-                <Text
+                <CustomText
                   style={{
                     fontWeight: '600',
                     fontStyle: 'normal',
@@ -222,17 +279,18 @@ class LoginScreen extends Component {
                     marginLeft: 5,
                     lineHeight: 24,
                     color: '#3B5998',
-                    marginBottom: 30
+                    marginBottom: 30,
+                    fontFamily: 'Gilroy_medium'
                   }}
                 >
                   Sign Up
-                </Text>
+                </CustomText>
               </TouchableOpacity>
             </View>
-          </View>
-        </View>
+          </Form>
+        </Content>
         <ErrorModal />
-      </>
+      </Container>
     )
   }
 }
@@ -242,9 +300,15 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 20
   },
+  grayCover: {
+    backgroundColor: '#f1f1f1',
+    height: 40,
+    paddingLeft: 15
+  },
+  mb8: {
+    marginBottom: 8
+  },
   logoContainer: {
-    marginTop: 36.4,
-    flex: 1,
     alignItems: 'center'
   },
   compText: {

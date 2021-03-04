@@ -1,79 +1,76 @@
 // import liraries
 import React, { Component } from 'react'
+import * as Font from 'expo-font'
 import PropTypes from 'prop-types'
-import { View, StyleSheet, Animated, Easing, Image } from 'react-native'
+import { View, Image } from 'react-native'
 import Logo from '../../../images/Eazox-logo.png'
 import { setStack, authSuccess } from '../../../store/actions'
 import { connect } from 'react-redux'
 import { Auth } from '../../../firebase'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 // create a component
 class SplashScreen extends Component {
-  loadAnim = new Animated.Value(-250)
+  constructor(props) {
+    super(props)
+    this.state = {
+      fontsLoaded: false
+    }
+    this.checkFirstTime = this.checkFirstTime.bind(this)
+    this.checkUser = this.checkUser.bind(this)
+  }
 
-  componentDidMount() {
-    Animated.timing(this.loadAnim, {
-      toValue: 0,
-      duration: 1500,
-      easing: Easing.linear,
-      useNativeDriver: true
-    }).start(() => {
-      Auth.onAuthStateChanged(userLog => {
-        if (userLog) {
-          this.props.authSuccess(userLog)
-          this.props.setStack('appStack')
+  async loadFonts() {
+    await Font.loadAsync({
+      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+      Gilroy: require('../../../../assets/fonts/Gilroy-Light.otf'),
+      Gilroy_bold: require('../../../../assets/fonts/Gilroy-Bold.ttf'),
+      Gilroy_heavy: require('../../../../assets/fonts/Gilroy-Heavy.ttf'),
+      Gilroy_medium: require('../../../../assets/fonts/Gilroy-Medium.ttf'),
+      Gilroy_semibold: require('../../../../assets/fonts/Gilroy-SemiBold.ttf')
+    })
+    this.setState({ fontsLoaded: true })
+  }
+
+  checkFirstTime() {
+    return AsyncStorage.getItem('@firstTime')
+      .then(value => {
+        return !value
+      })
+      .catch(e => console.log(e))
+  }
+
+  async checkUser() {
+    // check first time opening app
+    const firstTime = await this.checkFirstTime()
+    Auth.onAuthStateChanged(userLog => {
+      if (userLog) {
+        this.props.authSuccess(userLog)
+        this.props.setStack('appStack')
+      } else {
+        if (firstTime) {
+          this.props.setStack('onBoardStack')
         } else {
           this.props.setStack('loginStack')
         }
-      })
+      }
     })
+  }
+
+  componentDidMount() {
+    this.loadFonts()
+    this.checkUser()
   }
 
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Image source={Logo} />
-        <View style={styles.loadingContainer}>
-          <Animated.View
-            style={[
-              styles.loadingContent,
-              {
-                transform: [
-                  {
-                    translateX: this.loadAnim
-                  }
-                ]
-              }
-            ]}
-          />
-        </View>
       </View>
     )
   }
 }
-
-// define your styles
-const styles = StyleSheet.create({
-  loadingContainer: {
-    height: 10,
-    justifyContent: 'center',
-    flexDirection: 'column',
-    borderRadius: 25,
-    overflow: 'hidden',
-    marginBottom: 30,
-    width: 250,
-    position: 'absolute',
-    bottom: 0,
-    borderWidth: 1,
-    borderColor: 'gray'
-  },
-  loadingContent: {
-    height: '100%',
-    backgroundColor: '#578dde',
-    position: 'absolute',
-    width: '100%'
-  }
-})
 
 const mapDispatchtoProps = dispatch => {
   return {
