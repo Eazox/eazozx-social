@@ -1,13 +1,20 @@
 // import liraries
 import React, { Component } from 'react'
 import * as Font from 'expo-font'
+import {
+  Ionicons,
+  AntDesign,
+  MaterialIcons,
+  Entypo,
+  MaterialCommunityIcons
+} from '@expo/vector-icons'
 import PropTypes from 'prop-types'
 import { View, Image } from 'react-native'
 import Logo from '../../../images/Eazox-logo.png'
 import { setStack, authSuccess } from '../../../store/actions'
 import { connect } from 'react-redux'
 import { Auth } from '../../../firebase'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import AsyncStorage from '@react-native-community/async-storage'
 
 // create a component
 class SplashScreen extends Component {
@@ -28,12 +35,17 @@ class SplashScreen extends Component {
       Gilroy_bold: require('../../../../assets/fonts/Gilroy-Bold.ttf'),
       Gilroy_heavy: require('../../../../assets/fonts/Gilroy-Heavy.ttf'),
       Gilroy_medium: require('../../../../assets/fonts/Gilroy-Medium.ttf'),
-      Gilroy_semibold: require('../../../../assets/fonts/Gilroy-SemiBold.ttf')
+      Gilroy_semibold: require('../../../../assets/fonts/Gilroy-SemiBold.ttf'),
+      ...Ionicons.font,
+      ...MaterialIcons.font,
+      ...Entypo.font,
+      ...MaterialCommunityIcons.font,
+      ...AntDesign.font
     })
     this.setState({ fontsLoaded: true })
   }
 
-  checkFirstTime() {
+  async checkFirstTime() {
     return AsyncStorage.getItem('@firstTime')
       .then(value => {
         return !value
@@ -46,7 +58,6 @@ class SplashScreen extends Component {
     const firstTime = await this.checkFirstTime()
     Auth.onAuthStateChanged(userLog => {
       if (userLog) {
-        this.props.authSuccess(userLog)
         this.props.setStack('appStack')
       } else {
         if (firstTime) {
@@ -86,8 +97,7 @@ const mapStateToProps = state => {
 }
 
 SplashScreen.propTypes = {
-  setStack: PropTypes.func,
-  authSuccess: PropTypes.func
+  setStack: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchtoProps)(SplashScreen)

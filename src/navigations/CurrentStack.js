@@ -20,7 +20,7 @@ const { Navigator, Screen } = createStackNavigator()
 
 // create a component
 const CurrentStack = () => {
-  const currScreen = useSelector(state => state.setStackReducer)
+  const currScreen = useSelector(state => state.stackReducer)
   let CurrStack = null
 
   if (currScreen === 'splashScreen') {
