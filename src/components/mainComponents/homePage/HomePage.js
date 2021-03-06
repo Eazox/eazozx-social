@@ -52,7 +52,7 @@ export default function HomePage({ navigation, drawerNavProp }) {
           </View>
         </Right>
       </Header>
-      <CardList />
+      <CardList nav={navigation} />
     </Container>
   )
 }

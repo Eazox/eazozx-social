@@ -48,7 +48,6 @@ export const VerifiedSeller = ({ style }) => {
           backgroundColor: '#cff7e5',
           elevation: 0,
           marginLeft: 17,
-
           height: 25
           // width: 125,
         },
@@ -157,7 +156,7 @@ export const CustomBuyNow = props => {
         props.style
       ]}
     >
-      <CustomText style={props.textStyle}>Buy Now</CustomText>
+      <CustomText style={[props.textStyle, { fontFamily: 'Gilroy_medium' }]}>Buy Now</CustomText>
       <Icon
         type='FontAwesome'
         name='shopping-bag'
