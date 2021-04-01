@@ -3,7 +3,7 @@ import { useState } from 'react'
 const urlValidationRegex = /[-a-zA-Z0-9@:%._\\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)/
 
 const useFormValidation = () => {
-  // initial state for form
+  // initial state for  form
   const [data, setData] = useState({
     data: {
       businessName: {
