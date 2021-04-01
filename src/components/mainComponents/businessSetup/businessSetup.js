@@ -1,16 +1,15 @@
 // import liraries
 import React, { useState } from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Alert, TouchableWithoutFeedback } from 'react-native'
 import { useDispatch } from 'react-redux'
-import { setStack, signup } from '../../../store/actions'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import DateTimePicker from '@react-native-community/datetimepicker'
+import { setStack } from '../../../store/actions'
 import {
   Container,
   Header,
   Content,
   Form,
   Item,
-  Picker,
   Icon,
   ListItem,
   Body,
@@ -20,32 +19,25 @@ import {
   CheckBox
 } from 'native-base'
 import {
-  CustomPassword,
   CustomLabel,
   CustomInput,
+  CustomSelect,
   CustomText,
   CustomError
 } from '../../subComponents/CustomFontComponents'
 import ErrorModal from '../../subComponents/Modal'
-import useFormValidation from '../../customHooks/signupValidator'
+import useFormValidation from '../../customHooks/businessSignupValidator'
 import { GLOBALSTYLES } from '../../../Constants'
 
 // create a component
-const Signup = () => {
+const BusinessSetup = () => {
   const dispatch = useDispatch()
   // state to display errors in form
   const [showErrors, setShowErrors] = useState(false)
-
+  const [showTimer, setShowTimer] = useState(false)
+  //   const [showTimer2, setShowTimer2] = useState(false)
   // hook for form validation
   const { data, setHandler } = useFormValidation()
-
-  const changeFirstTime = async _ => {
-    try {
-      await AsyncStorage.setItem('@firstTime', 'entered')
-    } catch (e) {
-      console.log(e)
-    }
-  }
 
   // update form state handler
   const updateInput = (key, input) => {
@@ -53,24 +45,47 @@ const Signup = () => {
     setShowErrors(false)
   }
 
+  //   showTimePicker1
+  const showTimerFunc = () => {
+    setShowTimer(true)
+  }
+
+  const changeTime = (e, param) => {
+    let timeString = new Date(e.nativeEvent.timestamp).toLocaleTimeString().substring(0, 5)
+    if (/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/.test(timeString)) {
+      const H = timeString.substr(0, 2)
+      const h = H % 12 || 12
+      const ampm = H < 12 || H === 24 ? 'AM' : 'PM'
+      timeString = h + timeString.substr(2, 3) + ampm
+      setShowTimer(false)
+      updateInput(param + 'Time', timeString)
+    } else {
+      setShowTimer(false)
+    }
+  }
+
   const createAccountHandler = () => {
-    if (data.data.fullname.isValid.valid) {
-      if (data.data.username.isValid.valid) {
-        if (data.data.email.isValid.valid) {
-          if (data.data.number.isValid.valid) {
-            if (data.data.password.isValid.valid) {
-              if (data.data.agreedCheckbox.isValid.valid) {
-                changeFirstTime()
-                dispatch(
-                  signup(
-                    data.data.email.value,
-                    data.data.password.value,
-                    data.data.username.value,
-                    data.data.fullname.value,
-                    data.data.gender.value,
-                    data.data.number.value
+    if (data.data.businessName.isValid.valid) {
+      if (data.data.location.isValid.valid) {
+        if (data.data.website.isValid.valid) {
+          if (data.data.startTime.isValid.valid) {
+            if (data.data.endTime.isValid.valid) {
+              if (data.data.tags.isValid.valid) {
+                if (data.data.agreedCheckbox.isValid.valid) {
+                  dispatch(
+                    // signup(
+                    //   data.data.website.value,
+                    //   data.data.password.value,
+                    //   data.data.location.value,
+                    //   data.data.businessName.value,
+                    //   data.data.gender.value,
+                    //   data.data.number.value
+                    // )
+                    Alert.alert('valid')
                   )
-                )
+                } else {
+                  setShowErrors(true)
+                }
               } else {
                 setShowErrors(true)
               }
@@ -106,123 +121,116 @@ const Signup = () => {
             </Title>
           </Body>
         </Header>
-        <Content>
+        <Content scrollEnabled={false} nestedScrollEnabled>
           <Form style={GLOBALSTYLES.form}>
             <Item stackedLabel style={GLOBALSTYLES.noBorder}>
-              <CustomLabel style={styles.mb8}>Full Name</CustomLabel>
+              <CustomLabel style={styles.mb8}>Business Name</CustomLabel>
               <CustomInput
-                onChangeText={e => updateInput('fullname', e)}
+                onChangeText={e => updateInput('businessName', e)}
                 style={[
-                  showErrors && !data.data.fullname.isValid.valid
+                  showErrors && !data.data.businessName.isValid.valid
                     ? styles.redBorder
                     : styles.removeBorder,
                   styles.grayCover
                 ]}
               />
-              {showErrors && !data.data.fullname.isValid.valid && (
-                <CustomError>{data.data.fullname.isValid.error}</CustomError>
+              {showErrors && !data.data.businessName.isValid.valid && (
+                <CustomError>{data.data.businessName.isValid.error}</CustomError>
               )}
             </Item>
             <Item stackedLabel style={GLOBALSTYLES.noBorder}>
-              <CustomLabel style={styles.mb8}>Username</CustomLabel>
+              <CustomLabel style={styles.mb8}>Location</CustomLabel>
               <CustomInput
-                onChangeText={e => updateInput('username', e)}
+                onChangeText={e => updateInput('location', e)}
                 style={[
-                  showErrors && !data.data.username.isValid.valid
+                  showErrors && !data.data.location.isValid.valid
                     ? styles.redBorder
                     : styles.removeBorder,
                   styles.grayCover
                 ]}
               />
-              {showErrors && !data.data.username.isValid.valid && (
-                <CustomError>{data.data.username.isValid.error}</CustomError>
+              {showErrors && !data.data.location.isValid.valid && (
+                <CustomError>{data.data.location.isValid.error}</CustomError>
               )}
-            </Item>
-            <Item picker style={[GLOBALSTYLES.noBorder, styles.genderItem]}>
-              <CustomLabel style={[styles.mb8, GLOBALSTYLES.ml15, GLOBALSTYLES.mt10]}>
-                Gender
-              </CustomLabel>
-              <View style={[styles.grayCover, styles.genderContainer]}>
-                <Picker
-                  mode='dropdown'
-                  // placeholder="Gender"
-                  iosHeader='Gender'
-                  headerBackButtonText='Go back'
-                  iosIcon={<Icon name='arrow-down' />}
-                  selectedValue={data.data.gender.value}
-                  onValueChange={e => updateInput('gender', e)}
-                  style={[styles.genderPicker, GLOBALSTYLES.fontS14, GLOBALSTYLES.fontw4]}
-                >
-                  <Picker.Item label='Female' value='female' />
-                  <Picker.Item label='Male' value='male' />
-                </Picker>
-              </View>
             </Item>
 
             <Item stackedLabel style={GLOBALSTYLES.noBorder}>
-              <CustomLabel style={styles.mb8}>Email Address</CustomLabel>
+              <CustomLabel style={styles.mb8}>Business Website</CustomLabel>
               <CustomInput
-                onChangeText={e => updateInput('email', e)}
+                onChangeText={e => updateInput('website', e)}
                 style={[
-                  showErrors && !data.data.email.isValid.valid
+                  showErrors && !data.data.website.isValid.valid
                     ? styles.redBorder
                     : styles.removeBorder,
                   styles.grayCover
                 ]}
-                keyboardType='email-address'
               />
-              {showErrors && !data.data.email.isValid.valid && (
-                <CustomError>{data.data.email.isValid.error}</CustomError>
+              {showErrors && !data.data.website.isValid.valid && (
+                <CustomError>{data.data.website.isValid.error}</CustomError>
               )}
             </Item>
-            <Item stackedLabel style={GLOBALSTYLES.noBorder}>
-              <CustomLabel style={styles.mb8}>Phone Number</CustomLabel>
-              <View style={styles.inline}>
-                <View style={styles.numberContainer}>
-                  <Picker
-                    mode='dropdown'
-                    iosHeader='Phone Number'
-                    headerBackButtonText='Go back'
-                    iosIcon={<Icon name='arrow-down' />}
-                    selectedValue={data.data.numberHeader.value}
-                    onValueChange={e => updateInput('numberHeader', e)}
-                  >
-                    <Picker.Item label='+234' value='key0' />
-                    <Picker.Item label='+01' value='key1' />
-                  </Picker>
+
+            <Item stackedLabel style={[GLOBALSTYLES.noBorder]}>
+              <CustomLabel>Business Time</CustomLabel>
+
+              <View style={{ flexDirection: 'row' }}>
+                <View style={{ width: '50%', paddingRight: 4 }}>
+                  <TouchableWithoutFeedback onPress={showTimerFunc}>
+                    <View style={styles.numberContainer}>
+                      <Icon
+                        type='MaterialIcons'
+                        name='timer'
+                        style={{ fontSize: 20, color: '#bdbdbd', marginTop: 0 }}
+                      />
+                      <CustomText>{data.data.startTime.value || 'Start'}</CustomText>
+                      {showTimer && (
+                        <DateTimePicker
+                          value={new Date()}
+                          is24Hour={false}
+                          mode='time'
+                          display='default'
+                          onChange={e => changeTime(e, 'start')}
+                        />
+                      )}
+                    </View>
+                  </TouchableWithoutFeedback>
                 </View>
-                <CustomInput
-                  keyboardType='phone-pad'
-                  style={[
-                    GLOBALSTYLES.noBorder,
-                    showErrors && !data.data.number.isValid.valid
-                      ? styles.redBorder
-                      : styles.removeBorder,
-                    styles.grayCover
-                  ]}
-                  onChangeText={e => updateInput('number', e)}
-                />
+                <View style={{ width: '50%', paddingLeft: 4 }}>
+                  <TouchableWithoutFeedback onPress={showTimerFunc}>
+                    <View style={styles.numberContainer}>
+                      <Icon
+                        type='MaterialIcons'
+                        name='timer'
+                        style={{ fontSize: 20, color: '#bdbdbd', marginTop: 0 }}
+                      />
+                      <CustomText>{data.data.startTime.value || 'End'}</CustomText>
+                    </View>
+                  </TouchableWithoutFeedback>
+                </View>
               </View>
               {showErrors && !data.data.number.isValid.valid && (
                 <CustomError>{data.data.number.isValid.error}</CustomError>
               )}
             </Item>
+
             <Item stackedLabel style={[GLOBALSTYLES.noBorder]}>
-              <CustomLabel style={styles.mb8}>Password</CustomLabel>
-              <CustomPassword
-                style={[
-                  showErrors && !data.data.password.isValid.valid
-                    ? styles.redBorder
-                    : styles.removeBorder,
-                  styles.grayCover
-                ]}
-                onChangeText={e => updateInput('password', e)}
-              />
-              {showErrors && !data.data.password.isValid.valid && (
-                <CustomError>{data.data.password.isValid.error}</CustomError>
-              )}
+              <CustomLabel style={GLOBALSTYLES.mb8}>Business Tags</CustomLabel>
+              <View
+                style={{
+                  width: '100%',
+                  backgroundColor: '#f1f1f1',
+                  height: 40,
+                  paddingHorizontal: 16,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginTop: 8
+                }}
+              >
+                <CustomText>Phines, Eggs, baskets</CustomText>
+              </View>
+              <CustomSelect />
             </Item>
-            <ListItem style={GLOBALSTYLES.noBorder}>
+            <ListItem style={[GLOBALSTYLES.noBorder]}>
               <CheckBox
                 checked={data.data.agreedCheckbox.value}
                 style={[
@@ -249,11 +257,12 @@ const Signup = () => {
               block
               info
               disabled={
-                data.data.fullname.value === '' ||
-                data.data.username.value === '' ||
-                data.data.email.value === '' ||
-                data.data.password.value === '' ||
-                data.data.number.value === '' ||
+                data.data.businessName.value === '' ||
+                data.data.location.value === '' ||
+                data.data.website.value === '' ||
+                data.data.tags.value === '' ||
+                data.data.startTime.value === '' ||
+                data.data.endTime.value === '' ||
                 data.data.agreedCheckbox.value === false
               }
               style={[{ borderRadius: 40 }, GLOBALSTYLES.ml15, GLOBALSTYLES.mt15]}
@@ -336,11 +345,13 @@ const styles = StyleSheet.create({
     left: -15
   },
   numberContainer: {
-    width: 99,
+    width: '100%',
     height: 40,
-    marginRight: 10,
-    justifyContent: 'center',
-    backgroundColor: '#f1f1f1'
+    backgroundColor: '#f1f1f1',
+    paddingLeft: 16,
+    marginTop: 8,
+    flexDirection: 'row',
+    alignItems: 'center'
   },
 
   mb8: {
@@ -356,4 +367,4 @@ const styles = StyleSheet.create({
 })
 
 // make this component available to the app
-export default Signup
+export default BusinessSetup

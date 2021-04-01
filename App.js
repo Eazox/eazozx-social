@@ -5,6 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { NavigationContainer } from '@react-navigation/native'
 import { Theme } from './src/Constants'
 import CurrentStack from './src/navigations/CurrentStack'
+// import BSetup from './src/components/mainComponents/businessSetup'
 
 // const store = configureStore()
 

@@ -1,17 +1,52 @@
 // import liraries
 import React, { useState } from 'react'
-import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
+import { StyleSheet, TouchableWithoutFeedback, View, FlatList } from 'react-native'
 import { Label, Input, Text, Icon, Button } from 'native-base'
 import PropTypes from 'prop-types'
 import { GLOBALSTYLES } from '../../Constants'
 import { AutoGrowingTextInput as GrowInput } from 'react-native-autogrow-textinput'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
+const data = [
+  { id: 1, tag: 'phone' },
+  { id: 2, tag: 'bags' },
+  { id: 3, tag: 'wallets' },
+  { id: 4, tag: 'Keys' },
+  { id: 5, tag: 'bottles' }
+]
 // create a component
 export const CustomLabel = props => {
   return (
     <Label {...props} style={[styles.font, props.style]}>
       {props.children}
     </Label>
+  )
+}
+
+export const CustomSelect = props => {
+  // eslint-disable-next-line react/prop-types
+  const OptionComp = ({ name }) => (
+    <TouchableOpacity
+      style={{
+        flexDirection: 'row',
+        backgroundColor: 'red',
+        justifyContent: 'space-between',
+        height: 40,
+        width: '100%'
+      }}
+    >
+      <CustomText>{name}</CustomText>
+      <Icon name='checkbox' style={{ fontSize: 20, color: '#578dde' }} />
+    </TouchableOpacity>
+  )
+  return (
+    <FlatList
+      nestedScrollEnabled
+      data={data}
+      style={{ maxHeight: 120 }}
+      renderItem={({ item }) => <OptionComp name={item.tag} />}
+      keyExtractor={item => item.id.toString()}
+    />
   )
 }
 
@@ -211,7 +246,8 @@ CustomError.propTypes = {
 }
 
 CustomInput.propTypes = {
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  _ref: PropTypes.any
 }
 
 CustomBuyNow.propTypes = {
@@ -298,34 +334,3 @@ const styles = StyleSheet.create({
     top: 15
   }
 })
-
-CustomLabel.propTypes = {
-  children: PropTypes.string,
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
-CustomText.propTypes = {
-  children: PropTypes.any,
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
-CustomError.propTypes = {
-  children: PropTypes.string,
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
-CustomInput.propTypes = {
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
-CustomPassword.propTypes = {
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
-CustomVerifyInput.propTypes = {
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
-ProgressBeam.propTypes = {
-  incomplete: PropTypes.bool
-}

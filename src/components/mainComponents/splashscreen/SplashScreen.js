@@ -55,16 +55,16 @@ class SplashScreen extends Component {
 
   async checkUser() {
     // check first time opening app
-    const firstTime = await this.checkFirstTime()
+    // const firstTime = await this.checkFirstTime()
     Auth.onAuthStateChanged(userLog => {
       if (userLog) {
         this.props.setStack('appStack')
       } else {
-        if (firstTime) {
-          this.props.setStack('onBoardStack')
-        } else {
-          this.props.setStack('loginStack')
-        }
+        // if (firstTime) {
+        //   this.props.setStack('onBoardStack')
+        // } else {
+        this.props.setStack('loginStack')
+        // }
       }
     })
   }
