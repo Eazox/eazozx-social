@@ -1,9 +1,11 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable indent */
 // import liraries
 import React, { useState } from 'react'
-import { View, StyleSheet, TouchableOpacity, Alert, TouchableWithoutFeedback } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import { useDispatch } from 'react-redux'
 import DateTimePicker from '@react-native-community/datetimepicker'
-import { setStack } from '../../../store/actions'
+import { bSignup } from '../../../store/actions'
 import {
   Container,
   Header,
@@ -21,12 +23,12 @@ import {
 import {
   CustomLabel,
   CustomInput,
-  CustomSelect,
   CustomText,
   CustomError
 } from '../../subComponents/CustomFontComponents'
 import ErrorModal from '../../subComponents/Modal'
 import useFormValidation from '../../customHooks/businessSignupValidator'
+import CustomSelect from './customSelect'
 import { GLOBALSTYLES } from '../../../Constants'
 
 // create a component
@@ -34,10 +36,12 @@ const BusinessSetup = () => {
   const dispatch = useDispatch()
   // state to display errors in form
   const [showErrors, setShowErrors] = useState(false)
-  const [showTimer, setShowTimer] = useState(false)
-  //   const [showTimer2, setShowTimer2] = useState(false)
+  const [showTimer, setShowTimer] = useState(() => {
+    return { show: false, param: 'start' }
+  })
+  const [showModal, setShowModal] = useState(false)
   // hook for form validation
-  const { data, setHandler } = useFormValidation()
+  const { data, setHandler, updateTags } = useFormValidation()
 
   // update form state handler
   const updateInput = (key, input) => {
@@ -46,21 +50,39 @@ const BusinessSetup = () => {
   }
 
   //   showTimePicker1
-  const showTimerFunc = () => {
-    setShowTimer(true)
+  const showTimerStartFunc = () => {
+    setShowTimer(prev => {
+      return { show: true, param: 'start' }
+    })
   }
 
-  const changeTime = (e, param) => {
+  const showTimerEndFunc = () => {
+    setShowTimer(prev => {
+      return { show: true, param: 'end' }
+    })
+  }
+
+  const closeTimer = () => {
+    setShowTimer(prev => {
+      return { ...prev, show: false }
+    })
+  }
+
+  const toggleModal = () => {
+    setShowModal(!showModal)
+  }
+
+  const changeTime = e => {
     let timeString = new Date(e.nativeEvent.timestamp).toLocaleTimeString().substring(0, 5)
     if (/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/.test(timeString)) {
       const H = timeString.substr(0, 2)
       const h = H % 12 || 12
-      const ampm = H < 12 || H === 24 ? 'AM' : 'PM'
+      const ampm = H < 12 || H === 24 ? 'am' : 'pm'
       timeString = h + timeString.substr(2, 3) + ampm
-      setShowTimer(false)
-      updateInput(param + 'Time', timeString)
+      closeTimer()
+      updateInput(showTimer.param + 'Time', timeString)
     } else {
-      setShowTimer(false)
+      closeTimer()
     }
   }
 
@@ -73,15 +95,14 @@ const BusinessSetup = () => {
               if (data.data.tags.isValid.valid) {
                 if (data.data.agreedCheckbox.isValid.valid) {
                   dispatch(
-                    // signup(
-                    //   data.data.website.value,
-                    //   data.data.password.value,
-                    //   data.data.location.value,
-                    //   data.data.businessName.value,
-                    //   data.data.gender.value,
-                    //   data.data.number.value
-                    // )
-                    Alert.alert('valid')
+                    bSignup(
+                      data.data.businessName.value,
+                      data.data.location.value,
+                      data.data.website.value,
+                      data.data.startTime.value,
+                      data.data.endTime.value,
+                      data.data.tags.value
+                    )
                   )
                 } else {
                   setShowErrors(true)
@@ -121,12 +142,12 @@ const BusinessSetup = () => {
             </Title>
           </Body>
         </Header>
-        <Content scrollEnabled={false} nestedScrollEnabled>
+        <Content nestedScrollEnabled>
           <Form style={GLOBALSTYLES.form}>
             <Item stackedLabel style={GLOBALSTYLES.noBorder}>
               <CustomLabel style={styles.mb8}>Business Name</CustomLabel>
               <CustomInput
-                onChangeText={e => updateInput('businessName', e)}
+                onChangeText={e => updateInput('businessName', e.trim())}
                 style={[
                   showErrors && !data.data.businessName.isValid.valid
                     ? styles.redBorder
@@ -141,7 +162,7 @@ const BusinessSetup = () => {
             <Item stackedLabel style={GLOBALSTYLES.noBorder}>
               <CustomLabel style={styles.mb8}>Location</CustomLabel>
               <CustomInput
-                onChangeText={e => updateInput('location', e)}
+                onChangeText={e => updateInput('location', e.trim())}
                 style={[
                   showErrors && !data.data.location.isValid.valid
                     ? styles.redBorder
@@ -157,7 +178,7 @@ const BusinessSetup = () => {
             <Item stackedLabel style={GLOBALSTYLES.noBorder}>
               <CustomLabel style={styles.mb8}>Business Website</CustomLabel>
               <CustomInput
-                onChangeText={e => updateInput('website', e)}
+                onChangeText={e => updateInput('website', e.trim())}
                 style={[
                   showErrors && !data.data.website.isValid.valid
                     ? styles.redBorder
@@ -175,7 +196,7 @@ const BusinessSetup = () => {
 
               <View style={{ flexDirection: 'row' }}>
                 <View style={{ width: '50%', paddingRight: 4 }}>
-                  <TouchableWithoutFeedback onPress={showTimerFunc}>
+                  <TouchableWithoutFeedback onPress={showTimerStartFunc}>
                     <View style={styles.numberContainer}>
                       <Icon
                         type='MaterialIcons'
@@ -183,52 +204,63 @@ const BusinessSetup = () => {
                         style={{ fontSize: 20, color: '#bdbdbd', marginTop: 0 }}
                       />
                       <CustomText>{data.data.startTime.value || 'Start'}</CustomText>
-                      {showTimer && (
+                      {showTimer.show && (
                         <DateTimePicker
                           value={new Date()}
                           is24Hour={false}
                           mode='time'
                           display='default'
-                          onChange={e => changeTime(e, 'start')}
+                          onChange={e => changeTime(e)}
                         />
                       )}
                     </View>
                   </TouchableWithoutFeedback>
                 </View>
                 <View style={{ width: '50%', paddingLeft: 4 }}>
-                  <TouchableWithoutFeedback onPress={showTimerFunc}>
+                  <TouchableWithoutFeedback onPress={showTimerEndFunc}>
                     <View style={styles.numberContainer}>
                       <Icon
                         type='MaterialIcons'
                         name='timer'
                         style={{ fontSize: 20, color: '#bdbdbd', marginTop: 0 }}
                       />
-                      <CustomText>{data.data.startTime.value || 'End'}</CustomText>
+                      <CustomText>{data.data.endTime.value || 'End'}</CustomText>
                     </View>
                   </TouchableWithoutFeedback>
                 </View>
               </View>
-              {showErrors && !data.data.number.isValid.valid && (
-                <CustomError>{data.data.number.isValid.error}</CustomError>
+              {showErrors &&
+                !(data.data.endTime.isValid.valid || data.data.startTime.isValid.valid) && (
+                  <CustomError>{data.data.endTime.isValid.error}</CustomError>
               )}
             </Item>
 
             <Item stackedLabel style={[GLOBALSTYLES.noBorder]}>
               <CustomLabel style={GLOBALSTYLES.mb8}>Business Tags</CustomLabel>
-              <View
-                style={{
-                  width: '100%',
-                  backgroundColor: '#f1f1f1',
-                  height: 40,
-                  paddingHorizontal: 16,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  marginTop: 8
-                }}
-              >
-                <CustomText>Phines, Eggs, baskets</CustomText>
-              </View>
-              <CustomSelect />
+              <TouchableOpacity style={{ width: '100%' }} onPress={toggleModal}>
+                <View
+                  style={{
+                    backgroundColor: '#f1f1f1',
+                    height: 40,
+                    paddingHorizontal: 16,
+                    marginTop: 8
+                  }}
+                >
+                  <CustomLabel numberOfLines={1}>
+                    {data.data.tags.value.length
+                      ? data.data.tags.value.join(', ')
+                      : 'None selected...'}
+                  </CustomLabel>
+                </View>
+              </TouchableOpacity>
+              <CustomSelect
+                values={data.data.tags.value}
+                showModal={showModal}
+                updateTags={updateTags}
+                inputValue={updateInput}
+                toggleModal={toggleModal}
+                tags={data.data.tags.data}
+              />
             </Item>
             <ListItem style={[GLOBALSTYLES.noBorder]}>
               <CheckBox
@@ -260,9 +292,9 @@ const BusinessSetup = () => {
                 data.data.businessName.value === '' ||
                 data.data.location.value === '' ||
                 data.data.website.value === '' ||
-                data.data.tags.value === '' ||
-                data.data.startTime.value === '' ||
-                data.data.endTime.value === '' ||
+                data.data.tags.value.length === 0 ||
+                data.data.startTime.value === null ||
+                data.data.endTime.value === null ||
                 data.data.agreedCheckbox.value === false
               }
               style={[{ borderRadius: 40 }, GLOBALSTYLES.ml15, GLOBALSTYLES.mt15]}
@@ -271,7 +303,7 @@ const BusinessSetup = () => {
                 Create Account
               </CustomText>
             </Button>
-            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+            {/* <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
               <CustomText style={[GLOBALSTYLES.mt15, GLOBALSTYLES.textCentered]}>
                 Already have an account?
               </CustomText>
@@ -286,7 +318,7 @@ const BusinessSetup = () => {
                   Log in
                 </CustomText>
               </TouchableOpacity>
-            </View>
+            </View> */}
           </Form>
         </Content>
       </Container>

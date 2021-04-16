@@ -47,7 +47,8 @@ const useFormValidation = () => {
       },
       tags: {
         isValid: { valid: false, error: 'at least one tag required' },
-        value: '',
+        data: ['phone', 'wallet', 'bags', 'clothes', 'food'],
+        value: [],
         validator: val => {
           if (val.length > 0) {
             return { valid: true, error: '' }
@@ -115,6 +116,20 @@ const useFormValidation = () => {
     })
   }
 
-  return { data, setHandler }
+  const updateTags = value => {
+    setData(prevData => {
+      return {
+        data: {
+          ...prevData.data,
+          tags: {
+            ...prevData.data.tags,
+            data: [...prevData.data.tags.data, { tag: value }]
+          }
+        }
+      }
+    })
+  }
+
+  return { data, setHandler, updateTags }
 }
 export default useFormValidation

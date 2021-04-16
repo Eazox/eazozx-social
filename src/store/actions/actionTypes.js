@@ -7,3 +7,4 @@ export const AUTH_ERROR = 'AUTH_ERROR'
 
 export const SIGNUP = 'SIGNUP'
 export const LOGIN = 'LOGIN'
+export const BSIGNUP = 'BSIGNUP'
