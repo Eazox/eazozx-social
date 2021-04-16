@@ -4,7 +4,7 @@ import { authReducer } from './authReducer'
 import { combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
-  setStackReducer,
+  stackReducer: setStackReducer,
   authReducer,
   setPageReducer
 })

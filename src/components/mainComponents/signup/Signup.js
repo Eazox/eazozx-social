@@ -181,7 +181,7 @@ const Signup = () => {
                 <View style={styles.numberContainer}>
                   <Picker
                     mode='dropdown'
-                    iosHeader='Number Header'
+                    iosHeader='Phone Number'
                     headerBackButtonText='Go back'
                     iosIcon={<Icon name='arrow-down' />}
                     selectedValue={data.data.numberHeader.value}
