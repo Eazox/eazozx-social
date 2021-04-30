@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   },
   inputSubContainer: {
     paddingBottom: 10,
+    paddingTop: 10,
     flex: 1,
     marginRight: 10
   },

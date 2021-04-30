@@ -1,4 +1,4 @@
-import { SIGNUP, LOGIN, AUTH_SUCCESS, AUTH_ERROR, AUTH_REQUEST } from './actionTypes'
+import { SIGNUP, BSIGNUP, LOGIN, AUTH_SUCCESS, AUTH_ERROR, AUTH_REQUEST } from './actionTypes'
 
 export const authSuccess = cred => {
   return {
@@ -29,6 +29,18 @@ export const signup = (email, password, username, fullName, gender, phone) => {
     fullName: fullName,
     gender: gender,
     phone: phone
+  }
+}
+
+export const bSignup = (bName, location, website, startTime, endTime, tags) => {
+  return {
+    type: BSIGNUP,
+    bName: bName,
+    location: location,
+    website: website,
+    startTime: startTime,
+    endTime: endTime,
+    tags: tags
   }
 }
 

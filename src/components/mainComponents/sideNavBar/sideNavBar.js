@@ -13,12 +13,13 @@ import switchAcc from '../../../images/switch.png'
 import privacy from '../../../images/privacy.png'
 import refer from '../../../images/refer.png'
 import { setStack, authSuccess } from '../../../store/actions/'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { CustomText } from '../../subComponents/CustomFontComponents'
 
 export default function SideNavBar({ navigation }) {
   const portrait = usePortrait()
   const dispatch = useDispatch()
+  const { user } = useSelector(state => state.authReducer)
 
   const signOut = () => {
     Auth.signOut().then(() => {
@@ -77,7 +78,7 @@ export default function SideNavBar({ navigation }) {
               <CustomText
                 style={{ marginTop: 6, fontFamily: 'Gilroy_medium', color: 'white', fontSize: 14 }}
               >
-                Mary Annabelle Nathan
+                {user.fullName}
               </CustomText>
               <CustomText
                 style={{
@@ -87,13 +88,13 @@ export default function SideNavBar({ navigation }) {
                   color: 'white'
                 }}
               >
-                @Mary_Nathan
+                {user.displayName}
               </CustomText>
             </Body>
           </Header>
           {/* <DrawerItem {...this.props} /> */}
           <DrawerItem
-            onPress={() => navigation.navigate('Profile')}
+            onPress={() => navigation.navigate('Profile', { personal: true })}
             label={() => <DrawerItems label='Account Information' name='person' type='Ionicons' />}
           />
           <DrawerItem label={() => <DrawerImage label='Refer A Friend' image={refer} />} />
@@ -101,6 +102,7 @@ export default function SideNavBar({ navigation }) {
             label={() => <DrawerItems label='Settings' name='settings' type='Feather' />}
           />
           <DrawerItem
+            onPress={() => navigation.navigate('Profile', { personal: false })}
             label={() => <DrawerImage label='Switch to Business Account' image={switchAcc} />}
           />
           <DrawerItem label={() => <DrawerImage label='Help & Feedback' image={help} />} />

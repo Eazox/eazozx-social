@@ -1,6 +1,6 @@
 import React from 'react'
 import { VirtualizedList } from 'react-native'
-import CardComponent from '../homePage/CardComponent'
+import CardComponent from '../../subComponents/cardComponent'
 import { cardsArray } from './constants'
 import PropTypes from 'prop-types'
 

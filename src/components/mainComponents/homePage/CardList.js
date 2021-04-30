@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { VirtualizedList } from 'react-native'
-import CardComponent from './CardComponent'
+import CardComponent from '../../subComponents/cardComponent'
 import { cardsArray } from './constants'
 
 const getItem = (data, index) => {
@@ -11,7 +12,11 @@ const getItemCount = _ => {
   return cardsArray.length
 }
 
-export default function CardList() {
+export default function CardList({ nav }) {
+  const goToThread = () => {
+    nav.navigate('Thread')
+  }
+
   return (
     <VirtualizedList
       data={cardsArray}
@@ -27,6 +32,7 @@ export default function CardList() {
           comments={item.comments}
           drips={item.drips}
           profilePic={item.profilePic}
+          navigate={goToThread}
         />
       )}
       keyExtractor={item => item.key}
@@ -34,4 +40,7 @@ export default function CardList() {
       getItem={getItem}
     />
   )
+}
+CardList.propTypes = {
+  nav: PropTypes.any
 }

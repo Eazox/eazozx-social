@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { setPage } from '../../../store/actions/currPageAction'
@@ -9,9 +9,13 @@ import { GLOBALSTYLES } from '../../../Constants'
 import { CustomText } from '../../subComponents/CustomFontComponents'
 import BellImage from '../../../images/bell.png'
 import CardList from './CardList'
+import { authSuccess } from '../../../store/actions'
+import { Db, Auth } from '../../../firebase'
 
 export default function HomePage({ navigation, drawerNavProp }) {
   const dispatch = useDispatch()
+  const user = Auth.currentUser.uid
+
   useFocusEffect(
     useCallback(() => {
       dispatch(setPage('display'))
@@ -19,6 +23,17 @@ export default function HomePage({ navigation, drawerNavProp }) {
       return () => dispatch(setPage('hide'))
     }, [])
   )
+
+  useEffect(() => {
+    const getUserInfo = Db.collection('users')
+      .doc(user)
+      .onSnapshot(doc => {
+        dispatch(authSuccess(doc.data()))
+      })
+    return () => {
+      getUserInfo()
+    }
+  }, [user])
 
   const open = () => {
     drawerNavProp.openDrawer()
@@ -52,7 +67,7 @@ export default function HomePage({ navigation, drawerNavProp }) {
           </View>
         </Right>
       </Header>
-      <CardList />
+      <CardList nav={navigation} />
     </Container>
   )
 }
