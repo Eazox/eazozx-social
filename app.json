@@ -2,6 +2,17 @@
   "expo": {
     "version": "1.0.0",
     "name": "Eazox",
-    "slug": "my-app"
+    "slug": "eazox",
+    "ios": {
+      "bundleIdentifier": "com.eazox.community"
+    },
+    "android": {
+      "package": "com.eazox.community"
+    },
+    "splash": {
+      "image": "./assets/images/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#eeeeee"
+    }
   }
 }
