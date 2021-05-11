@@ -1,6 +1,6 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { MaterialIcons as Icon } from '@expo/vector-icons'
+import { Icon } from 'native-base'
 import Proptypes from 'prop-types'
 import usePortrait from '../customHooks/usePortrait'
 
@@ -21,9 +21,8 @@ function TabNavigator({ children }) {
             return (
               <Icon
                 name={iconName}
-                size={26}
-                color={color}
-                style={portrait ? iconStylePortrait : {}}
+                type='MaterialIcons'
+                style={[portrait ? iconStylePortrait : {}, { fontSize: 26, color: color }]}
               />
             )
           } else if (route.name === 'MessageStack') {
@@ -31,9 +30,8 @@ function TabNavigator({ children }) {
             return (
               <Icon
                 name={iconName}
-                size={26}
-                color={color}
-                style={portrait ? iconStylePortrait : {}}
+                type='MaterialIcons'
+                style={[portrait ? iconStylePortrait : {}, { fontSize: 26, color: color }]}
               />
             )
           } else if (route.name === 'New Post') {
@@ -41,9 +39,8 @@ function TabNavigator({ children }) {
             return (
               <Icon
                 name={iconName}
-                size={26}
-                color={color}
-                style={portrait ? iconStylePortrait : {}}
+                type='MaterialIcons'
+                style={[portrait ? iconStylePortrait : {}, { fontSize: 26, color: color }]}
               />
             )
           } else if (route.name === 'Wallet') {
@@ -51,9 +48,8 @@ function TabNavigator({ children }) {
             return (
               <Icon
                 name={iconName}
-                size={26}
-                color={color}
-                style={portrait ? iconStylePortrait : {}}
+                type='MaterialIcons'
+                style={[portrait ? iconStylePortrait : {}, { fontSize: 26, color: color }]}
               />
             )
           } else if (route.name === 'Search') {
@@ -61,9 +57,8 @@ function TabNavigator({ children }) {
             return (
               <Icon
                 name={iconName}
-                size={26}
-                color={color}
-                style={portrait ? iconStylePortrait : {}}
+                type='MaterialIcons'
+                style={[portrait ? iconStylePortrait : {}, { fontSize: 26, color: color }]}
               />
             )
           }

@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback
 } from 'react-native'
-import Icons from '@expo/vector-icons'
+import Icons from 'native-base'
 import { ONLINEIMAGES } from '../../../Constants'
 
 export default function SideNav() {
@@ -19,7 +19,10 @@ export default function SideNav() {
       <StatusBar />
       <View style={styles.SideNav}>
         <TouchableOpacity>
-          <Icons name='arrow-left' style={{ left: 10, marginTop: 15 }} size={25} color='white' />
+          <Icons
+            name='arrow-left'
+            style={{ left: 10, marginTop: 15, fontSize: 14, color: 'white' }}
+          />
         </TouchableOpacity>
 
         <View style={styles.infoContainer}>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // import liraries
 import React, { useState } from 'react'
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
@@ -48,7 +49,6 @@ export const VerifiedSeller = ({ style }) => {
           backgroundColor: '#cff7e5',
           elevation: 0,
           marginLeft: 17,
-
           height: 25
           // width: 125,
         },
@@ -157,7 +157,7 @@ export const CustomBuyNow = props => {
         props.style
       ]}
     >
-      <CustomText style={props.textStyle}>Buy Now</CustomText>
+      <CustomText style={[props.textStyle, { fontFamily: 'Gilroy_medium' }]}>Buy Now</CustomText>
       <Icon
         type='FontAwesome'
         name='shopping-bag'
@@ -212,7 +212,8 @@ CustomError.propTypes = {
 }
 
 CustomInput.propTypes = {
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  _ref: PropTypes.any
 }
 
 CustomBuyNow.propTypes = {
@@ -299,34 +300,3 @@ const styles = StyleSheet.create({
     top: 15
   }
 })
-
-CustomLabel.propTypes = {
-  children: PropTypes.string,
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
-CustomText.propTypes = {
-  children: PropTypes.any,
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
-CustomError.propTypes = {
-  children: PropTypes.string,
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
-CustomInput.propTypes = {
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
-CustomPassword.propTypes = {
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
-CustomVerifyInput.propTypes = {
-  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
-
-ProgressBeam.propTypes = {
-  incomplete: PropTypes.bool
-}

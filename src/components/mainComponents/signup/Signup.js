@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { setStack, signup } from '../../../store/actions'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import {
   Container,
   Header,
@@ -38,6 +39,14 @@ const Signup = () => {
   // hook for form validation
   const { data, setHandler } = useFormValidation()
 
+  const changeFirstTime = async _ => {
+    try {
+      await AsyncStorage.setItem('@firstTime', 'entered')
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   // update form state handler
   const updateInput = (key, input) => {
     setHandler(key, input)
@@ -51,6 +60,7 @@ const Signup = () => {
           if (data.data.number.isValid.valid) {
             if (data.data.password.isValid.valid) {
               if (data.data.agreedCheckbox.isValid.valid) {
+                changeFirstTime()
                 dispatch(
                   signup(
                     data.data.email.value,
@@ -87,11 +97,13 @@ const Signup = () => {
         <Header style={GLOBALSTYLES.header}>
           <Left style={GLOBALSTYLES.headerLeft}>
             <Button transparent>
-              <Icon name='arrow-back' style={styles.blackColor} />
+              <Icon name='arrow-back' style={[styles.blackColor, { marginLeft: 8 }]} />
             </Button>
           </Left>
           <Body style={GLOBALSTYLES.alignCenter}>
-            <Title style={GLOBALSTYLES.headerText}>Create an Account</Title>
+            <Title style={[GLOBALSTYLES.headerText, { fontFamily: 'Gilroy_medium' }]}>
+              Create an Account
+            </Title>
           </Body>
         </Header>
         <Content>
@@ -169,7 +181,7 @@ const Signup = () => {
                 <View style={styles.numberContainer}>
                   <Picker
                     mode='dropdown'
-                    iosHeader='Number Header'
+                    iosHeader='Phone Number'
                     headerBackButtonText='Go back'
                     iosIcon={<Icon name='arrow-down' />}
                     selectedValue={data.data.numberHeader.value}
@@ -244,7 +256,7 @@ const Signup = () => {
                 data.data.number.value === '' ||
                 data.data.agreedCheckbox.value === false
               }
-              style={[GLOBALSTYLES.ml15, GLOBALSTYLES.mt15]}
+              style={[{ borderRadius: 40 }, GLOBALSTYLES.ml15, GLOBALSTYLES.mt15]}
             >
               <CustomText style={[GLOBALSTYLES.fontS18, GLOBALSTYLES.fontw5]}>
                 Create Account
@@ -259,7 +271,11 @@ const Signup = () => {
                 style={{ marginTop: 10, marginLeft: 4 }}
                 onPress={() => dispatch(setStack('loginStack'))}
               >
-                <CustomText style={[GLOBALSTYLES.blueColor, { marginTop: 5 }]}>Log in</CustomText>
+                <CustomText
+                  style={[GLOBALSTYLES.blueColor, { marginTop: 5, fontFamily: 'Gilroy_medium' }]}
+                >
+                  Log in
+                </CustomText>
               </TouchableOpacity>
             </View>
           </Form>

@@ -19,9 +19,12 @@ import { ONLINEIMAGES } from '../../../Constants'
 import coverImage from '../../../images/coverImage.png'
 import CardList from './CardList'
 import Catalogue from './Catalogue'
+import { useSelector } from 'react-redux'
 
 // create a component
-const Profile = ({ personal, navigation }) => {
+const Profile = ({ navigation, route }) => {
+  const { personal } = route.params
+  const { user } = useSelector(state => state.authReducer)
   const goHome = () => {
     navigation.navigate('HomePage')
   }
@@ -119,7 +122,7 @@ const Profile = ({ personal, navigation }) => {
             </Button>
           </View>
           <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-            <CustomText style={{ marginTop: 8, fontSize: 14 }}>Mary Nathan</CustomText>
+            <CustomText style={{ marginTop: 8, fontSize: 14 }}>{user.fullName}</CustomText>
             <Icon
               name='check-circle'
               type='MaterialIcons'
@@ -127,7 +130,7 @@ const Profile = ({ personal, navigation }) => {
             />
           </View>
           <CustomText note style={{ fontSize: 12, marginTop: 4 }}>
-            @MaryNathan
+            {user.displayName}
           </CustomText>
           <View style={{ flexDirection: 'row', width: '100%', marginTop: 4 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -244,8 +247,8 @@ const Profile = ({ personal, navigation }) => {
 }
 
 Profile.propTypes = {
-  personal: PropTypes.bool,
-  navigation: PropTypes.any
+  navigation: PropTypes.any,
+  route: PropTypes.any
 }
 
 // make this component available to the app
